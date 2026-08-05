@@ -1,0 +1,92 @@
+{
+    "status": "sucesso",
+    "timestamp_inicio": "2026-08-05 18:28:15",
+    "tema": "Unidade 2 - Tópico 2.4.1: Testes de hipóteses: As hipóteses estatísticas",
+    "professor": "Luca",
+    "disciplina": "MATD38",
+    "tempo_total_segundos": 242.76,
+    "etapas": {
+        "1_indexacao_rag": {
+            "descricao": "Indexação dos Materiais de Apoio (RAG Pessoal)",
+            "status": "pulado",
+            "duracao_segundos": 0.0
+        },
+        "2_roteirista": {
+            "descricao": "Agente 1: Roteirista (Alinhamento de Escopo e Trilha)",
+            "status": "sucesso",
+            "duracao_segundos": 5.54
+        },
+        "3_escrita_revisao": {
+            "descricao": "Agente 2 + 2.5: Escritor & Revisor (Loop de Revisão Ativa)",
+            "status": "sucesso",
+            "duracao_segundos": 83.14,
+            "subtopicos": [
+                {
+                    "titulo": "A Estrutura Lógica do Teste de Hipóteses: Conceitos Fundamentais",
+                    "tentativas": 1,
+                    "max_tentativas": 5,
+                    "reprovacoes": 0,
+                    "feedbacks": [],
+                    "erros_api": {
+                        "429": 0,
+                        "503": 0,
+                        "outros": 0
+                    },
+                    "tempo_segundos": 18.12,
+                    "aprovado": true
+                },
+                {
+                    "titulo": "Arquitetura do Erro: Erros Tipo I e Tipo II",
+                    "tentativas": 2,
+                    "max_tentativas": 5,
+                    "reprovacoes": 1,
+                    "feedbacks": [
+                        "1. [CAMPO AFETADO]: 'exemplo_canonico' e 'deducao_formal_passo_a_passo'. [MOTIVO DETALHADO]: Violação da Diretriz 1.1 da Tabela de Notações. O guia exige o uso de $\\bar{X}$ (X maiúsculo) para a média amostral. O conteúdo apresentou $\\bar{x}$ (minúsculo) na definição de Regiões e cálculos. [INSTRUÇÃO DE CORREÇÃO]: SUBSTITUA: '\\bar{x}' POR: '\\bar{X}' em todas as ocorrências de média amostral, incluindo as condições de pertencimento aos conjuntos $\\{ \\bar{X} : ... \\}$. 2. [CAMPO AFETADO]: 'conteudo_formal'. [MOTIVO DETALHADO]: Falta de explicação textual detalhada de cada símbolo. Embora a fórmula esteja correta, o rigor de 'Professor Titular' exige que cada variável ($\\alpha, \\beta, \\pi(\\theta), \\theta$) seja explícita no texto contíguo. [INSTRUÇÃO DE CORREÇÃO]: Adicione uma seção explicativa imediata abaixo da fórmula listando: '$\\alpha$: Probabilidade do erro de tipo I; $\\beta$: Probabilidade do erro de tipo II; $\\theta$: Parâmetro populacional sob teste; $\\pi(\\theta)$: Função poder do teste'."
+                    ],
+                    "erros_api": {
+                        "429": 0,
+                        "503": 0,
+                        "outros": 0
+                    },
+                    "tempo_segundos": 38.47,
+                    "aprovado": true
+                },
+                {
+                    "titulo": "Construção da Regra de Decisão e Regiões Críticas",
+                    "tentativas": 1,
+                    "max_tentativas": 5,
+                    "reprovacoes": 0,
+                    "feedbacks": [],
+                    "erros_api": {
+                        "429": 0,
+                        "503": 0,
+                        "outros": 0
+                    },
+                    "tempo_segundos": 26.55,
+                    "aprovado": true
+                }
+            ]
+        },
+        "4_lapidacao_editorial": {
+            "descricao": "Agente 3.5: Editor-Chefe (Unificação e Coerência Global)",
+            "status": "sucesso",
+            "duracao_segundos": 13.68
+        },
+        "5_expansao_prosa": {
+            "descricao": "Agente 3.75: Construtor de Prosa (Expansão Exaustiva de Livro)",
+            "status": "sucesso",
+            "duracao_segundos": 37.73
+        },
+        "6_caderno_exercicios": {
+            "descricao": "Agente 3: Caderno de Exercícios (Questões Fechadas e Abertas)",
+            "status": "sucesso",
+            "duracao_segundos": 47.22
+        },
+        "7_compilacao_interface": {
+            "descricao": "Fase 6: Compilação de Interface Streamlit",
+            "status": "sucesso",
+            "duracao_segundos": 52.99
+        }
+    },
+    "timestamp_fim": "2026-08-05 18:32:18"
+}
