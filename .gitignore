@@ -1,0 +1,11 @@
+__pycache__/
+cache/
+.env
+.DS_Store
+.streamlit/secrets.toml
+logdasaulasgeradas/
+*.log
+temp_rag_*
+Livros Estatística/
+Plataforma-Aulas_antiga-base/
+

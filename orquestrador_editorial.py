@@ -1,0 +1,241 @@
+import os
+import json
+import re
+from google import genai
+from google.genai import types
+from schemas import AulaUnificadaELapidada
+
+# ==============================================================================
+# FALLBACK DE SEGURANÇA PARA A CHAVE DE API (GEMINI_API_KEY)
+# ==============================================================================
+def carregar_chave_api():
+    """Garante a leitura da API key a partir do ambiente, do st.secrets (Streamlit Cloud) ou do secrets.toml local."""
+    if "GEMINI_API_KEY" in os.environ and os.environ["GEMINI_API_KEY"].strip():
+        return True
+        
+    # Tenta obter do st.secrets do Streamlit
+    try:
+        import streamlit as st
+        if "GEMINI_API_KEY" in st.secrets:
+            val = st.secrets["GEMINI_API_KEY"]
+            if val and val.strip():
+                os.environ["GEMINI_API_KEY"] = val.strip()
+                return True
+    except Exception:
+        pass
+        
+    path = os.path.join(".streamlit", "secrets.toml")
+    if os.path.exists(path):
+        try:
+            with open(path, "r", encoding="utf-8") as f:
+                for linha in f:
+                    if "GEMINI_API_KEY" in linha:
+                        match = re.search(r'(?:GEMINI_API_KEY\s*=\s*["\'])(.*?)(?:["\'])', linha)
+                        if match:
+                            os.environ["GEMINI_API_KEY"] = match.group(1).strip()
+                            print(f"[KEY] Chave de API carregada com sucesso a partir de '{path}'.")
+                            return True
+        except Exception as e:
+            print(f"[ALERTA] Erro ao tentar ler {path}: {e}")
+    return False
+def lapidar_conteudo_global(caminho_payload_teoria: str, diretrizes_texto: str = None):
+    # Garante a inicialização da chave
+    carregar_chave_api()
+    client = genai.Client(http_options={"timeout": 120_000})
+
+    if not os.path.exists(caminho_payload_teoria):
+        print(f"[ERRO] O arquivo '{caminho_payload_teoria}' não foi encontrado.")
+        return None
+
+    with open(caminho_payload_teoria, "r", encoding="utf-8") as f:
+        payload_bruto = json.load(f)
+
+    dados_entrada_str = json.dumps(payload_bruto, ensure_ascii=False)
+
+    print("\n[Agente 3.5] Assumindo o controle editorial. Unificando e eliminando repetições da aula...")
+
+    prompt_editorial = f"""
+Você é o Editor-Chefe de uma prestigiada editora de livros de Estatística Matemática da UFBA.
+
+### CONTEXTO E MISSÃO
+Você receberá o [CAPÍTULO_BRUTO_AULA] (em JSON), contendo as páginas geradas separadamente pelo Agente Escritor para a aula '{payload_bruto['tema']}'.
+Sua missão é atuar como editor unificador: você deve lapidar, costurar e organizar as páginas para que funcionem como um capítulo contínuo, fluido e visualmente impecável de um livro didático premium, preenchendo a estrutura 'AulaUnificadaELapidada'.
+
+---
+
+### DIRETRIZES DE ORGANIZAÇÃO E LAPIDAÇÃO (MANDATÓRIO)
+1. Divisão de Trabalho e Lapidação: Sua função é puramente de ORGANIZAÇÃO, COERÊNCIA e POLIMENTO. Não invente teorias novas ou novos conteúdos. Costure as transições de prosa de forma suave, elimine introduções repetitivas, e faça o capítulo fluir com alto ritmo pedagógico.
+2. Foco no Ensino e Didática: Ao unificar a prosa, garanta que o texto mantenha o foco em ENSINAR os conceitos intuitivamente com clareza. Não elimine parágrafos explicativos ou analogias didáticas úteis; a aula deve ser densa em conteúdo explicativo e fácil de compreender.
+3. Rigor Absoluto de Notação Dinâmica (Tolerância Zero para Adulterações): Você é OBRIGADO a seguir e preservar todas as notações matemáticas e símbolos estatísticos gerados originalmente pelo Escritor de acordo com o bloco [DIRETRIZES_DE_ESTILO] abaixo. Não mude, simplifique ou reverta nenhum símbolo para termos planos ou notações informais.
+4. Centralização de Gráficos e Simuladores: Analise as recomendações de simulador que vêm do Escritor. Filtre de forma extremamente rigorosa: selecione no máximo 2 ou 3 simuladores que sejam de fato cruciais, úteis e altamente pedagógicos para a aula inteira (ex: diagnóstico de resíduos, correlações, estatística descritiva, demonstrações de teoremas/limites). Se nenhuma recomendação for essencial ou pedagógica, deixe a lista 'simuladores_da_aula' vazia. Certifique-se de que a 'descricao_simulador' descreva detalhadamente os sliders, limites de parâmetros, e o comportamento interativo que a simulação deve ter para demonstrar o conceito estatístico em tempo real.
+5. Rigor de Rodapé Bibliográfico: Colete todas as fontes do RAG, elimine as duplicatas e monte uma lista bibliográfica final limpa no rodapé (com autor, livro, capítulo e intervalo de páginas exatas no formato "Bussab & Morettin, Estatística Básica - Cap. 4.5, pp. 83-85").
+
+---
+
+### DIRETRIZES DE ESTILO E NOTAÇÃO DO PROFESSOR (MANDATÓRIO)
+[DIRETRIZES_DE_ESTILO]:
+{diretrizes_texto or "Não fornecidas."}
+
+---
+
+### ENTRADAS DO USUÁRIO
+- [CAPÍTULO_BRUTO_AULA]:
+{dados_entrada_str}
+"""
+
+    config_editorial = types.GenerateContentConfig(
+        thinking_config=types.ThinkingConfig(thinking_level="medium"), # Carga pesada de pensamento para analisar a coerência global
+        temperature=1.0,
+        response_mime_type="application/json",
+        response_schema=AulaUnificadaELapidada
+    )
+
+    try:
+        resposta = client.models.generate_content(
+            model="gemini-3.1-flash-lite",
+            contents=[dados_entrada_str, prompt_editorial],
+            config=config_editorial
+        )
+
+        print(" [OK] Aula unificada, referências compiladas no rodapé e livre de repetições!")
+        return json.loads(resposta.text)
+
+    except Exception as e:
+        print(f" [ERRO] Erro crítico no processo editorial: {e}")
+        try:
+            # Fallback robusto que mapeia os campos do payload bruto para a estrutura esperada
+            print(" [FALLBACK] Mapeando payload_bruto para a estrutura da AulaUnificadaELapidada...")
+            paginas_conteudo = []
+            simuladores_da_aula = []
+            referencias_set = set()
+            
+            for idx, pag in enumerate(payload_bruto.get("conteudo_paginas", [])):
+                titulo = pag.get("titulo_subtopico", f"Subtópico {idx + 1}")
+                conteudo = pag.get("conteudo", {})
+                
+                # Extrai fontes RAG
+                fontes = pag.get("fontes_rag", [])
+                for f in fontes:
+                    livro = f.get("livro_autor", "")
+                    cap = f.get("capitulo", "")
+                    paginas = f.get("paginas_utilizadas", "")
+                    ref_str = f"{livro}"
+                    if cap:
+                        ref_str += f", {cap}"
+                    if paginas:
+                        ref_str += f" - {paginas}"
+                    if ref_str:
+                        referencias_set.add(ref_str)
+                        
+                # Extrai exemplo
+                ex_canonico = conteudo.get("exemplo_canonico")
+                exemplos_ricos = []
+                if ex_canonico:
+                    exemplos_ricos.append({
+                        "contexto_e_enunciado": ex_canonico.get("enunciado", ""),
+                        "dados_brutos_sumarizados": "Dados do exemplo canônico.",
+                        "desenvolvimento_aritmético_passo_a_passo": ex_canonico.get("passo_a_passo_solucao", []),
+                        "conclusao_e_laudo_comercial": ex_canonico.get("resultado_final", "")
+                    })
+                    
+                # Extrai simulador recomendado
+                sim_rec = conteudo.get("simulador_interativo_recomendado")
+                if sim_rec:
+                    simuladores_da_aula.append({
+                        "indice_pagina": str(idx + 1),
+                        "nome_simulador": f"Simulador: {titulo}",
+                        "descricao_simulador": sim_rec
+                    })
+                    
+                paginas_conteudo.append({
+                    "titulo_subtopico": titulo,
+                    "discussao_teorica_prosa": conteudo.get("conceito_intuitivo", ""),
+                    "prosa_longa_expandida": conteudo.get("conceito_intuitivo", ""),
+                    "formalismo_latex": conteudo.get("conceito_formal", ""),
+                    "deducao_analitica_linhas": conteudo.get("deducao_formal_passo_a_passo") or [],
+                    "exemplos_praticos_ricos": exemplos_ricos,
+                    "simulador_interativo_recomendado": sim_rec
+                })
+                
+            resultado_final = {
+                "tema_global": payload_bruto.get("tema", "Aula Teórica"),
+                "paginas_conteudo": paginas_conteudo,
+                "simuladores_da_aula": simuladores_da_aula,
+                "referencias_bibliograficas_finais": list(referencias_set) if referencias_set else ["Fontes consultadas via RAG."]
+            }
+            from latex_sanitizer import sanitizar_payload_latex
+            return sanitizar_payload_latex(resultado_final)
+        except Exception as ex_fallback:
+            print(f" [ERRO] Falha crítica também no fallback editorial: {ex_fallback}")
+            from latex_sanitizer import sanitizar_payload_latex
+            return sanitizar_payload_latex(payload_bruto)
+
+def expandir_subtopico_para_prosa_livro(dados_subtopico: dict, diretrizes_texto: str = None) -> str:
+    carregar_chave_api()
+    client = genai.Client(http_options={"timeout": 120_000})
+    
+    prompt = f"""
+    Você é um Professor Catedrático de Estatística Matemática. Sua única missão é pegar o esboço conceitual e formal de um subtópico e expandi-lo em um capítulo longo, denso e exaustivo de um livro didático de nível universitário premium.
+    
+    REGRAS DE CONSTRUÇÃO DE TEXTO E PEDAGOGIA:
+    1. FOCO TOTAL NO ENSINO E DIDÁTICA DO PROFESSOR: O foco pedagógico, a intuição conceitual, os exemplos e a ênfase dos tópicos DEVEM espelhar primariamente os Materiais de Apoio, notas de aula e slides do Professor. Dedique a prosa a explicar o significado prático e a lógica do conceito no estilo didático do docente.
+    2. ESCREVA EM PROSA FLUIDA, RICA E SEM LIMITE DE PARÁGRAFOS: NÃO HÁ LIMITE NO NÚMERO DE PARÁGRAFOS — quanto mais longo, denso, enciclopédico e detalhado for o texto, melhor! Use todo o espaço disponível para dar máxima profundidade pedagógica ao texto. É terminantemente proibido resumir, abreviar ou usar listas simples com tópicos/bullets (-). Seja o mais exaustivo e didático possível.
+    3. PROFUNDIDADE HISTÓRICA E MOTIVAÇÃO: Explique o porquê desse conceito existir, qual problema prático da ciência ele resolve, como os pesquisadores pensavam antes dele e as implicações práticas de sua aplicação.
+    4. RIGOR DE NOTAÇÃO E RENDERIZAÇÃO DO LATEX (KaTeX Compatible): Conecte o texto de forma elegante com as fórmulas em LaTeX ($ ou $$) fornecidas. Você é OBRIGADO a respeitar estritamente as diretrizes de notação no bloco [DIRETRIZES_DE_ESTILO].
+       - TEXTO EM PORTUGUÊS NO LATEX: Toda e qualquer palavra em português dentro do ambiente LaTeX DEVE estar contida no comando `\\text{{...}}` (ex: `\\hat{{\\beta}} \\text{{ onde }} x`).
+       - SEM PACOTES INCOMPATÍVEIS: Proibido usar `\\textgreek`, `\\bm` ou sintaxes não suportadas pelo KaTeX. Use comandos KaTeX padrão (`\\Delta`, `\\boldsymbol{{\\theta}}`, `\\varepsilon`, `\\sigma^2`).
+    
+    [DIRETRIZES_DE_ESTILO]:
+    {diretrizes_texto or "Não fornecidas."}
+
+    Retorne o texto limpo em Markdown contendo os parágrafos de prosa profundos.
+    """
+    
+    resposta = client.models.generate_content(
+        model="gemini-3.1-flash-lite",
+        contents=[json.dumps(dados_subtopico, ensure_ascii=False), prompt],
+        config=types.GenerateContentConfig(
+            thinking_config=types.ThinkingConfig(thinking_level="medium"),
+            temperature=1.0
+        )
+    )
+    return resposta.text.strip()
+
+def gerar_resumo_compacto_aula(payload_aula: dict) -> str:
+    """
+    Gera um resumo ultracompacto (~150-250 palavras) de uma aula finalizada
+    para servir de memória pedagógica acumulada para as próximas aulas sem sobrecarregar o contexto.
+    """
+    if not isinstance(payload_aula, dict):
+        return ""
+
+    tema = payload_aula.get("tema_global") or payload_aula.get("tema") or "Aula"
+    paginas = payload_aula.get("paginas_conteudo") or []
+    
+    titulos_subtopicos = []
+    formulas_mencionadas = []
+    exemplos_cenarios = []
+
+    for p in paginas:
+        if isinstance(p, dict):
+            if p.get("titulo_subtopico"):
+                titulos_subtopicos.append(p["titulo_subtopico"])
+            if p.get("formalismo_latex"):
+                formulas_mencionadas.append(str(p["formalismo_latex"])[:100])
+            for ex in p.get("exemplos_praticos_ricos", []):
+                if isinstance(ex, dict) and ex.get("contexto_e_enunciado"):
+                    exemplos_cenarios.append(str(ex["contexto_e_enunciado"])[:120])
+
+    resumo = f"### [MEMÓRIA DE AULA CONCLUÍDA: {tema}]\n"
+    resumo += f"- Subtópicos apresentados: {', '.join(titulos_subtopicos)}\n"
+    if formulas_mencionadas:
+        resumo += f"- Fórmulas principais introduzidas: {'; '.join(formulas_mencionadas[:4])}\n"
+    if exemplos_cenarios:
+        resumo += f"- Cenários dos exemplos aplicados: {'; '.join(exemplos_cenarios[:3])}\n"
+    resumo += "- Ponto de parada: Conteúdo e deduções deste tópico foram finalizados e aprovados.\n"
+    
+    return resumo
+
+if __name__ == "__main__":
+    print("[AVISO] O processo editorial deve ser executado a partir da interface do Streamlit.")
+    print("Por favor, execute o comando: streamlit run app.py")
