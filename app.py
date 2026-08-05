@@ -2,6 +2,9 @@ import sys
 import os
 import re
 
+# Aumenta o limite de recursão para suportar schemas Pydantic e árvores JSON profundas
+sys.setrecursionlimit(5000)
+
 # Wrapper global para fluxos de saída (stdout/stderr) para evitar erros de encoding (charmap/Unicode) no Windows
 class SafeStreamWrapper:
     def __init__(self, original_stream):
@@ -26,9 +29,9 @@ class SafeStreamWrapper:
     def __getattr__(self, name):
         return getattr(self.original_stream, name)
 
-if sys.stdout:
+if sys.stdout and not isinstance(sys.stdout, SafeStreamWrapper):
     sys.stdout = SafeStreamWrapper(sys.stdout)
-if sys.stderr:
+if sys.stderr and not isinstance(sys.stderr, SafeStreamWrapper):
     sys.stderr = SafeStreamWrapper(sys.stderr)
 
 import streamlit as st

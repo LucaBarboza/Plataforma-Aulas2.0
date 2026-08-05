@@ -787,15 +787,36 @@ def run_page():
                 </div>
             """
 
+        tempo_inicio_ms = int(st.session_state.get("tempo_inicio", time.time()) * 1000)
+
         loader_html = f"""
             <div class="loader-container">
                 {batch_badge_html}
                 <div class="loader-ring"></div>
-                <div class="loader-timer">{tempo_str}</div>
+                <div class="loader-timer" id="live-timer-el" data-start-ms="{tempo_inicio_ms}">{tempo_str}</div>
                 <div class="loader-status">{status_info.get("etapa_atual", "Processando")}</div>
                 <div class="loader-substatus">{status_info.get("subetapa_detalhe", "")}</div>
                 {subtopicos_html}
             </div>
+            <script>
+                (function() {{
+                    function tick() {{
+                        const el = document.getElementById("live-timer-el");
+                        if (!el) return;
+                        const startMs = parseInt(el.getAttribute("data-start-ms") || "0", 10);
+                        if (!startMs) return;
+                        const diffSec = Math.max(0, Math.floor((Date.now() - startMs) / 1000));
+                        const m = Math.floor(diffSec / 60);
+                        const s = diffSec % 60;
+                        const str = (m < 10 ? '0' : '') + m + ':' + (s < 10 ? '0' : '') + s;
+                        el.textContent = str;
+                    }}
+                    tick();
+                    if (!window.__liveTimerInt) {{
+                        window.__liveTimerInt = setInterval(tick, 500);
+                    }}
+                }})();
+            </script>
         """
         placeholder.html(loader_html)
 
@@ -934,8 +955,9 @@ def run_page():
         tempo_decorrido = time.time() - st.session_state.tempo_inicio
         renderizar_tela_carregamento(loader_placeholder, status_dict, tempo_decorrido)
         
-        # Pausa de monitoramento segundo a segundo para atualização contínua do cronômetro
-        time.sleep(1.0)
+        # O cronômetro é atualizado ao vivo a cada segundo via JavaScript no navegador.
+        # O backend verifica se a thread terminou a cada 2.5s (reduz recarregamentos de página desnecessários).
+        time.sleep(2.5)
         st.rerun()
 
     # Quando a thread terminar:

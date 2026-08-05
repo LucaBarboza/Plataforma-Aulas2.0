@@ -16,12 +16,25 @@ def sanitizar_string_latex(texto: str) -> str:
 
     return texto_corrigido
 
-def sanitizar_payload_latex(obj):
+def sanitizar_payload_latex(obj, visited=None):
     """Percorre recursivamente um dicionário, lista ou string e aplica a sanitização de LaTeX em todos os campos de texto."""
+    if visited is None:
+        visited = set()
+
+    obj_id = id(obj)
+    if obj_id in visited:
+        return obj
+    
+    # Adiciona conteineres iteráveis ao conjunto de visitados
+    if isinstance(obj, (dict, list, tuple, set)):
+        visited.add(obj_id)
+
     if isinstance(obj, str):
         return sanitizar_string_latex(obj)
     elif isinstance(obj, dict):
-        return {k: sanitizar_payload_latex(v) for k, v in obj.items()}
+        return {k: sanitizar_payload_latex(v, visited) for k, v in obj.items()}
     elif isinstance(obj, list):
-        return [sanitizar_payload_latex(item) for item in obj]
+        return [sanitizar_payload_latex(item, visited) for item in obj]
+    elif isinstance(obj, tuple):
+        return tuple(sanitizar_payload_latex(item, visited) for item in obj)
     return obj
