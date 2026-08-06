@@ -245,6 +245,11 @@ def rodar_thread_completa(status_dict):
         elif etapa == "erro_api":
             titulo = dados.get("titulo")
             tipo = dados.get("tipo_erro", "outro")
+            
+            if "total_erros_api" not in status:
+                status["total_erros_api"] = 0
+            status["total_erros_api"] += 1
+            
             if tipo == "429":
                 status["subetapa_detalhe"] = f"⏳ Cota da API (429). Aguardando retentativa..."
             elif tipo == "503":
@@ -791,11 +796,21 @@ def run_page():
 
         tempo_inicio_ms = int(st.session_state.get("tempo_inicio", time.time()) * 1000)
 
+        total_erros_api = status_info.get("total_erros_api", 0)
+        api_badge_html = ""
+        if total_erros_api > 0:
+            api_badge_html = f"""
+                <div style="background: rgba(245, 158, 11, 0.15); color: #F59E0B; padding: 0.3rem 0.8rem; border-radius: 15px; border: 1px solid rgba(245, 158, 11, 0.3); font-size: 0.9rem; font-weight: 600; margin-top: 0.5rem; text-align: center;">
+                    ⚠️ API Retries: {total_erros_api}
+                </div>
+            """
+
         loader_html = f"""
             <div class="loader-container">
                 {batch_badge_html}
                 <div class="loader-ring"></div>
                 <div class="loader-timer" id="live-timer-el" data-start-ms="{tempo_inicio_ms}">{tempo_str}</div>
+                {api_badge_html}
                 <div class="loader-status">{status_info.get("etapa_atual", "Processando")}</div>
                 <div class="loader-substatus">{status_info.get("subetapa_detalhe", "")}</div>
                 {subtopicos_html}

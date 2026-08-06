@@ -288,12 +288,34 @@ Cubra o [TÓPICO_SOLICITADO] com profundidade matemática adequada. NÃO PASSE P
             if ("429" in erro_str or "RESOURCE_EXHAUSTED" in erro_str or "Quota" in erro_str) and tentativas_roteiro < 10:
                 espera = min(15 * tentativas_roteiro, 60)
                 print(f"[AVISO ROTEIRISTA] Limite de cota (429). Aguardando {espera}s (Tentativa {tentativas_roteiro}/10)...")
+                if status_callback:
+                    status_callback({
+                        "etapa": "erro_api",
+                        "titulo": "Roteiro da Aula",
+                        "erro": erro_str,
+                        "tipo_erro": "429"
+                    })
                 time.sleep(espera)
             elif ("503" in erro_str or "UNAVAILABLE" in erro_str or "500" in erro_str) and tentativas_roteiro < 10:
                 espera = min(5 * tentativas_roteiro, 30)
                 print(f"[AVISO ROTEIRISTA] Servidor ocupado (503). Retentando em {espera}s...")
+                if status_callback:
+                    status_callback({
+                        "etapa": "erro_api",
+                        "titulo": "Roteiro da Aula",
+                        "erro": erro_str,
+                        "tipo_erro": "503"
+                    })
                 time.sleep(espera)
             else:
+                if status_callback:
+                    status_callback({
+                        "etapa": "erro_api",
+                        "titulo": "Roteiro da Aula",
+                        "erro": erro_str,
+                        "tipo_erro": "outro"
+                    })
+                time.sleep(3)
                 raise e_rot
 
     t_fim_roteirista = time.time()
@@ -596,7 +618,7 @@ Sua missão é atuar como o produtor científico principal do conteúdo teórico
                             "erro": erro_str,
                             "tipo_erro": "503"
                         })
-                    time.sleep(3)
+                    time.sleep(tempo_espera)
                 else:
                     erros_outros += 1
                     print(f"      [AVISO API] Oscilação de rede/API. Retentando em 3s... Erro: {e}")

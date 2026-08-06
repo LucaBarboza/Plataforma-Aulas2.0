@@ -5,34 +5,7 @@ import re
 # Aumenta o limite de recursão para suportar schemas Pydantic e árvores JSON profundas
 sys.setrecursionlimit(5000)
 
-# Wrapper global para fluxos de saída (stdout/stderr) para evitar erros de encoding (charmap/Unicode) no Windows
-class SafeStreamWrapper:
-    def __init__(self, original_stream):
-        self.original_stream = original_stream
-        
-    def write(self, data):
-        if not data:
-            return
-        encoding = getattr(self.original_stream, 'encoding', 'utf-8') or 'utf-8'
-        try:
-            self.original_stream.write(data)
-        except UnicodeEncodeError:
-            safe_data = data.encode(encoding, errors='replace').decode(encoding)
-            self.original_stream.write(safe_data)
-            
-    def flush(self):
-        try:
-            self.original_stream.flush()
-        except Exception:
-            pass
-
-    def __getattr__(self, name):
-        return getattr(self.original_stream, name)
-
-if sys.stdout and not isinstance(sys.stdout, SafeStreamWrapper):
-    sys.stdout = SafeStreamWrapper(sys.stdout)
-if sys.stderr and not isinstance(sys.stderr, SafeStreamWrapper):
-    sys.stderr = SafeStreamWrapper(sys.stderr)
+# Removido SafeStreamWrapper pois o Streamlit recarrega o stdout a cada rerun, causando RecursionError
 
 import streamlit as st
 
