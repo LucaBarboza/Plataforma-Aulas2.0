@@ -1,0 +1,104 @@
+{
+    "status": "sucesso",
+    "timestamp_inicio": "2026-08-06 01:28:43",
+    "tema": "Unidade 2 - Tópico 2.3: Intervalo de confiança para média e proporção usando grandes amostras",
+    "professor": "Luca",
+    "disciplina": "MATD38",
+    "tempo_total_segundos": 277.33,
+    "etapas": {
+        "1_indexacao_rag": {
+            "descricao": "Indexação dos Materiais de Apoio (RAG Pessoal)",
+            "status": "pulado",
+            "duracao_segundos": 0.0
+        },
+        "2_roteirista": {
+            "descricao": "Agente 1: Roteirista (Alinhamento de Escopo e Trilha)",
+            "status": "sucesso",
+            "duracao_segundos": 7.8
+        },
+        "3_escrita_revisao": {
+            "descricao": "Agente 2 + 2.5: Escritor & Revisor (Loop de Revisão Ativa)",
+            "status": "sucesso",
+            "duracao_segundos": 108.62,
+            "subtopicos": [
+                {
+                    "titulo": "O Teorema do Limite Central e a Inferência Assintótica",
+                    "tentativas": 1,
+                    "max_tentativas": 5,
+                    "reprovacoes": 0,
+                    "feedbacks": [],
+                    "erros_api": {
+                        "429": 0,
+                        "503": 0,
+                        "outros": 0
+                    },
+                    "tempo_segundos": 22.17,
+                    "aprovado": true
+                },
+                {
+                    "titulo": "Inferência para a Média Populacional ($\\mu$) com Variância Desconhecida",
+                    "tentativas": 1,
+                    "max_tentativas": 5,
+                    "reprovacoes": 0,
+                    "feedbacks": [],
+                    "erros_api": {
+                        "429": 0,
+                        "503": 0,
+                        "outros": 0
+                    },
+                    "tempo_segundos": 30.5,
+                    "aprovado": true
+                },
+                {
+                    "titulo": "Intervalos de Confiança para Proporções Populacionais ($p$)",
+                    "tentativas": 1,
+                    "max_tentativas": 5,
+                    "reprovacoes": 0,
+                    "feedbacks": [],
+                    "erros_api": {
+                        "429": 0,
+                        "503": 0,
+                        "outros": 0
+                    },
+                    "tempo_segundos": 30.47,
+                    "aprovado": true
+                },
+                {
+                    "titulo": "A Engenharia da Precisão: Margem de Erro ($E$) e Nível de Confiança ($1-\\alpha$)",
+                    "tentativas": 1,
+                    "max_tentativas": 5,
+                    "reprovacoes": 0,
+                    "feedbacks": [],
+                    "erros_api": {
+                        "429": 0,
+                        "503": 0,
+                        "outros": 0
+                    },
+                    "tempo_segundos": 24.81,
+                    "aprovado": true
+                }
+            ]
+        },
+        "4_lapidacao_editorial": {
+            "descricao": "Agente 3.5: Editor-Chefe (Unificação e Coerência Global)",
+            "status": "sucesso",
+            "duracao_segundos": 15.38
+        },
+        "5_expansao_prosa": {
+            "descricao": "Agente 3.75: Construtor de Prosa (Expansão Exaustiva de Livro)",
+            "status": "sucesso",
+            "duracao_segundos": 27.94
+        },
+        "6_caderno_exercicios": {
+            "descricao": "Agente 3: Caderno de Exercícios (Questões Fechadas e Abertas)",
+            "status": "sucesso",
+            "duracao_segundos": 70.89
+        },
+        "7_compilacao_interface": {
+            "descricao": "Fase 6: Compilação de Interface Streamlit",
+            "status": "sucesso",
+            "duracao_segundos": 42.84
+        }
+    },
+    "timestamp_fim": "2026-08-06 01:33:20"
+}
