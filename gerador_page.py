@@ -450,6 +450,7 @@ def rodar_thread_completa(status_dict):
             if status_dict.get("resumo_aula"):
                 batch_memoria += "\n\n" + status_dict["resumo_aula"]
                 
+            clean_params = {k: v for k, v in params.items() if k != "params"}
             checkpoint_data = {
                 "codigo_disciplina": codigo_disciplina,
                 "nome_professor": nome_professor,
@@ -458,7 +459,7 @@ def rodar_thread_completa(status_dict):
                 "batch_memoria": batch_memoria,
                 "batch_total": params.get("batch_total", len(temas_concluidos)),
                 "batch_queue": params.get("batch_queue", []),
-                "params": params,
+                "params": clean_params,
                 "timestamp": time.strftime("%Y-%m-%d %H:%M:%S")
             }
             with open(checkpoint_path, "w", encoding="utf-8") as f:
@@ -543,7 +544,8 @@ def disparar_thread_geracao(status_dict, params):
     """
     Associa os parâmetros de execução ao status_dict e dispara a thread de geração em background.
     """
-    status_dict["params"] = params
+    clean_params = {k: v for k, v in params.items() if k != "params"}
+    status_dict["params"] = clean_params
     import threading
     import importlib
     
@@ -902,7 +904,7 @@ def run_page():
                 t_novo_inicio = time.time()
                 st.session_state.tempo_inicio = t_novo_inicio
                 
-                novos_params = dict(status_dict.get("params", {}))
+                novos_params = {k: v for k, v in status_dict.get("params", {}).items() if k != "params"}
                 novos_params["tema_solicitado"] = proximo_tema
                 novos_params["tempo_inicio"] = t_novo_inicio
                 
@@ -1308,6 +1310,11 @@ def run_page():
     # Verificação e Interface para Retomada de Lote Interrompido (Checkpoint Persistence)
     codigo_disciplina_clean = codigo_disciplina.lower().strip()
     checkpoint_file = os.path.join("cache", f"batch_checkpoint_{codigo_disciplina_clean}.json")
+    if not os.path.exists(checkpoint_file):
+        cand_fallback = os.path.join("cache", "batch_checkpoint.json")
+        if os.path.exists(cand_fallback):
+            checkpoint_file = cand_fallback
+
     if os.path.exists(checkpoint_file):
         try:
             with open(checkpoint_file, "r", encoding="utf-8") as f_cp:
@@ -1329,7 +1336,8 @@ def run_page():
                         proximo_tema = temas_restantes.pop(0)
                         st.session_state.batch_queue = temas_restantes
                         
-                        saved_params = cp_data.get("params", {})
+                        raw_params = cp_data.get("params", {})
+                        saved_params = {k: v for k, v in raw_params.items() if k != "params"}
                         saved_params["tema_solicitado"] = proximo_tema
                         saved_params["tempo_inicio"] = time.time()
                         saved_params["batch_queue"] = temas_restantes
@@ -1550,6 +1558,8 @@ def run_page():
             "tempo_inicio": t_inicio_geral_completo
         }
 
+        clean_params = {k: v for k, v in params.items() if k != "params"}
+
         # Configurando e iniciando a Thread em background
         st.session_state.tempo_inicio = t_inicio_geral_completo
         st.session_state.sucesso_geracao = False
@@ -1569,11 +1579,11 @@ def run_page():
             "erro": None,
             "mensagem_sucesso": "",
             "memoria_pedagogica": st.session_state.get("batch_memoria", "") if st.session_state.get("is_batch_run") else "",
-            "params": params
+            "params": clean_params
         }
         st.session_state.gerando_aula = True
 
-        disparar_thread_geracao(st.session_state.geracao_status, params)
+        disparar_thread_geracao(st.session_state.geracao_status, clean_params)
         st.rerun()
 
 if __name__ == "__main__":
