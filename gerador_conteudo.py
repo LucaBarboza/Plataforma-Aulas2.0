@@ -3,6 +3,8 @@ import sys
 import json
 import re
 import time
+
+sys.setrecursionlimit(10000)
 from google import genai
 from google.genai import types
 from pydantic import BaseModel, Field

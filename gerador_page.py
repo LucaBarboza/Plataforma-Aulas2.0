@@ -191,6 +191,8 @@ def rodar_thread_completa(status_dict):
     Executa o fluxo completo de geração de uma aula em background thread sem interagir diretamente com st.*
     Recebe os parâmetros necessários via status_dict['params'].
     """
+    import traceback
+    sys.setrecursionlimit(10000)
     params = status_dict.get("params", {})
     nome_professor = params.get("nome_professor", "")
     codigo_disciplina = params.get("codigo_disciplina", "")
@@ -528,12 +530,14 @@ def rodar_thread_completa(status_dict):
         status_dict["ativo"] = False
 
     except Exception as ex:
+        tb_str = traceback.format_exc()
+        print(f"[ERRO CRÍTICO THREAD] {ex}\n{tb_str}")
         if temp_materials_dir and os.path.exists(temp_materials_dir):
             try: shutil.rmtree(temp_materials_dir, ignore_errors=True)
             except: pass
         
         exec_log["status"] = "erro"
-        exec_log["erro_mensagem"] = str(ex)
+        exec_log["erro_mensagem"] = f"{ex}\n{tb_str}"
         exec_log["tempo_total_segundos"] = round(time.time() - t_inicio_geral_completo, 2)
         exec_log["timestamp_fim"] = time.strftime("%Y-%m-%d %H:%M:%S")
         

@@ -1,4 +1,7 @@
+import sys
 import re
+
+sys.setrecursionlimit(10000)
 
 # Padrão Regex extremamente preciso que encontra comandos LaTeX matemáticos
 # que perderam a barra invertida inicial '\' durante a desserialização do JSON.
@@ -17,24 +20,34 @@ def sanitizar_string_latex(texto: str) -> str:
     return texto_corrigido
 
 def sanitizar_payload_latex(obj, visited=None):
-    """Percorre recursivamente um dicionário, lista ou string e aplica a sanitização de LaTeX em todos os campos de texto."""
+    """Percorre recursivamente um dicionário, lista ou string e aplica a sanitização de LaTeX com limite de profundidade seguro."""
     if visited is None:
         visited = set()
+
+    if isinstance(obj, str):
+        return sanitizar_string_latex(obj)
+
+    if not isinstance(obj, (dict, list, tuple, set)):
+        return obj
 
     obj_id = id(obj)
     if obj_id in visited:
         return obj
-    
-    # Adiciona conteineres iteráveis ao conjunto de visitados
-    if isinstance(obj, (dict, list, tuple, set)):
-        visited.add(obj_id)
 
-    if isinstance(obj, str):
-        return sanitizar_string_latex(obj)
-    elif isinstance(obj, dict):
-        return {k: sanitizar_payload_latex(v, visited) for k, v in obj.items()}
+    visited.add(obj_id)
+
+    if isinstance(obj, dict):
+        res = {}
+        for k, v in obj.items():
+            key_san = sanitizar_string_latex(k) if isinstance(k, str) else k
+            res[key_san] = sanitizar_payload_latex(v, visited)
+        return res
     elif isinstance(obj, list):
         return [sanitizar_payload_latex(item, visited) for item in obj]
     elif isinstance(obj, tuple):
         return tuple(sanitizar_payload_latex(item, visited) for item in obj)
+    elif isinstance(obj, set):
+        return {sanitizar_payload_latex(item, visited) for item in obj}
+    
     return obj
+
