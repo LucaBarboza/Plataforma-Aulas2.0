@@ -1,0 +1,340 @@
+======================================================================
+       RELATÓRIO DE AUDITORIA E HISTÓRICO COMPLETO DA AULA
+======================================================================
+Tema Global: Unidade 2 - Tópico 2.3: Intervalo de confiança para média e proporção usando grandes amostras
+Professor: Luca
+Disciplina: MATD38
+Início da Geração: 2026-08-06 01:28:43
+Fim da Geração: 2026-08-06 01:33:20
+Tempo Total: 277.33 segundos
+Status Final: SUCESSO
+======================================================================
+
+----------------------------------------------------------------------
+1. CRONOGRAMA E MÉTRICAS DAS ETAPAS DE DESENVOLVIMENTO
+----------------------------------------------------------------------
+- Indexação dos Materiais de Apoio (RAG Pessoal):
+  * Status: pulado
+  * Duração: 0.0 segundos
+- Agente 1: Roteirista (Alinhamento de Escopo e Trilha):
+  * Status: sucesso
+  * Duração: 7.8 segundos
+- Agente 2 + 2.5: Escritor & Revisor (Loop de Revisão Ativa):
+  * Status: sucesso
+  * Duração: 108.62 segundos
+- Agente 3.5: Editor-Chefe (Unificação e Coerência Global):
+  * Status: sucesso
+  * Duração: 15.38 segundos
+- Agente 3.75: Construtor de Prosa (Expansão Exaustiva de Livro):
+  * Status: sucesso
+  * Duração: 27.94 segundos
+- Agente 3: Caderno de Exercícios (Questões Fechadas e Abertas):
+  * Status: sucesso
+  * Duração: 70.89 segundos
+- Fase 6: Compilação de Interface Streamlit:
+  * Status: sucesso
+  * Duração: 42.84 segundos
+
+
+----------------------------------------------------------------------
+2. HISTÓRICO DE PRODUÇÃO DOS CONTEÚDOS E PROSA EXPANDIDA
+----------------------------------------------------------------------
+
+[Subtópico 1]: O Teorema do Limite Central e a Inferência Assintótica
+----------------------------------------
+  * Auditoria do Revisor Científico:
+    - Tentativas do Escritor: 1
+    - Reprovações do Revisor: 0
+
+>>> A) PROSA BASE GERADA:
+O Teorema do Limite Central (TLC) constitui o alicerce da inferência estatística moderna, oferecendo uma garantia teórica sobre o comportamento das médias amostrais. Independentemente da natureza da distribuição original na população, o TLC estabelece que a distribuição da média amostral $\bar{X}$ tende à normalidade à medida que o tamanho da amostra $n$ aumenta. Este fenômeno, conhecido como normalidade assintótica, permite que pesquisadores utilizem a curva gaussiana para modelar fenômenos complexos, garantindo rigor matemático mesmo quando a distribuição subjacente é desconhecida ou assimétrica. Na prática, o erro padrão da média $EP(\bar{X})$ quantifica a dispersão esperada das estimativas, permitindo a construção de intervalos de confiança robustos.
+
+>>> B) FORMALISMO MATEMÁTICO (LaTeX):
+$$Z_n = \frac{\bar{X} - \mu}{\sigma / \sqrt{n}} \xrightarrow{d} N(0, 1)$$
+
+>>> C) PROSA EXPANDIDA FINAL DE LIVRO DIDÁTICO:
+O Teorema do Limite Central (TLC) não é apenas um resultado matemático contido nos compêndios de probabilidade; ele é, de fato, a pedra angular sobre a qual toda a arquitetura da inferência estatística moderna foi construída. Para compreender a profundidade deste conceito, devemos primeiro reconhecer a dificuldade fundamental que os estatísticos enfrentaram durante séculos: a incerteza inerente à natureza das populações reais. Antes da formalização deste teorema, a modelagem de fenômenos dependia quase inteiramente de suposições sobre a distribuição subjacente dos dados. Se um pesquisador não soubesse se sua população era governada por uma distribuição normal, binomial ou Poisson, qualquer tentativa de quantificar a precisão de um estimador amostral tornava-se um terreno movediço e, por vezes, insolúvel.
+
+A intuição profunda por trás do TLC reside na ideia da convergência da variabilidade amostral em direção à ordem matemática, independentemente da distribuição original dos dados. Quando coletamos uma amostra aleatória simples de tamanho $n$ de uma população com média populacional $\mu$ e variância populacional $\sigma^2$, a média amostral $\bar{X}$ torna-se, ela própria, uma variável aleatória. O fenômeno fascinante que o TLC revela é que, à medida que aumentamos o tamanho da amostra $n$, a forma da distribuição da média amostral $\bar{X}$ torna-se progressivamente mais simétrica, convergindo para uma distribuição normal, mesmo que a população original apresente assimetrias severas ou caudas pesadas. Este é o nascimento da normalidade assintótica, um conceito que permite ao cientista abandonar o medo do desconhecido em relação à distribuição populacional, pois a própria estrutura da média atua como um filtro que atenua irregularidades individuais.
+
+Do ponto de vista formal, a elegância do Teorema do Limite Central é capturada pela convergência em distribuição, denotada por $\xrightarrow{d}$. Considere uma sequência de variáveis aleatórias independentes e identicamente distribuídas, $X_1, X_2, \dots, X_n$, com média populacional $\mu$ e desvio padrão populacional $\sigma$. À medida que $n$ tende ao infinito, a variável padronizada $Z_n$ se aproxima da distribuição normal padrão:
+
+$$Z_n = \frac{\bar{X} - \mu}{\sigma / \sqrt{n}} \xrightarrow{d} N(0, 1)$$
+
+Esta formulação revela, com precisão cirúrgica, como a estatística consegue "domesticar" o acaso. O termo $\sigma / \sqrt{n}$ no denominador, que definimos como o erro padrão da média $EP(\bar{X})$, é a chave para o entendimento do poder de resolução da inferência estatística. Ele quantifica a dispersão esperada das nossas estimativas. Observe que, à medida que o tamanho amostral $n$ cresce, o erro padrão da média $EP(\bar{X})$ diminui, o que significa que a incerteza sobre a posição da média populacional $\mu$ é reduzida. É essa relação inversamente proporcional à raiz quadrada de $n$ que fundamenta a construção de intervalos de confiança robustos, permitindo-nos estabelecer limites de precisão para nossas predições com um rigor matemático garantido pelo teorema.
+
+Historicamente, o desenvolvimento deste teorema foi uma jornada intelectual que começou com Abraham de Moivre no século XVIII, estudando casos específicos da distribuição binomial, e foi expandido por gênios como Pierre-Simon Laplace e, mais tarde, formalizado com o rigor que exigimos hoje por nomes como Lyapunov e Lindeberg. Eles perceberam que o comportamento da soma — ou, de forma equivalente, da média — de um grande número de eventos independentes tende a ser estável e previsível. Em termos práticos, isso resolveu o "problema da caixa preta" estatística: não precisamos saber a distribuição da variável em cada indivíduo da população para garantir que a nossa média $\bar{X}$ terá um comportamento Gaussiano se tivermos dados suficientes.
+
+As implicações para a pesquisa científica moderna são vastas. Considere, por exemplo, a modelagem de fenômenos sociais ou biológicos complexos, onde a distribuição de variáveis como renda, altura ou tempo de reação raramente segue uma curva normal perfeita. Sem o respaldo do TLC, a inferência estatística estaria paralisada diante da não-normalidade dos dados. Graças a ele, podemos construir intervalos de confiança com um nível de confiança $1 - \alpha$ definido, utilizando valores críticos $Z_{\text{crit}}$ provenientes da tabela normal padrão, com a segurança de que, para um $n$ suficientemente grande, a distribuição das médias amostrais será virtualmente indistinguível de uma Gaussiana. O teorema não elimina a variância dos dados, mas organiza essa variância de tal forma que ela se torna tratável, permitindo o cálculo de p-valores e o teste de hipóteses que regem o método científico.
+
+Devemos ser cuidadosos, contudo, ao aplicar este teorema na prática acadêmica e profissional. A "normalidade assintótica" é um destino ao qual a média amostral caminha à medida que $n \to \infty$. Em contextos com amostras muito pequenas, onde a normalidade populacional não pode ser assumida, o pesquisador deve exercer cautela, preferindo muitas vezes o uso da distribuição $t$ de Student, que corrige a incerteza adicional trazida pela estimativa da variância populacional através da variância amostral $S^2$. O aprendizado aqui é que a inferência assintótica é um farol de precisão, mas que a qualidade da aproximação depende inteiramente da relação entre o tamanho amostral $n$ e o comportamento da cauda da distribuição original.
+
+Em suma, a transição para a estatística inferencial exige que o aluno abandone a visão estática dos dados e adote a visão dinâmica do TLC. A estatística deixa de ser uma mera contabilidade de fatos observados para se tornar uma ciência da estimativa baseada em leis probabilísticas de longo prazo. Quando observamos a média de uma amostra, não estamos olhando apenas para um número isolado; estamos olhando para uma realização única de um processo estocástico que, por sua própria natureza, tende à elegância simétrica da distribuição normal. É essa conexão íntima entre a imperfeição dos dados reais e a perfeição da curva Gaussiana que permite à estatística ser a linguagem universal da prova científica.
+
+========================================
+
+[Subtópico 2]: Inferência para a Média Populacional ($\mu$) com Variância Desconhecida
+----------------------------------------
+  * Auditoria do Revisor Científico:
+    - Tentativas do Escritor: 1
+    - Reprovações do Revisor: 0
+
+>>> A) PROSA BASE GERADA:
+Ao transitar da teoria para a prática, encontramos frequentemente a limitação de não conhecer a variância populacional $\sigma^2$. Em cenários aplicados, substituímos $\sigma$ pelo estimador amostral $S$, o desvio padrão da amostra. Esta substituição é assintoticamente válida para grandes amostras ($n \ge 100$), pois o erro de estimativa torna-se desprezível, permitindo a manutenção da distribuição normal no cálculo de intervalos de confiança. Este procedimento confere flexibilidade operacional sem perda significativa de precisão estatística.
+
+>>> B) FORMALISMO MATEMÁTICO (LaTeX):
+$$IC(\mu; 1-\alpha) = \left[ \bar{X} - z_{\alpha/2} \cdot \frac{S}{\sqrt{n}}, \bar{X} + z_{\alpha/2} \cdot \frac{S}{\sqrt{n}} \right]$$
+
+>>> C) PROSA EXPANDIDA FINAL DE LIVRO DIDÁTICO:
+### Inferência para a Média Populacional ($\mu$) com Variância Desconhecida: A Transição para a Realidade Estatística
+
+Ao avançarmos na construção do edifício da inferência estatística, deparamo-nos inevitavelmente com um divisor de águas intelectual: a distinção entre o mundo puramente teórico, onde os parâmetros populacionais como a variância $\sigma^2$ nos são fornecidos como constantes conhecidas, e o mundo prático da investigação científica, onde tais parâmetros permanecem ocultos sob a incerteza. Na prática estatística aplicada, raramente temos o privilégio de conhecer a verdadeira variabilidade inerente à população sob estudo. A assunção de uma variância populacional conhecida é, na maioria das vezes, uma idealização acadêmica. Portanto, a transição para a inferência com variância desconhecida não é meramente um ajuste técnico, mas uma necessidade fundamental para que a estatística sirva como ferramenta robusta de ciência empírica. Quando substituímos o parâmetro populacional $\sigma$ pelo estimador amostral $S$, estamos operando uma mudança de natureza epistemológica: passamos de uma constante fixa para uma variável aleatória, sujeita às oscilações da amostragem.
+
+A lógica por trás desta substituição repousa sobre as propriedades assintóticas dos estimadores de dispersão. Sabemos que o desvio padrão amostral $S$, definido pela raiz quadrada da variância amostral $S^2 = \frac{\sum (X_i - \bar{X})^2}{n-1}$, é um estimador consistente para $\sigma$. Conforme o tamanho da amostra $n$ aumenta, a variabilidade de $S$ em torno do verdadeiro valor de $\sigma$ diminui drasticamente, seguindo as leis fundamentais da convergência em probabilidade. Em cenários nos quais trabalhamos com grandes amostras, convencionalmente fixadas pela literatura acadêmica a partir de $n \ge 100$, o erro inerente à estimativa de $\sigma$ via $S$ torna-se estatisticamente desprezível. Esta convergência permite-nos invocar o Teorema de Slutsky, que garante que a estatística de teste que utiliza $S$ em substituição a $\sigma$ converge em distribuição para a normal padrão $N(0, 1)$. É esta propriedade que nos confere a legitimidade de utilizar a distribuição normal para o cálculo dos intervalos de confiança, mesmo na ausência do parâmetro populacional original.
+
+Historicamente, o desenvolvimento deste entendimento foi crucial para a democratização da análise estatística. Antes da consolidação desta abordagem, o rigor matemático exigia, sob condições de pequenas amostras, o recurso a distribuições mais complexas, como a distribuição $t$ de Student, desenvolvida por William Sealy Gosset. Contudo, ao trabalharmos com grandes volumes de dados, a distribuição $t$ converge para a normal, tornando o procedimento de utilização do valor crítico $z_{\alpha/2}$ uma estratégia operacionalmente eficiente e pedagogicamente elegante. O uso do intervalo de confiança baseado na normal para grandes amostras não representa uma perda de precisão, mas sim uma otimização: evitamos a complexidade de graus de liberdade variáveis em troca de uma aproximação que, pela lei dos grandes números, é indistinguível do modelo paramétrico ideal. Esta flexibilidade operacional permite que o pesquisador aplique métodos de inferência sobre a média $\mu$ em campos tão diversos quanto a medicina, a econometria e a engenharia, sem a necessidade de supormos uma precisão que a própria natureza dos dados nos nega.
+
+O formalismo matemático que sustenta esta prática é uma expressão da busca pela balança entre o rigor do erro estimado e a confiança no resultado inferido. A construção do Intervalo de Confiança ($IC$) para a média populacional $\mu$ com nível de confiança $1-\alpha$ é dada pela expressão abaixo, onde observamos o equilíbrio entre o estimador pontual, a variabilidade amostral e a margem de erro definida pelo valor crítico da distribuição normal:
+
+$$IC(\mu; 1-\alpha) = \left[ \bar{X} - z_{\alpha/2} \cdot \frac{S}{\sqrt{n}}, \bar{X} + z_{\alpha/2} \cdot \frac{S}{\sqrt{n}} \right]$$
+
+Nesta formulação, o termo $\frac{S}{\sqrt{n}}$ representa o estimador do erro padrão da média, uma medida da incerteza que acompanha nossa estimativa $\bar{X}$. Ao multiplicarmos este erro pelo valor crítico $z_{\alpha/2}$, estamos definindo a semi-amplitude $E$, ou a nossa margem de erro. A intuição por trás desta fórmula é cristalina: se a amostra é grande o suficiente para que $S$ seja um substituto estável para $\sigma$, então o intervalo construído capturará o parâmetro desconhecido $\mu$ com a probabilidade pré-definida de $1-\alpha$. O fato de não conhecermos a variância da população não é, portanto, um impedimento, mas um desafio que a teoria estatística supera através da robustez assintótica, transformando a nossa incapacidade de ver o todo em uma estimativa confiável baseada na representatividade da parte.
+
+A profundidade dessa aplicação reside na compreensão de que o limite de $n \ge 100$ não é um dogma arbitrário, mas uma fronteira prática onde a distribuição amostral da média se aproxima da normalidade com tal fidelidade que as caudas da distribuição de Student tornam-se virtualmente idênticas às da Gaussiana. Em termos didáticos, ao lecionar este tópico, enfatizamos que o pesquisador deve ter a consciência de que, ao substituir $\sigma$ por $S$, ele está assumindo um compromisso com a qualidade da coleta de dados. Se a amostra for viciada ou pequena demais, a convergência não ocorrerá, e o intervalo de confiança perderá sua validade teórica. Assim, a inferência para a média com variância desconhecida é, simultaneamente, um triunfo da modelagem estatística e um lembrete constante da responsabilidade do analista em assegurar que as premissas de consistência amostral sejam cumpridas antes da aplicação das fórmulas de inferência. É na intersecção entre o rigor do cálculo e a realidade dos dados limitados que se forma a verdadeira competência estatística.
+
+========================================
+
+[Subtópico 3]: Intervalos de Confiança para Proporções Populacionais ($p$)
+----------------------------------------
+  * Auditoria do Revisor Científico:
+    - Tentativas do Escritor: 1
+    - Reprovações do Revisor: 0
+
+>>> A) PROSA BASE GERADA:
+Para atributos qualitativos, como intenções de voto ou conformidade em lotes industriais, utilizamos a proporção amostral $\hat{p}$. O comportamento dessas proporções segue a lógica binomial que, para amostras grandes, aproxima-se da normal. A construção do intervalo de confiança para $p$ segue a mesma lógica de margem de segurança ao redor de $\hat{p}$, onde a variabilidade estimada depende dos valores de $\hat{p}$ e $1-\hat{p}$.
+
+>>> B) FORMALISMO MATEMÁTICO (LaTeX):
+$$IC(p; 1-\alpha) = \left[ \hat{p} - z_{\alpha/2} \sqrt{\frac{\hat{p}(1-\hat{p})}{n}}, \hat{p} + z_{\alpha/2} \sqrt{\frac{\hat{p}(1-\hat{p})}{n}} \right]$$
+
+>>> C) PROSA EXPANDIDA FINAL DE LIVRO DIDÁTICO:
+### A Inferência sobre a Proporção Populacional: Fundamentos e Dedução
+
+No estudo da inferência estatística, frequentemente nos deparamos com situações onde a natureza da variável de interesse não é quantitativa, mas sim qualitativa ou categórica. Diferente da estimação de médias populacionais, em que o objeto de estudo é um valor esperado de uma grandeza contínua ou discreta, quando analisamos atributos como a intenção de voto em uma eleição, a taxa de sucesso de uma linha de montagem industrial ou a incidência de uma patologia em uma população, nosso foco desloca-se para a estimação de uma proporção populacional $p$. Este parâmetro representa a probabilidade de um sucesso em uma única tentativa de um experimento de Bernoulli, constituindo o alicerce da distribuição binomial. A transição da observação amostral para a inferência sobre o parâmetro populacional desconhecido $p$ exige que compreendamos a mecânica da distribuição amostral da proporção amostral $\hat{p}$.
+
+Historicamente, o desenvolvimento desta metodologia está intrinsecamente ligado à aplicação do Teorema Central do Limite às variáveis binárias. Quando observamos uma amostra de tamanho $n$ composta por ensaios independentes, onde cada unidade pode assumir apenas dois valores — convencionalmente denominados sucesso ou fracasso —, a contagem total de sucessos segue uma distribuição binomial $Bin(n, p)$. À medida que o tamanho amostral $n$ cresce, a distribuição binomial aproxima-se assintoticamente da distribuição normal. Este fato é de importância fundamental para o estatístico, pois nos permite transpor a complexidade dos cálculos binomiais discretos para a elegância e a simplicidade da distribuição normal padronizada, utilizando a estatística $Z$ como base para a construção dos nossos intervalos.
+
+Para construir o $IC$ para a proporção populacional $p$, partimos do estimador pontual $\hat{p} = \frac{x}{n}$, onde $x$ é o número de sucessos observados. Sabemos que a esperança de $\hat{p}$ é o próprio parâmetro $p$, o que torna $\hat{p}$ um estimador não-viciado. Entretanto, a variabilidade desse estimador, ou seja, sua variância, é dada por $Var(\hat{p}) = \frac{p(1-p)}{n}$. Aqui reside um desafio matemático clássico: para calcular o erro padrão, precisaríamos conhecer o próprio parâmetro $p$, que é justamente o que tentamos estimar. A solução prática, consagrada pela estatística inferencial, consiste em utilizar o estimador amostral $\hat{p}$ para aproximar a variabilidade populacional, resultando no erro padrão estimado $EP(\hat{p}) = \sqrt{\frac{\hat{p}(1-\hat{p})}{n}}$.
+
+Ao definirmos um nível de confiança $1-\alpha$, estamos estabelecendo a probabilidade de que o intervalo construído contenha o verdadeiro valor de $p$ em sucessivas amostragens. O valor crítico $z_{\alpha/2}$ é obtido da distribuição normal padrão $N(0, 1)$, garantindo que a área nas caudas da distribuição seja exatamente igual ao nível de significância $\alpha$. A construção formal do intervalo é, portanto, uma expansão em torno de $\hat{p}$ com uma margem de erro $E$ definida pelo produto entre o valor crítico e o erro padrão estimado. O formalismo matemático que expressa esse intervalo de confiança é dado pela seguinte estrutura:
+
+$$IC(p; 1-\alpha) = \left[ \hat{p} - z_{\alpha/2} \sqrt{\frac{\hat{p}(1-\hat{p})}{n}}, \hat{p} + z_{\alpha/2} \sqrt{\frac{\hat{p}(1-\hat{p})}{n}} \right]$$
+
+É imperativo, contudo, que o pesquisador esteja atento às condições de validade desta aproximação. A teoria estatística dita que a aproximação da binomial pela normal é robusta quando o tamanho amostral $n$ é suficientemente grande, de modo que $n \hat{p} \geq 5$ e $n(1-\hat{p}) \geq 5$ — embora abordagens mais conservadoras sugiram o limite de $n \hat{p} \geq 10$. Quando essas condições não são satisfeitas, como em experimentos com proporções extremas muito próximas de 0 ou 1, a distribuição de $\hat{p}$ torna-se altamente assimétrica, e o intervalo simétrico apresentado acima pode produzir limites fisicamente impossíveis, como proporções negativas ou superiores a 1. Nesses casos, procedimentos como o intervalo de Clopper-Pearson, que utiliza a distribuição Beta, tornam-se necessários para manter a integridade da inferência.
+
+A aplicação prática do $IC$ para proporções vai muito além do simples cálculo numérico; ela nos fornece uma medida da precisão da nossa estimativa. A largura do intervalo, determinada pela margem de erro, é inversamente proporcional à raiz quadrada do tamanho amostral $n$. Isso nos revela uma das leis fundamentais da pesquisa por amostragem: para dobrar a precisão (reduzir a margem de erro pela metade), o custo não é linear, exigindo um aumento quadruplicado no tamanho da amostra. Esta relação é o pilar que sustenta o planejamento de experimentos e o cálculo do tamanho amostral necessário em pesquisas de mercado, controle de qualidade industrial e estudos clínicos, onde a economia de recursos deve ser equilibrada com o rigor estatístico desejado.
+
+Por fim, devemos interpretar o nível de confiança $1-\alpha$ não como a probabilidade de que o parâmetro $p$ esteja dentro de um intervalo específico já calculado, mas sim como a confiança que temos no método de geração desses intervalos. Em uma perspectiva frequentista, se repetíssemos o experimento de coleta de dados e construção de $IC$ um número infinito de vezes, a proporção $1-\alpha$ desses intervalos conterá o verdadeiro valor populacional $p$. Ao apresentar um resultado, o estatístico deve sempre fornecer o $IC$ conjuntamente com a estimativa pontual, pois a proporção amostral isolada é apenas um "retrato" que carece de contexto sobre a variabilidade intrínseca do processo de amostragem, enquanto o intervalo de confiança oferece a "moldura" necessária para uma interpretação científica honesta e robusta.
+
+========================================
+
+
+----------------------------------------------------------------------
+3. CADERNO DE EXERCÍCIOS GERADO
+----------------------------------------------------------------------
+
+>>> A) QUESTÕES DE MÚLTIPLA ESCOLHA:
+
+Questão 1: Uma indústria de componentes eletrônicos utiliza sensores para medir a resistência de placas. A resistência de uma única placa é uma variável aleatória com distribuição desconhecida, mas com média $\mu = 50\Omega$ e variância $\sigma^2 = 100\Omega^2$. A equipe de engenharia coleta uma amostra aleatória de $n = 100$ placas para controle de qualidade. Segundo o Teorema do Limite Central, qual das afirmações abaixo melhor descreve o comportamento da média amostral $\bar{X}$?
+  A) A média amostral $\bar{X}$ seguirá estritamente a mesma distribuição da população original, independentemente do tamanho $n$.
+  B) A distribuição de $\bar{X}$ será aproximadamente normal com média $\mu = 50$ e variância $\sigma^2/n = 1$.
+  C) O Erro Padrão da Média $EP(\bar{X})$ será igual a $100$, tornando a estimativa $\bar{X}$ pouco precisa.
+  D) A distribuição de $\bar{X}$ terá média $50/100 = 0.5$ e variância $100/100 = 1$.
+  E) O Teorema do Limite Central não pode ser aplicado pois não conhecemos a distribuição original da população.
+  * Dica: Lembre-se que o Teorema do Limite Central estabelece que a distribuição da média amostral converge para uma normal com média $\mu$ e variância $\sigma^2/n$. Calcule o valor da variância da média amostral.
+  * Gabarito Correto: B
+  * Justificativa: Pelo Teorema do Limite Central, para $n=100$, a média amostral $\bar{X}$ tende à distribuição $N(\mu, \sigma^2/n)$. Substituindo os valores: média = $\mu = 50$ e variância = $\sigma^2/n = 100/100 = 1$. Portanto, $\bar{X} \sim N(50, 1)$. A alternativa B descreve exatamente essa propriedade de normalidade assintótica e o cálculo da nova variância.
+
+Questão 2: Em um estudo de telemetria IoT, o consumo de dados de dispositivos segue uma distribuição altamente assimétrica com $\mu = 200MB$ e $\sigma = 40MB$. Um cientista de dados seleciona $n=256$ dispositivos. O cientista deseja calcular a probabilidade da média amostral $\bar{X}$ ser superior a $205MB$. Por que é matematicamente justificável utilizar a tabela da normal padrão para este cálculo?
+  A) Porque a amostra é pequena e qualquer distribuição tende a ser normal com $n < 30$.
+  B) Porque o Teorema do Limite Central garante a normalidade de $\bar{X}$ para amostras grandes, independentemente da assimetria da população.
+  C) Porque a distribuição de dados do dispositivo é, por definição, normal em ambientes de alta tecnologia.
+  D) Porque a média populacional é maior que o desvio padrão, o que invalida a necessidade de normalidade.
+  E) Porque a normalidade assintótica só ocorre se a população for \simétrica.
+  * Dica: O ponto central do Teorema do Limite Central é que ele atua como uma 'força gravitacional' que normaliza a distribuição da média amostral quando $n$ é grande, superando a forma da distribuição populacional.
+  * Gabarito Correto: B
+  * Justificativa: O Teorema do Limite Central é uma ferramenta poderosa justamente por sua robustez frente à distribuição original dos dados. Quando $n$ é suficientemente grande (em geral $n \ge 30$, e aqui temos $n=256$), a distribuição amostral da média $\bar{X}$ aproxima-se de uma normal $N(\mu, \sigma^2/n)$, mesmo que a população original não seja normal ou seja assimétrica. Portanto, a alternativa B é a única que reflete corretamente o escopo do teorema.
+
+Questão 3: Uma indústria de componentes eletrônicos de alta precisão está validando a durabilidade de um novo sensor. Como o desvio padrão populacional da durabilidade ($\sigma$) é desconhecido, coletou-se uma amostra aleatória de $n=144$ sensores, obtendo-se uma média amostral $\bar{X} = 2.500$ horas e um desvio padrão amostral $S = 240$ horas. Deseja-se construir um Intervalo de Confiança ($IC$) para a vida útil média ($\mu$) com um nível de confiança de 95% ($1-\alpha=0,95$). Considerando que para $n=144$, a estatística padronizada converge para a distribuição normal padrão, qual é a amplitude correta do $IC$?
+  A) 39,2 horas
+  B) 78,4 horas
+  C) 156,8 horas
+  D) 19,6 horas
+  E) 313,6 horas
+  * Dica: Lembre-se que a amplitude de um intervalo de confiança para a média é dada pela diferença entre os limites superior e inferior, ou seja, $2 \cdot z_{\alpha/2} \cdot \frac{S}{\sqrt{n}}$.
+  * Gabarito Correto: B
+  * Justificativa: Para um nível de confiança de 95% ($1-\alpha=0,95$), temos $\alpha=0,05$ e $\alpha/2=0,025$. O valor crítico $z_{0,025}$ na distribuição normal padrão é $1,96$. O erro padrão estimado da média é $EP(\bar{X}) = S / \sqrt{n} = 240 / \sqrt{144} = 240 / 12 = 20$. A margem de erro é $E = z_{\alpha/2} \cdot EP(\bar{X}) = 1,96 \cdot 20 = 39,2$. A amplitude total do intervalo é $2 \cdot E = 2 \cdot 39,2 = 78,4$ horas.
+
+Questão 4: Um analista financeiro deseja estimar o gasto mensal médio ($\mu$) com assinaturas de serviços de streaming por usuário em uma plataforma. Ele seleciona uma amostra aleatória de $n=100$ usuários e encontra $\bar{X} = R\$ 60,00 e $S = R\$ 15,00. Qual das afirmações abaixo melhor descreve a interpretação estatística do Intervalo de Confiança de 95% construído a partir desses dados?
+  A) Existe 95% de probabilidade de que a média populacional $\mu$ esteja contida no intervalo calculado.
+  B) Se coletássemos 100 amostras diferentes, exatamente 95 delas conteriam a média populacional $\mu$.
+  C) O intervalo construído fornece uma estimativa de 95% de confiança de que o valor do parâmetro $\mu$ está no intervalo [57,06; 62,94].
+  D) Há 95% de chance de que a próxima média amostral calculada esteja dentro do intervalo [57,06; 62,94].
+  E) O valor da média populacional $\mu$ é obrigatoriamente 60,00, e o intervalo serve apenas para medir a variação amostral.
+  * Dica: O coeficiente de confiança refere-se ao método de construção do intervalo, não à probabilidade de um parâmetro fixo estar dentro de um intervalo específico já realizado.
+  * Gabarito Correto: C
+  * Justificativa: A interpretação correta de um IC exige compreender que o parâmetro $\mu$ é fixo, enquanto os limites do intervalo são variáveis aleatórias baseadas na amostra. A alternativa C reflete corretamente o procedimento de estimação, onde temos um nível de confiança de 95% associado ao método. O cálculo dos limites para $\gamma=0,95$ é $60 \pm 1,96 \cdot (15/10) = 60 \pm 2,94$, resultando em [57,06; 62,94].
+
+Questão 5: Uma auditoria de controle de qualidade em uma linha de montagem de sensores IoT analisou uma amostra aleatória simples de n=400 unidades. Identificaram-se 32 peças com falha de conexão. Deseja-se estimar a proporção populacional p de peças defeituosas com um nível de confiança de 95%. Qual é o intervalo de confiança calculado corretamente para a proporção populacional p?
+  A) IC(p; 0.95) = [0.065, 0.095]
+  B) IC(p; 0.95) = [0.053, 0.107]
+  C) IC(p; 0.95) = [0.045, 0.115]
+  D) IC(p; 0.95) = [0.070, 0.090]
+  E) IC(p; 0.95) = [0.020, 0.140]
+  * Dica: Calcule primeiro a proporção amostral \hat{p} e o erro padrão estimado. Lembre-se que para 95% de confiança, Z_{\alpha/2} é aproximadamente 1.96.
+  * Gabarito Correto: B
+  * Justificativa: Passo 1: Determinar \hat{p} = 32/400 = 0.08. Passo 2: Calcular o erro padrão: \sqrt{\hat{p}(1-\hat{p})/n} = \sqrt{0.08(0.92)/400} = \sqrt{0.0736/400} = \sqrt{0.000184} \approx 0.01356. Passo 3: Margem de erro E = 1.96 * 0.01356 \approx 0.0266. Passo 4: Limites do intervalo: 0.08 \pm 0.0266, resultando em [0.0534, 0.1066].
+
+Questão 6: Considere que um pesquisador deseja refinar a precisão de um estudo sobre a preferência de consumo em uma rede de varejo, reduzindo a margem de erro pela metade, mantendo o mesmo nível de confiança. Com base na fórmula do intervalo de confiança para a proporção populacional, como o tamanho amostral n deve ser alterado?
+  A) O tamanho amostral n deve ser reduzido à metade.
+  B) O tamanho amostral n deve ser mantido inalterado.
+  C) O tamanho amostral n deve ser duplicado.
+  D) O tamanho amostral n deve ser quadruplicado.
+  E) O tamanho amostral n deve ser multiplicado por 8.
+  * Dica: Observe a relação entre a margem de erro E e o denominador \sqrt{n} na expressão da margem de erro.
+  * Gabarito Correto: D
+  * Justificativa: A margem de erro é definida por E = Z_{\alpha/2} * \sqrt{\hat{p}(1-\hat{p})/n}. Para que E seja reduzido por um fator de 2 (E/2), o termo \sqrt{n} no denominador deve ser multiplicado por 2. Como a relação é com a raiz quadrada de n, precisamos multiplicar n por 2^2 = 4.
+
+Questão 7: Em um laboratório de engenharia de materiais na UFBA, deseja-se estimar a resistência à tração de uma nova liga metálica. Foram ensaiadas 64 amostras, obtendo-se um desvio padrão amostral $S = 12$ MPa. A equipe deseja construir um intervalo de confiança de $95\%$ para a média populacional $\mu$. Considerando o valor crítico $Z_{\alpha/2} \approx 1.96$ para este nível de confiança, qual é a margem de erro $E$ associada a este experimento?
+  A) E = 1.50 MPa
+  B) E = 2.94 MPa
+  C) E = 3.25 MPa
+  D) E = 0.375 MPa
+  E) E = 1.96 MPa
+  * Dica: Lembre-se que o erro padrão da média $EP(\bar{X})$ é dado por $S/\sqrt{n}$. A margem de erro é o produto entre o valor crítico $Z_{\alpha/2}$ e o $EP(\bar{X})$.
+  * Gabarito Correto: B
+  * Justificativa: Para calcular a margem de erro $E$, utilizamos a fórmula $E = Z_{\alpha/2} \cdot \frac{S}{\sqrt{n}}$. Dados: $S = 12$, $n = 64$ e $Z_{\alpha/2} = 1.96$. Primeiro, calculamos o erro padrão: $\frac{12}{\sqrt{64}} = \frac{12}{8} = 1.5$. Em seguida, multiplicamos pelo valor crítico: $1.96 \cdot 1.5 = 2.94$. Portanto, a margem de erro é de $2.94$ MPa, indicando que a precisão da nossa estimativa pontual possui essa amplitude de incerteza.
+
+Questão 8: Analise o comportamento da margem de erro $E$ em um projeto de IoT onde se mede o tempo de resposta de sensores. Se a gerência decidir aumentar o nível de confiança de $90\%$ para $99\%$, mantendo o tamanho da amostra $n$ e o desvio padrão $S$ constantes, o que ocorrerá com a margem de erro $E$?
+  A) A margem de erro diminuirá, pois o rigor estatístico aumenta.
+  B) A margem de erro permanecerá constante, pois depende apenas da variabilidade dos dados e do tamanho amostral.
+  C) A margem de erro aumentará, pois o valor crítico $Z_{\alpha/2}$ associado a $99\%$ é maior que o associado a $90\%$.
+  D) A margem de erro sofrerá uma redução proporcional ao logaritmo da confiança.
+  E) A margem de erro tornará-se irrelevante para a interpretação dos resultados.
+  * Dica: O nível de confiança $1-\alpha$ dita o valor de $\alpha$. Quanto maior o nível de confiança, menor o valor de $\alpha$ e, consequentemente, maior o valor crítico $Z_{\alpha/2}$ na distribuição normal.
+  * Gabarito Correto: C
+  * Justificativa: A margem de erro é definida por $E = Z_{\alpha/2} \cdot \frac{S}{\sqrt{n}}$. Ao aumentar o nível de confiança de $90\%$ para $99\%$, o valor de $\alpha$ diminui ($0.10$ para $0.01$). Isso resulta em um valor crítico $Z_{\alpha/2}$ mais afastado da média (o $Z$ para $99\%$ é $\approx 2.58$, enquanto para $90\%$ é $\approx 1.645$). Como $Z_{\alpha/2}$ é um multiplicador direto na fórmula, o valor de $E$ aumenta, refletindo a necessidade de uma 'janela' maior para garantir com mais certeza que o parâmetro $\mu$ esteja contido no intervalo.
+
+>>> B) QUESTÕES DISCURSIVAS ABERTAS:
+
+Questão 1: Uma rede de supermercados monitora o valor gasto por clientes em compras. Sabe-se que a população tem $\mu = 150$ reais e $\sigma = 30$ reais. Se selecionarmos uma amostra aleatória de $n=100$ clientes, calcule a probabilidade de que a média amostral $\bar{X}$ esteja entre $145$ e $155$ reais.
+  * Dica: Primeiro, determine o Erro Padrão da Média $EP(\bar{X}) = \sigma / \sqrt{n}$. Em seguida, padronize os limites usando $Z = (\bar{X} - \mu) / EP(\bar{X})$ e utilize a distribuição normal padrão.
+  * Resolução Passo a Passo:
+    1. Identificação dos parâmetros: $\mu = 150$, $\sigma = 30$, $n = 100$.
+    2. Cálculo do Erro Padrão da Média: $EP(\bar{X}) = \frac{\sigma}{\sqrt{n}} = \frac{30}{\sqrt{100}} = \frac{30}{10} = 3$.
+    3. Padronização do limite inferior ($145$): $Z_1 = \frac{145 - 150}{3} = \frac{-5}{3} \approx -1.67$.
+    4. Padronização do limite superior ($155$): $Z_2 = \frac{155 - 150}{3} = \frac{5}{3} \approx 1.67$.
+    5. Cálculo da probabilidade $P(-1.67 < Z < 1.67) = P(Z < 1.67) - P(Z < -1.67) = 0.9525 - 0.0475 = 0.905$.
+
+Questão 2: Uma empresa de software deseja estimar o tempo médio de resposta de seus servidores. O desvio padrão populacional é $\sigma = 20ms$. Quantos servidores ($n$) devem ser amostrados para que a margem de erro ($E$) da média amostral seja, no máximo, $2ms$ com 95% de confiança? (Considere $Z_{\text{crit}} = 1.96$ para 95% de confiança).
+  * Dica: A margem de erro $E$ é definida como $E = Z_{\text{crit}} \cdot \frac{\sigma}{\sqrt{n}}$. Isole o termo $n$ na equação para encontrar o tamanho amostral necessário.
+  * Resolução Passo a Passo:
+    1. Fórmula da margem de erro: $E = Z_{\text{crit}} \cdot \frac{\sigma}{\sqrt{n}}$.
+    2. Isolando $n$: $\sqrt{n} = Z_{\text{crit}} \cdot \frac{\sigma}{E} \implies n = \left( Z_{\text{crit}} \cdot \frac{\sigma}{E} \right)^2$.
+    3. Substituição dos valores: $n = \left( 1.96 \cdot \frac{20}{2} \right)^2$.
+    4. Cálculo: $n = (1.96 \cdot 10)^2 = 19.6^2$.
+    5. Resultado: $n = 384.16$. Como o tamanho amostral deve ser inteiro, arredondamos para $385$ servidores.
+
+Questão 3: Explique, sob a ótica da inferência assintótica, o efeito de quadruplicar o tamanho da amostra $n$ no Erro Padrão da Média $EP(\bar{X})$. Como isso altera a precisão da nossa estimativa pontual $\bar{X}$ em relação ao parâmetro populacional $\mu$?
+  * Dica: Considere a relação matemática $EP(\bar{X}) = \sigma / \sqrt{n}$. Analise o denominador quando $n$ se torna $4n$.
+  * Resolução Passo a Passo:
+    1. Seja o erro padrão original $EP_1 = \sigma / \sqrt{n}$.
+    2. Com a nova amostra $n' = 4n$, o novo erro padrão é $EP_2 = \frac{\sigma}{\sqrt{4n}}$.
+    3. Simplificação: $EP_2 = \frac{\sigma}{2\sqrt{n}} = \frac{1}{2} \cdot EP_1$.
+    4. Conclusão: Quadruplicar a amostra reduz o erro padrão pela metade.
+    5. Implicação: Uma redução no erro padrão significa que a distribuição de $\bar{X}$ torna-se mais concentrada em torno de $\mu$, aumentando a precisão da estimativa.
+
+Questão 4: Em um estudo sobre o consumo de combustível de um novo motor de combustão interna, uma amostra de $n=169$ testes revelou um consumo médio de $\bar{X} = 12,5$ km/l, com um desvio padrão amostral $S = 2,6$ km/l. Calcule o intervalo de confiança de 99% para o consumo médio populacional $\mu$. Apresente o valor crítico $Z_{\text{crit}}$ utilizado e justifique a escolha pela distribuição normal.
+  * Dica: Como o tamanho da amostra é $n=169$ (grande, $n \gtrsim 100$), utilizamos o valor crítico da distribuição normal padrão $Z_{\alpha/2}$ para o nível de confiança solicitado.
+  * Resolução Passo a Passo:
+    1. 1. Identificar os parâmetros: $n=169$, $\bar{X}=12,5$, $S=2,6$ e $\gamma=0,99$.
+    2. 2. Nível de significância: $\alpha = 1 - 0,99 = 0,01$, logo $\alpha/2 = 0,005$.
+    3. 3. Valor crítico: $z_{0,005} \approx 2,576$.
+    4. 4. Erro Padrão: $EP(\bar{X}) = S / \sqrt{n} = 2,6 / \sqrt{169} = 2,6 / 13 = 0,2$.
+    5. 5. Margem de Erro: $E = 2,576 \cdot 0,2 = 0,5152$.
+    6. 6. Intervalo: $IC(\mu; 0,99) = [12,5 - 0,5152; 12,5 + 0,5152] = [11,9848; 13,0152]$.
+
+Questão 5: Um pesquisador da área de saúde pública está estudando o tempo médio ($\mu$) de espera em uma unidade de emergência. Ele deseja que o erro amostral máximo ($E$) não ultrapasse 2 minutos, com um nível de confiança de 95%. Sabendo que uma amostra piloto de tamanho $n=25$ apresentou um desvio padrão amostral $S=10$ minutos, determine qual o tamanho da amostra $n$ necessário para atender aos requisitos do estudo.
+  * Dica: Utilize a fórmula do erro máximo $E = z_{\alpha/2} \cdot \frac{S}{\sqrt{n}}$ para isolar $n$, assumindo que $S$ é uma estimativa robusta do desvio padrão populacional.
+  * Resolução Passo a Passo:
+    1. 1. Requisitos: $E=2$, $S=10$, $z_{0,025}=1,96$.
+    2. 2. Fórmula: $n = (z_{\alpha/2} \cdot S / E)^2$.
+    3. 3. Substituição: $n = (1,96 \cdot 10 / 2)^2 = (1,96 \cdot 5)^2$.
+    4. 4. Cálculo: $n = (9,8)^2 = 96,04$.
+    5. 5. Conclusão: Arredondamos sempre para o próximo inteiro para garantir o erro máximo: $n = 97$.
+
+Questão 6: Explique, do ponto de vista da inferência estatística, por que a substituição de $\sigma$ (desvio padrão populacional) por $S$ (desvio padrão amostral) é considerada uma fonte de incerteza adicional ao estimarmos a média $\mu$ em amostras pequenas. Por que essa preocupação é atenuada quando $n \gtrsim 100$?
+  * Dica: Reflita sobre a variabilidade intrínseca de $S$ e sua convergência para $\sigma$ pelo Teorema Limite Central e pela Lei dos Grandes Números.
+  * Resolução Passo a Passo:
+    1. 1. $\sigma$ é um parâmetro fixo, enquanto $S$ é uma variável aleatória dependente da amostra.
+    2. 2. O uso de $S$ introduz uma variabilidade extra, pois $S$ pode flutuar de uma amostra para outra, alterando a largura do intervalo.
+    3. 3. Em amostras pequenas, essa incerteza requer o uso da distribuição $t$ de Student para compensar o 'peso' das caudas.
+    4. 4. Para $n$ grande, a Lei dos Grandes Números garante que $S^2$ convirja para $\sigma^2$, e a estatística padronizada aproxima-se da Normal, tornando a incerteza marginal desprezível.
+
+Questão 7: Em um ensaio clínico para testar a eficácia de um novo fármaco, de uma amostra de n=200 pacientes, 140 apresentaram melhora clínica significativa. Calcule o intervalo de confiança de 99% para a proporção populacional p de pacientes que apresentam melhora com o novo fármaco. Considere Z_{0.005} = 2.576.
+  * Dica: Utilize a fórmula: IC(p; 1-\alpha) = \hat{p} \pm Z_{\alpha/2} \sqrt{\hat{p}(1-\hat{p})/n}.
+  * Resolução Passo a Passo:
+    1. 1. Calculamos a proporção amostral: \hat{p} = 140 / 200 = 0.70.
+    2. 2. Calculamos o complemento da proporção: 1 - \hat{p} = 0.30.
+    3. 3. Calculamos o erro padrão: \sqrt{(0.70 * 0.30) / 200} = \sqrt{0.21 / 200} = \sqrt{0.00105} \approx 0.0324.
+    4. 4. Calculamos a margem de erro E = 2.576 * 0.0324 \approx 0.0835.
+    5. 5. O intervalo é [0.70 - 0.0835, 0.70 + 0.0835] = [0.6165, 0.7835].
+
+Questão 8: Um analista de mercado precisa estimar a proporção de domicílios que possuem dispositivos de casa inteligente em uma metrópole. Ele deseja uma margem de erro E de 0.04 com 95% de confiança. Assumindo uma proporção conservadora de \hat{p} = 0.50, qual deve ser o tamanho amostral n necessário?
+  * Dica: Reorganize a fórmula da margem de erro para isolar n: E = Z_{\alpha/2} \sqrt{\hat{p}(1-\hat{p})/n} \implies n = Z_{\alpha/2}^2 * \hat{p}(1-\hat{p}) / E^2.
+  * Resolução Passo a Passo:
+    1. 1. Identificamos os dados: E = 0.04, \hat{p} = 0.50, Z_{0.025} = 1.96.
+    2. 2. Aplicamos a fórmula de tamanho amostral: n = (1.96^2 * 0.50 * 0.50) / 0.04^2.
+    3. 3. Realizamos o cálculo: n = (3.8416 * 0.25) / 0.0016.
+    4. 4. n = 0.9604 / 0.0016 = 600.25.
+    5. 5. Como o tamanho amostral deve ser um número inteiro, arredondamos para cima: n = 601.
+
+Questão 9: Explique, sob a luz do Teorema do Limite Central (TLC), por que a aproximação da distribuição binomial pela normal é válida para grandes amostras na construção de intervalos de confiança para p e quais são os riscos teóricos de utilizar este método quando \hat{p} está muito próximo de 0 ou 1.
+  * Dica: Considere que a variância da binomial np(1-p) depende diretamente da proporção p. O que acontece com essa variância quando p se aproxima dos extremos?
+  * Resolução Passo a Passo:
+    1. 1. O TLC garante que a soma de variáveis aleatórias independentes e identicamente distribuídas tende a uma distribuição normal conforme n cresce.
+    2. 2. Como a proporção amostral \hat{p} é uma média de variáveis de Bernoulli, sua distribuição amostral tende a N(p, p(1-p)/n).
+    3. 3. A validade do intervalo depende da simetria da distribuição normal em torno de \hat{p}.
+    4. 4. Quando \hat{p} \approx 0 ou \hat{p} \approx 1, a distribuição binomial torna-se altamente assimétrica, o que viola a suposição de simetria necessária para que o intervalo de confiança padrão de Wald seja robusto.
+    5. 5. Consequentemente, para valores extremos, o intervalo pode apresentar uma cobertura real inferior ao nível de confiança 1-\alpha nominal pretendido.
+
+Questão 10: Em um ensaio clínico, o tempo de reação a um novo fármaco em 100 pacientes apresentou um desvio padrão amostral $S = 0.5$ segundos. Calcule a margem de erro $E$ para um nível de confiança de $95\%$ ($Z_{\alpha/2} = 1.96$) e interprete o resultado sob a ótica da precisão da estimativa.
+  * Dica: Use a fórmula $E = Z_{\alpha/2} \cdot \frac{S}{\sqrt{n}}$. O erro padrão é a medida de dispersão que dividimos pela raiz do tamanho amostral.
+  * Resolução Passo a Passo:
+    1. Identificação dos parâmetros: $n = 100$, $S = 0.5$, $Z_{\alpha/2} = 1.96$.
+    2. Cálculo do erro padrão da média: $EP(\bar{X}) = \frac{S}{\sqrt{n}} = \frac{0.5}{\sqrt{100}} = \frac{0.5}{10} = 0.05$.
+    3. Cálculo da margem de erro: $E = Z_{\alpha/2} \cdot EP(\bar{X}) = 1.96 \cdot 0.05$.
+    4. Resultado final: $E = 0.098$ segundos.
+    5. Interpretação: Com 95% de confiança, o erro máximo aceitável na estimativa da média populacional do tempo de reação é de 0.098 segundos.
+
+Questão 11: Um engenheiro de controle de qualidade precisa que a margem de erro $E$ de um processo de pesagem seja de no máximo $0.2$ gramas. Sabendo que o desvio padrão histórico $S$ é de $1.0$ grama e desejando um nível de confiança de $95\%$ ($Z_{\alpha/2} = 1.96$), determine o tamanho mínimo da amostra $n$ necessário para atender a esse requisito de precisão.
+  * Dica: Isole $n$ na fórmula da margem de erro: $E = Z_{\alpha/2} \cdot \frac{S}{\sqrt{n}} \Rightarrow \sqrt{n} = \frac{Z_{\alpha/2} \cdot S}{E}$.
+  * Resolução Passo a Passo:
+    1. Partindo de $E = Z_{\alpha/2} \cdot \frac{S}{\sqrt{n}}$, isolamos $n$: $\sqrt{n} = \frac{Z_{\alpha/2} \cdot S}{E}$.
+    2. Elevando ambos os lados ao quadrado: $n = \left( \frac{Z_{\alpha/2} \cdot S}{E} \right)^2$.
+    3. Substituindo os valores: $n = \left( \frac{1.96 \cdot 1.0}{0.2} \right)^2$.
+    4. Calculando o termo interno: $\frac{1.96}{0.2} = 9.8$.
+    5. Cálculo final: $n = (9.8)^2 = 96.04$.
+    6. Conclusão: Como o tamanho amostral deve ser um número inteiro, arredondamos para cima: $n = 97$.
+
+Questão 12: Explique, através da análise da expressão $E = Z_{\alpha/2} \cdot \frac{S}{\sqrt{n}}$, como o tamanho da amostra ($n$) influencia a precisão ($E$) de uma estimativa. Se o engenheiro desejar reduzir a margem de erro à metade, mantendo o nível de confiança inalterado, como ele deve alterar o tamanho amostral $n$?
+  * Dica: Observe a relação inversa entre a margem de erro $E$ e a raiz quadrada do tamanho amostral $\sqrt{n}$.
+  * Resolução Passo a Passo:
+    1. A margem de erro $E$ é inversamente proporcional à raiz quadrada de $n$ ($E \propto \frac{1}{\sqrt{n}}$).
+    2. Se desejamos que $E_{novo} = \frac{1}{2} E_{antigo}$, então $Z_{\alpha/2} \cdot \frac{S}{\sqrt{n_{novo}}} = \frac{1}{2} \cdot Z_{\alpha/2} \cdot \frac{S}{\sqrt{n_{antigo}}}$.
+    3. Cancelando os termos constantes $Z_{\alpha/2}$ e $S$: $\frac{1}{\sqrt{n_{novo}}} = \frac{1}{2\sqrt{n_{antigo}}}$.
+    4. Invertendo e elevando ao quadrado: $\sqrt{n_{novo}} = 2\sqrt{n_{antigo}} \Rightarrow n_{novo} = 4n_{antigo}$.
+    5. Conclusão: Para reduzir a margem de erro à metade, é necessário quadruplicar o tamanho da amostra.
+
+======================================================================
+                         FIM DO RELATÓRIO
+======================================================================
