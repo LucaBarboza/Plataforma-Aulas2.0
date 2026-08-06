@@ -957,9 +957,8 @@ def run_page():
         tempo_decorrido = time.time() - st.session_state.tempo_inicio
         renderizar_tela_carregamento(loader_placeholder, status_dict, tempo_decorrido)
         
-        # O cronômetro é atualizado ao vivo a cada segundo via JavaScript no navegador.
-        # O backend verifica se a thread terminou a cada 2.5s (reduz recarregamentos de página desnecessários).
-        time.sleep(2.5)
+        # Atualização contínua segundo a segundo
+        time.sleep(1.0)
         st.rerun()
 
     # Quando a thread terminar:
