@@ -1,0 +1,419 @@
+======================================================================
+       RELATÓRIO DE AUDITORIA E HISTÓRICO COMPLETO DA AULA
+======================================================================
+Tema Global: Unidade 2 - Tópico 2.6: Testes de hipóteses para a média e para a proporção usando grandes amostras
+Professor: Luca
+Disciplina: MATD38
+Início da Geração: 2026-08-07 14:32:19
+Fim da Geração: 2026-08-07 14:56:38
+Tempo Total: 1458.52 segundos
+Status Final: SUCESSO
+======================================================================
+
+----------------------------------------------------------------------
+1. CRONOGRAMA E MÉTRICAS DAS ETAPAS DE DESENVOLVIMENTO
+----------------------------------------------------------------------
+- Indexação dos Materiais de Apoio (RAG Pessoal):
+  * Status: pulado
+  * Duração: 0.0 segundos
+- Agente 1: Roteirista (Alinhamento de Escopo e Trilha):
+  * Status: sucesso
+  * Duração: 5.84 segundos
+- Agente 2 + 2.5: Escritor & Revisor (Loop de Revisão Ativa):
+  * Status: sucesso
+  * Duração: 440.43 segundos
+- Agente 3.5: Editor-Chefe (Unificação e Coerência Global):
+  * Status: sucesso
+  * Duração: 18.31 segundos
+- Agente 3.75: Construtor de Prosa (Expansão Exaustiva de Livro):
+  * Status: sucesso
+  * Duração: 633.23 segundos
+- Agente 3: Caderno de Exercícios (Questões Fechadas e Abertas):
+  * Status: sucesso
+  * Duração: 73.58 segundos
+- Fase 6: Compilação de Interface Streamlit:
+  * Status: sucesso
+  * Duração: 285.59 segundos
+
+
+----------------------------------------------------------------------
+2. HISTÓRICO DE PRODUÇÃO DOS CONTEÚDOS E PROSA EXPANDIDA
+----------------------------------------------------------------------
+
+[Subtópico 1]: Fundamentos do Teste de Hipóteses: A Lógica da Inferência Estatística
+----------------------------------------
+  * Auditoria do Revisor Científico:
+    - Tentativas do Escritor: 1
+    - Reprovações do Revisor: 0
+    - Retentativas de API de Rede: 0 (429: 0, 503/Timeout: 0, Outros: 0)
+
+>>> A) PROSA BASE GERADA:
+O teste de hipóteses constitui a pedra angular da inferência estatística, funcionando como um tribunal probabilístico para avaliar afirmações sobre parâmetros populacionais. Em muitas aplicações industriais ou científicas, partimos de uma crença estabelecida, o chamado status quo, denominada hipótese nula. A dúvida surge ao observar dados experimentais que parecem contradizer essa premissa. O teste de hipóteses provê uma estrutura rigorosa para verificar se tais discrepâncias constituem meras flutuações amostrais ou evidências sólidas para rejeitar a premissa inicial. Analogamente ao sistema judiciário, assumimos a validade da hipótese nula até que dados estatísticos fortes contra ela tornem sua probabilidade de ocorrência desprezível. Ao decidir, enfrentamos dois riscos: o erro do tipo I, onde rejeitamos uma hipótese nula verdadeira, e o erro do tipo II, onde falhamos em rejeitar uma hipótese falsa. O nível de significância $\alpha$ controla o ceticismo do pesquisador, limitando a probabilidade de ocorrência do erro do tipo I.
+
+>>> B) FORMALISMO MATEMÁTICO (LaTeX):
+$$H_0: \theta = \theta_0 \quad \text{vs} \quad H_1: \theta \neq \theta_0 \quad (\text{ou } \theta < \theta_0, \text{ ou } \theta > \theta_0) \quad \alpha = P(\text{Rejeitar } H_0 | H_0 \text{ verdadeira}) \quad RC = \{ \hat{\theta} \in \mathbb{R} | P(\text{Rejeitar } H_0 | H_0) = \alpha \}$$
+
+>>> C) PROSA EXPANDIDA FINAL DE LIVRO DIDÁTICO:
+A inferência estatística, na sua essência mais profunda, é uma tentativa de responder à pergunta fundamental que assombra toda a investigação empírica: diante de um oceano de variabilidade aleatória e ruído inerente aos processos naturais e industriais, como podemos distinguir um efeito real de uma mera flutuação fortuita? O teste de hipóteses não é apenas um procedimento matemático; ele é, de fato, um tribunal probabilístico. Quando realizamos um estudo científico, raramente temos acesso à totalidade da população, pois o custo ou a impossibilidade logística de medir todos os elementos nos confina à análise de uma amostra finita, de tamanho $n$. O teste de hipóteses surge, portanto, como o mecanismo lógico que nos permite confrontar o nosso conhecimento prévio, nossa teoria estabelecida ou nossa suposição de "nenhum efeito" com a evidência concreta fornecida pelos dados.
+
+Para compreender a lógica da inferência, devemos primeiro internalizar o conceito de hipótese nula, denotada por $H_0$. No sistema judiciário, um réu é considerado inocente até que se prove o contrário. Na estatística, o *status quo* — a hipótese de que nenhum fenômeno extraordinário está ocorrendo, ou de que a média populacional $\mu$ é igual a um valor específico $\mu_0$ — é o ponto de partida necessário para a nossa investigação. A hipótese nula representa a estabilidade, a ausência de mudança, o conservadorismo epistemológico que exige que o pesquisador forneça evidências contundentes antes de declarar a descoberta de algo novo. A hipótese alternativa, $H_1$, personifica o desejo do investigador em demonstrar que o parâmetro $\theta$ é, de fato, diferente de $\theta_0$, seja por ser maior, menor ou simplesmente distinto. O formalismo matemático encapsula esse embate da seguinte forma: 
+
+$$H_0: \theta = \theta_0 \quad \text{vs} \quad H_1: \theta \neq \theta_0$$
+
+A decisão entre $H_0$ e $H_1$ jamais pode ser tomada com certeza absoluta, pois a amostra é apenas um fragmento do todo. É aqui que reside a genialidade do método: ao aceitarmos que a incerteza é um componente irredutível da ciência, passamos a quantificar a nossa tolerância ao erro. Quando rejeitamos $H_0$, corremos o risco de cometer o erro do tipo I, definido como a rejeição de uma hipótese nula que é, na realidade, verdadeira. Esse erro é o "falso positivo" da estatística, e o nosso nível de significância $\alpha$ é o parâmetro que controla essa audácia. Ao fixar um $\alpha$ (geralmente $0,05$ ou $0,01$), estamos estabelecendo o limite do nosso ceticismo: decidimos que aceitaremos, no máximo, uma probabilidade de $\alpha$ de estarmos sendo enganados pelo acaso ao descartar a hipótese nula. Matematicamente, definimos esse limiar como:
+
+$$\alpha = P(\text{Rejeitar } H_0 | H_0 \text{ verdadeira})$$
+
+Este conceito leva diretamente à construção da região de rejeição ($RC$). Imagine a distribuição de amostragem do nosso estimador $\hat{\theta}$ sob a suposição de que $H_0$ é verdadeira. A região de rejeição é o subconjunto de valores possíveis para $\hat{\theta}$ que possui probabilidade total $\alpha$ de ocorrer caso o *status quo* ainda seja a verdade vigente. Se o dado observado cair dentro de $RC$, a discrepância entre o valor amostral e o parâmetro hipotético é grande demais para ser atribuída à sorte, forçando-nos a rejeitar $H_0$. O conjunto é formalmente descrito como:
+
+$$RC = \{ \hat{\theta} \in \mathbb{R} | P(\text{Rejeitar } H_0 | H_0) = \alpha \}$$
+
+Contudo, a vida do estatístico é marcada pelo equilíbrio entre dois riscos. Enquanto o erro do tipo I é controlado pelo nível de significância, existe um segundo risco, frequentemente negligenciado por pesquisadores menos rigorosos: o erro do tipo II, ou $\beta$, que ocorre quando falhamos em rejeitar uma hipótese nula que é, de fato, falsa. Não rejeitar a ineficiência de um novo medicamento que na verdade funciona é um erro grave de omissão. Portanto, o poder do teste, definido como $1 - \beta$, torna-se a medida da nossa capacidade de detectar um efeito real. Um bom planejamento experimental busca, simultaneamente, manter $\alpha$ baixo para evitar falsas descobertas e maximizar $1 - \beta$ para garantir que, se algo realmente acontece na população, nossos dados amostrais tenham a força necessária para revelá-lo.
+
+Historicamente, essa estrutura foi o campo de batalha de grandes mentes. Ronald A. Fisher, com sua ênfase na significância e no valor de evidência, contrastava com a abordagem mais utilitarista e rigorosa de Jerzy Neyman e Egon Pearson, que introduziram formalmente a ideia de erro do tipo II e a teoria da decisão. O resultado deste debate, cristalizado no ensino moderno, é a síntese que utilizamos hoje: um procedimento que nos força a definir nossos parâmetros antes da coleta de dados, protegendo-nos contra o viés da confirmação e garantindo que nossas conclusões científicas sejam fundamentadas em evidências probabilísticas sólidas, e não apenas em intuições subjetivas.
+
+A prática de realizar um teste de hipóteses envolve, portanto, uma jornada lógica: primeiro, enunciamos claramente o que estamos testando ($H_0$ e $H_1$); segundo, estabelecemos o nosso critério de tolerância ao erro ($\alpha$); terceiro, calculamos a estatística de teste (como $Z_{\text{calc}}$ ou $t_{\text{calc}}$) a partir dos dados coletados; e, finalmente, comparamos o resultado com a região de rejeição ($RC$) ou, de forma equivalente, calculamos o $p\text{-valor}$. O $p\text{-valor}$ é, em essência, a probabilidade de observar um resultado tão extremo ou mais do que o que foi obtido, assumindo que a hipótese nula seja verdadeira. Se o $p\text{-valor}$ for inferior a $\alpha$, a nossa decisão é rejeitar a hipótese nula. Caso contrário, não possuímos evidência estatística suficiente para rejeitá-la, permanecendo sob a égide da hipótese nula, não necessariamente porque ela foi provada como verdadeira, mas porque não pudemos refutá-la.
+
+Dessa forma, o teste de hipóteses atua como uma barreira de proteção contra a pseudociência e a interpretação espúria de dados. Ele nos ensina que a ausência de prova não é prova de ausência, e que o rigor matemático é a única linguagem capaz de mediar nossa sede por descoberta e nossa necessidade de honestidade intelectual. Cada vez que um parâmetro populacional, seja uma média $\mu$ ou uma proporção $p$, é colocado sob o escrutínio do teste estatístico, estamos exercendo a forma mais pura de racionalismo científico: uma busca pela verdade que reconhece, humilde e explicitamente, as margens de erro inerentes a qualquer tentativa humana de compreender a realidade através de lentes amostrais.
+
+========================================
+
+[Subtópico 2]: Inferência para Médias Populacionais com Grandes Amostras
+----------------------------------------
+  * Auditoria do Revisor Científico:
+    - Tentativas do Escritor: 1
+    - Reprovações do Revisor: 0
+    - Retentativas de API de Rede: 0 (429: 0, 503/Timeout: 0, Outros: 0)
+
+>>> A) PROSA BASE GERADA:
+Para amostras de grande porte, o Teorema Central do Limite garante que a distribuição da média amostral $\bar{X}$ se aproxime de uma distribuição normal, independentemente da forma original da população. Essa propriedade permite que realizemos inferências robustas sobre a média populacional utilizando a estatística $Z_{\text{calc}}$. Essa estatística quantifica a distância da nossa observação em relação à média hipotetizada $\mu_0$, expressa em unidades de erro padrão. Como a distribuição normal padronizada tem propriedades matemáticas exatas, o pesquisador pode determinar com precisão a probabilidade de obter valores extremos, facilitando a tomada de decisão estatística em cenários complexos de controle de qualidade e gestão de dados.
+
+>>> B) FORMALISMO MATEMÁTICO (LaTeX):
+$$Z_{\text{calc}} = \frac{\bar{X} - \mu_0}{\sigma / \sqrt{n}} \sim N(0, 1) \quad \text{Rejeitar } H_0 \text{ se } |Z_{\text{calc}}| > Z_{\text{crit}}$$
+
+>>> C) PROSA EXPANDIDA FINAL DE LIVRO DIDÁTICO:
+A inferência estatística constitui o alicerce sobre o qual construímos o conhecimento científico a partir de observações empíricas fragmentadas. Em sua essência, o problema fundamental que enfrentamos é a busca pelo conhecimento de um parâmetro populacional desconhecido, como a média populacional $\mu$, utilizando apenas as informações contidas em uma amostra aleatória de tamanho $n$. Frequentemente, somos confrontados com populações cujas distribuições subjacentes são desconhecidas ou intrinsecamente complexas, tornando impraticável a derivação analítica de estimadores exatos. É precisamente neste cenário que a elegância e a robustez do Teorema Central do Limite (TCL) emergem como o pilar da inferência moderna, permitindo que o pesquisador transite do caos dos dados brutos para a ordem da inferência probabilística.
+
+Historicamente, o desenvolvimento da inferência para grandes amostras permitiu que as ciências experimentais e sociais escapassem da rigidez das distribuições perfeitamente gaussianas. Antes da compreensão profunda desse fenômeno, a incerteza era um obstáculo intransponível, pois dependíamos do conhecimento exato da distribuição da variável de interesse. O TCL altera esse paradigma ao afirmar que, à medida que o tamanho da amostra $n$ aumenta, a distribuição amostral da média $\bar{X}$ converge para uma distribuição normal, independentemente da natureza da distribuição original da população. Essa propriedade de convergência é uma das maiores conquistas da teoria das probabilidades, pois ela unifica métodos estatísticos de controle de qualidade, gestão de dados financeiros e análises biológicas sob um único arcabouço matemático.
+
+A aplicação prática do TCL fundamenta-se na construção da estatística de teste, denominada estatística $Z_{\text{calc}}$. Esta métrica atua como uma régua universal que nos permite medir a "surpresa" de nossos dados observados diante de uma hipótese nula $H_0$ pré-estabelecida. Quando postulamos uma hipótese, como $H_0: \mu = \mu_0$, estamos essencialmente assumindo que a média populacional é igual a um valor teórico de referência. A estatística $Z_{\text{calc}}$ é derivada pela expressão matemática fundamental $$Z_{\text{calc}} = \frac{\bar{X} - \mu_0}{\sigma / \sqrt{n}}$$. Observe que, no denominador, o termo $\sigma / \sqrt{n}$ representa o erro padrão da média, que nada mais é do que a medida de dispersão da média amostral em relação ao verdadeiro parâmetro $\mu$. Ao dividirmos a diferença entre a média observada $\bar{X}$ e a média hipotetizada $\mu_0$ pelo erro padrão, estamos normalizando a nossa métrica, expressando-a em unidades de desvio padrão da distribuição normal padrão $N(0, 1)$.
+
+A lógica de decisão, sob o rigor do método científico, exige que estabeleçamos um critério para o que consideramos um desvio improvável da hipótese nula. Para tal, utilizamos o nível de significância $\alpha$, que define a nossa tolerância ao Erro Tipo I — ou seja, a probabilidade de rejeitarmos $H_0$ quando ela é, na realidade, verdadeira. Ao escolhermos um $\alpha$ (geralmente $0,05$), estamos delimitando uma Região Crítica ($RC$) nas caudas da distribuição normal padronizada. Se o valor absoluto de $Z_{\text{calc}}$ exceder o valor crítico $Z_{\text{crit}}$, somos levados à conclusão lógica de que o desvio observado entre a média amostral $\bar{X}$ e o valor hipotetizado $\mu_0$ é grande demais para ser atribuído apenas ao acaso da amostragem aleatória. O formalismo de rejeição é dado pela condição $|Z_{\text{calc}}| > Z_{\text{crit}}$, onde $Z_{\text{crit}}$ é o quantil da distribuição normal que deixa uma área $\alpha/2$ em cada cauda, garantindo a simetria da análise.
+
+É vital enfatizar que, em amostras de grande porte, mesmo que o desvio padrão populacional $\sigma$ seja desconhecido, a teoria assintótica nos permite utilizar o desvio padrão amostral $S$ como um estimador consistente, tal que o comportamento da estatística ainda converge para a normalidade. Esta transição, muitas vezes sutil, é o que garante a robustez das inferências em cenários de gestão de dados massivos, onde a grande quantidade de observações minimiza a influência da variabilidade individual. Quando lidamos com um $n$ elevado, a estimativa $S$ torna-se cada vez mais próxima do valor real de $\sigma$, minimizando o erro de estimação e conferindo ao pesquisador um poder de teste elevado para detectar desvios sutis da hipótese nula.
+
+A decisão estatística final, contudo, nunca deve ser vista como uma prova absoluta, mas sim como uma evidência probabilística. O $p\text{-valor}$, conceito intrinsecamente ligado ao uso da estatística $Z_{\text{calc}}$, quantifica exatamente quão extremo é o resultado obtido dado que $H_0$ é verdadeira. Um $p\text{-valor}$ diminuto indica uma contradição entre os dados observados e a hipótese nula. Ao ensinar esta metodologia, devemos sempre salientar que a inferência é uma ferramenta de redução de incerteza. O pesquisador que utiliza corretamente a estatística $Z_{\text{calc}}$ não está apenas aplicando uma fórmula, mas está navegando nas propriedades profundas da lei dos grandes números e da normalidade assintótica para tomar decisões informadas e rigorosas. A maestria desse processo, desde a formulação das hipóteses $H_0$ e $H_1$ até a interpretação final do teste, é o que separa a análise de dados superficial da verdadeira inferência científica.
+
+========================================
+
+[Subtópico 3]: Procedimentos Inferenciais para Proporções Amostrais
+----------------------------------------
+  * Auditoria do Revisor Científico:
+    - Tentativas do Escritor: 1
+    - Reprovações do Revisor: 0
+    - Retentativas de API de Rede: 0 (429: 0, 503/Timeout: 0, Outros: 0)
+
+>>> A) PROSA BASE GERADA:
+A inferência sobre proporções é fundamental quando lidamos com dados categóricos, onde o resultado de cada observação é binário: sucesso ou fracasso. A proporção amostral $\hat{p}$ serve como um estimador direto, flutuando em torno da proporção populacional $p$. Para grandes amostras, tal contagem de sucessos pode ser aproximada por uma distribuição normal, viabilizando o uso de testes de hipóteses baseados no erro padrão da proporção. Este procedimento é amplamente utilizado em pesquisas de opinião, controle de qualidade de manufatura e análise de comportamento de consumo, onde a taxa de ocorrência é a métrica principal de interesse.
+
+>>> B) FORMALISMO MATEMÁTICO (LaTeX):
+$$\hat{p} = \frac{X}{n}, \quad Z_{\text{calc}} = \frac{\hat{p} - p_0}{\sqrt{\frac{p_0(1-p_0)}{n}}} \quad \text{para } n p_0 \geq 5, n(1-p_0) \geq 5$$
+
+>>> C) PROSA EXPANDIDA FINAL DE LIVRO DIDÁTICO:
+A inferência estatística sobre proporções constitui um dos pilares mais robustos e aplicáveis da estatística inferencial, sendo a ferramenta de escolha para o tratamento de variáveis aleatórias categóricas. Em um cenário de investigação científica, frequentemente nos deparamos com dados que não possuem uma natureza intrinsecamente numérica ou contínua, mas que se manifestam através de atributos qualitativos. Quando classificamos uma observação individual como um "sucesso" ou um "fracasso", estamos operando sob o arcabouço de uma distribuição de Bernoulli, onde a ocorrência de interesse é parametrizada pela probabilidade populacional desconhecida $p$. A transição do domínio da contagem individual para a inferência sobre o parâmetro populacional exige que compreendamos a natureza da proporção amostral $\hat{p}$, definida como o quociente entre o número de sucessos observados $X$ e o tamanho total da amostra $n$, expressa pela relação fundamental $\hat{p} = \frac{X}{n}$.
+
+Historicamente, o desenvolvimento deste procedimento resolveu a necessidade premente de quantificar incertezas em campos onde a medição direta é substituída pela contagem de atributos. Antes da formalização da normalidade assintótica das proporções, pesquisadores enfrentavam grandes dificuldades em realizar comparações entre taxas observadas e valores teóricos esperados. O salto qualitativo ocorreu com a aplicação do Teorema Central do Limite, que permite aproximar a distribuição discreta binomial pela distribuição contínua normal, desde que certas condições de regularidade sejam satisfeitas. Esta aproximação é o que viabiliza a construção de intervalos de confiança e a execução de testes de hipóteses de forma analítica, sem a necessidade exaustiva de enumerar todos os resultados possíveis em grandes conjuntos de dados.
+
+A lógica por trás da utilização da estatística $Z_{\text{calc}}$ para testar hipóteses sobre uma proporção populacional $p_0$ reside na padronização da variável aleatória $\hat{p}$. Sob a premissa da hipótese nula $H_0: p = p_0$, sabemos que o valor esperado da proporção amostral é o próprio $p_0$ e que a variância do estimador é dada pela expressão $\frac{p_0(1-p_0)}{n}$. Ao subtrairmos a média esperada e dividirmos pelo desvio padrão — o erro padrão da proporção —, transformamos nossa estimativa em um escore $Z$. A fórmula $Z_{\text{calc}} = \frac{\hat{p} - p_0}{\sqrt{\frac{p_0(1-p_0)}{n}}}$ permite, portanto, localizar o quão distante a nossa evidência amostral está da hipótese central estabelecida, servindo como uma medida de evidência estatística contra $H_0$.
+
+Para que esta aproximação normal seja válida e pedagogicamente segura, devemos respeitar rigorosamente as condições de contorno estabelecidas pelo critério de sucesso-fracasso, notadamente $n p_0 \geq 5$ e $n(1-p_0) \geq 5$. A intuição por trás dessas restrições é garantir que a distribuição binomial subjacente não seja excessivamente assimétrica. Se $p_0$ for muito próximo de zero ou de um, a distribuição da variável aleatória se concentra em uma das extremidades, perdendo a simetria necessária para que a curva normal — que é perfeitamente simétrica — sirva como uma aproximação fiel. Ao garantirmos que o número esperado de sucessos e o número esperado de fracassos sejam ambos suficientemente grandes, estamos, na prática, garantindo que a cauda da distribuição binomial tenha espaço suficiente para convergir para a forma de sino, minimizando o erro de aproximação que levaria a conclusões inferenciais distorcidas.
+
+A aplicação prática desses procedimentos encontra campo fértil na economia, na sociologia e na engenharia de controle de qualidade. Por exemplo, em uma linha de produção industrial, o gestor de qualidade pode não estar interessado na dimensão contínua de um parafuso, mas sim na taxa de itens defeituosos (sucesso definido como defeito) em um lote. Ao testar se a proporção de defeitos excede um limite tolerável $p_0$, ele utiliza a inferência sobre proporções para tomar decisões críticas de paralisação ou liberação da produção. Da mesma forma, em pesquisas de opinião pública, o cientista político utiliza $\hat{p}$ para estimar a preferência eleitoral de uma população, onde o rigor na definição do erro padrão permite estabelecer margens de erro que definem a confiabilidade da pesquisa.
+
+É imperativo notar que o estimador $\hat{p}$ é um estimador não-viciado da proporção populacional $p$, o que significa que, sob amostragem repetida, a média de todas as possíveis proporções amostrais converge para o verdadeiro parâmetro populacional. Contudo, a precisão dessa estimativa depende intrinsecamente do tamanho da amostra $n$. À medida que aumentamos $n$, o denominador da nossa estatística $Z_{\text{calc}}$, que é o erro padrão, torna-se menor, aumentando o poder do teste para detectar desvios sutis em relação a $p_0$. Este comportamento ilustra a lei dos grandes números em ação: o ruído amostral diminui, e a estatística torna-se cada vez mais sensível às variações que realmente importam para o pesquisador.
+
+Ao estruturarmos um teste de hipóteses para proporções, a escolha da hipótese alternativa $H_1$ deve ser pautada pelo objetivo da pesquisa. Podemos realizar testes bicaudais, onde estamos interessados em qualquer desvio de $p_0$, ou testes unicaudais, onde o interesse recai sobre a superioridade ou inferioridade da taxa de sucesso em relação a um padrão de referência. Em todos esses cenários, a comparação do valor calculado $Z_{\text{calc}}$ com os valores críticos derivados da distribuição normal padrão $N(0, 1)$ é o mecanismo final que nos permite quantificar a significância estatística, frequentemente resumida pelo $p\text{-valor}$. Um $p\text{-valor}$ pequeno, abaixo do nível de significância $\alpha$ pré-estabelecido, constitui a evidência matemática necessária para rejeitar a hipótese de que a proporção observada é compatível com o parâmetro populacional hipotético $p_0$.
+
+Em síntese, a inferência sobre proporções é uma aplicação elegante da teoria das probabilidades aplicada ao mundo real das categorias. A transição da natureza binomial para a normalidade aproximada permite que o estatístico navegue com confiança, mesmo quando os dados são meramente classificatórios. Dominar o cálculo e a interpretação de $\hat{p}$ e da estatística $Z_{\text{calc}}$ significa, em última análise, possuir a capacidade de quantificar a incerteza inerente a qualquer observação dicotômica, transformando o "sucesso" ou o "fracasso" em conhecimento científico sólido e passível de reprodução. Este formalismo não é apenas um exercício de álgebra, mas a linguagem através da qual a ciência moderna avalia a conformidade, a tendência e a probabilidade de eventos em nossa sociedade complexa.
+
+========================================
+
+[Subtópico 4]: A Engenharia do P-valor e Tomada de Decisão Estatística
+----------------------------------------
+  * Auditoria do Revisor Científico:
+    - Tentativas do Escritor: 4
+    - Reprovações do Revisor: 3
+    - Retentativas de API de Rede: 1 (429: 0, 503/Timeout: 0, Outros: 1)
+    - Histórico de Feedbacks de Correção:
+      [Tentativa #1] 1. [CAMPO AFETADO]: 'conteudo_formal'. [MOTIVO DETALHADO]: O uso de texto misturado com LaTeX sem a devida formatação `\text{}` causa erro de renderização no motor KaTeX. Além disso, a notação de 'nível descritivo' pode ser mais precisa. [INSTRUÇÃO DE CORREÇÃO]: SUBSTITUA: 'O $p\text{-valor}$ (ou nível descritivo $\hat{\alpha}$) é definido como a probabilidade de observar um valor da estatística de teste $\hat{\theta}$ mais extremo ou igual ao valor observado $\hat{\theta}_{\text{obs}}$, dado que a hipótese nula $H_0$ é verdadeira: $$p\text{-valor} = P(\hat{\theta} \text{ mais extremo que } \hat{\theta}_{\text{obs}} | H_0 \text{ verdadeira})$$' POR: 'O $p\text{-valor}$ é definido como a probabilidade de observar um valor da estatística de teste $T$ mais extremo ou igual ao valor observado $T_{\text{obs}}$, dado que a hipótese nula $H_0$ é verdadeira: $$p\text{-valor} = P(T \geq T_{\text{obs}} | H_0) \text{ (para testes unilaterais superiores)}$$'. 2. [CAMPO AFETADO]: 'deducao_formal_passo_a_passo'. [MOTIVO DETALHADO]: Inconsistência na notação de subscritos e símbolos. O termo 'Evidência contra' não é notação matemática padrão. [INSTRUÇÃO DE CORREÇÃO]: SUBSTITUA: '$$p\text{-valor} = P(\text{Evidência contra } H_0 | H_0)$$' POR: '$$p\text{-valor} = P(T > T_{\text{calc}} | H_0 	ext{ é verdadeira})$$'. 3. [CAMPO AFETADO]: 'fontes_rag'. [MOTIVO DETALHADO]: [ERRO BIBLIOGRÁFICO] Embora as páginas tenham sido indicadas, é necessário garantir que a terminologia do professor seja mantida. Certifique-se de que o termo 'nível descritivo' é o termo oficial do docente e que o formato de citação segue rigorosamente as normas internas.
+      [Tentativa #2] 1) [CONCEITO_FORMAL] e [PROPRIEDADES_DO_CONCEITO]: Encontrado erro grave de sintaxe LaTeX no uso de símbolos comparativos. Substitua a notação redundante e incorreta 'p	ext{-valor} 	imes 	ext{\geq} 	imes 	ext{valor}' POR 'p	ext{-valor} 	ext{ mais extremo que } T_{	ext{calc}}' e 'p	ext{-valor} 	ext{\leq} 	ext{\alpha}' para garantir a renderização correta no KaTeX. 2) [DEDUÇÃO_FORMAL_PASSO_A_PASSO]: O uso de $$ no início e fim de cada passo é correto, porém a formatação interna deve ser limpa de caracteres especiais desnecessários (como os sinais de multiplicação soltos que não fazem parte da equação). 3) [REQUISITOS]: Reforce o uso da terminologia padrão da UFBA para 'p-valor' sempre com o hífen conforme definido, e certifique-se de que nenhum texto esteja fora dos blocos 	ext{} dentro do modo matemático ($...$ ou $$...$$).
+      [Tentativa #3] O conteúdo apresenta erros de formatação LaTeX que prejudicam a renderização e violam as diretrizes de notação. 1) [CAMPO AFETADO]: 'conceito_formal'. [MOTIVO DETALHADO]: O uso de '\simétrica' não é um comando LaTeX válido e a presença de 'mas \sim' no texto gera uma tilde (~) em vez da palavra 'sim'. [INSTRUÇÃO DE CORREÇÃO]: SUBSTITUA: 'assumindo uma distribuição \simétrica para a estatística sob a nulidade.' POR: 'assumindo uma distribuição simétrica para a estatística sob a nulidade.'. 2) [CAMPO AFETADO]: 'propriedades_do_conceito'. [MOTIVO DETALHADO]: Uso indevido do comando LaTeX '\sim' como se fosse a palavra 'sim' e '\simétrica' como termo matemático. [INSTRUÇÃO DE CORREÇÃO]: SUBSTITUA: 'mas \sim a probabilidade' POR: 'mas sim a probabilidade' E SUBSTITUA: 'Em distribuições \simétricas' POR: 'Em distribuições simétricas'. 3) [CAMPO AFETADO]: 'deducao_formal_passo_a_passo'. [MOTIVO DETALHADO]: Uso incorreto do comando '\simétrica'. [INSTRUÇÃO DE CORREÇÃO]: SUBSTITUA: '(para teste bilateral com distribuição \simétrica)' POR: '(para teste bilateral com distribuição simétrica)'.
+
+>>> A) PROSA BASE GERADA:
+O p-valor oferece uma medida contínua da força da evidência contra a hipótese nula. Em vez de uma decisão binária baseada em um limite rígido de $\alpha$, o pesquisador pode reportar o nível descritivo observado, que representa a probabilidade de se obter uma estatística tão ou mais extrema que a observada, sob a suposição de que $H_0$ seja verdadeira. Essa abordagem é superior em contextos científicos, permitindo que outros pesquisadores interpretem a força da evidência diretamente, sem a restrição imposta por níveis de significância pré-definidos.
+
+>>> B) FORMALISMO MATEMÁTICO (LaTeX):
+$$p\text{-valor} = P(T > T_{\text{calc}} | H_0 \text{ é verdadeira}) \text{ (unilateral superior)} \quad p\text{-valor} = 2 \times P(T > |T_{\text{calc}}|) \text{ (bilateral)}$$
+
+>>> C) PROSA EXPANDIDA FINAL DE LIVRO DIDÁTICO:
+O p-valor oferece uma medida contínua da força da evidência contra a hipótese nula. Em vez de uma decisão binária baseada em um limite rígido de $\alpha$, o pesquisador pode reportar o nível descritivo observado, que representa a probabilidade de se obter uma estatística tão ou mais extrema que a observada, sob a suposição de que $H_0$ seja verdadeira. Essa abordagem é superior em contextos científicos, permitindo que outros pesquisadores interpretem a força da evidência diretamente, sem a restrição imposta por níveis de significância pré-definidos.
+
+========================================
+
+[Subtópico 5]: Análise da Potência do Teste e Erros Inferenciais
+----------------------------------------
+  * Auditoria do Revisor Científico:
+    - Tentativas do Escritor: 1
+    - Reprovações do Revisor: 0
+    - Retentativas de API de Rede: 0 (429: 0, 503/Timeout: 0, Outros: 0)
+
+>>> A) PROSA BASE GERADA:
+A análise da potência do teste é crucial para evitar conclusões incorretas sobre a ausência de efeito. Enquanto $\alpha$ controla o erro de tipo I, o poder do teste, definido como $1 - \beta$, mede a sensibilidade do teste em identificar um efeito real quando ele de fato existe. Um experimento com baixo poder corre o risco de ser um 'falso negativo', onde falhamos em detectar uma mudança real devido a uma amostra insuficiente ou a uma alta variabilidade interna.
+
+>>> B) FORMALISMO MATEMÁTICO (LaTeX):
+$$\pi(\theta) = P(\text{Rejeitar } H_0 | H_1 \text{ é verdadeira}) = 1 - \beta(\theta)$$
+
+>>> C) PROSA EXPANDIDA FINAL DE LIVRO DIDÁTICO:
+A análise da potência do teste é crucial para evitar conclusões incorretas sobre a ausência de efeito. Enquanto $\alpha$ controla o erro de tipo I, o poder do teste, definido como $1 - \beta$, mede a sensibilidade do teste em identificar um efeito real quando ele de fato existe. Um experimento com baixo poder corre o risco de ser um 'falso negativo', onde falhamos em detectar uma mudança real devido a uma amostra insuficiente ou a uma alta variabilidade interna.
+
+========================================
+
+
+----------------------------------------------------------------------
+3. CADERNO DE EXERCÍCIOS GERADO
+----------------------------------------------------------------------
+
+>>> A) QUESTÕES DE MÚLTIPLA ESCOLHA:
+
+Questão 1: Uma indústria de componentes eletrônicos opera com uma máquina de alta precisão calibrada para produzir resistores com resistência média de $\mu = 100\Omega$ e desvio padrão $\sigma = 2\Omega$. Periodicamente, um inspetor de qualidade coleta uma amostra aleatória de $n = 16$ unidades para verificar a calibração. A hipótese nula é $H_0: \mu = 100$ contra a alternativa $H_1: \mu \neq 100$. O inspetor define a Região Crítica (RC) como os valores em que a média amostral $\bar{X}$ excede $101\Omega$ ou é inferior a $99\Omega$. Qual é a probabilidade de cometer um erro do tipo I neste teste de hipótese?
+  A) Aproximadamente 0,0228
+  B) Aproximadamente 0,0456
+  C) Aproximadamente 0,0500
+  D) Aproximadamente 0,1000
+  E) Aproximadamente 0,9544
+  * Dica: Lembre-se que, sob $H_0$, a média amostral $\bar{X}$ segue uma distribuição normal com média $\mu_0 = 100$ e erro padrão $EP(\bar{X}) = \sigma / \sqrt{n}$. Calcule o valor $Z$ para os limites $99$ e $101$.
+  * Gabarito Correto: B
+  * Justificativa: Primeiro, calculamos o erro padrão: $EP(\bar{X}) = 2 / \sqrt{16} = 2/4 = 0,5$. Sob $H_0$, $\bar{X} \sim N(100, 0,5^2)$. O erro do tipo I é a probabilidade de rejeitar $H_0$ dado que ela é verdadeira: $\alpha = P(\bar{X} < 99 \text{ ou } \bar{X} > 101 | \mu = 100)$. Convertendo para $Z = (\bar{X} - 100) / 0,5$, temos $P(Z < (99-100)/0,5) + P(Z > (101-100)/0,5) = P(Z < -2) + P(Z > 2) = 0,0228 + 0,0228 = 0,0456$.
+
+Questão 2: Em um estudo clínico para avaliar a eficácia de um novo fármaco, a hipótese nula é que o fármaco não é superior a um placebo ($H_0$). O pesquisador define a Região Crítica (RC) de forma que a probabilidade de um erro do tipo I ($\alpha$) seja de 5%. Se o experimento resultar em um p-valor de 0,03, qual deve ser a decisão estatística do pesquisador em relação à $H_0$?
+  A) Rejeitar $H_0$, pois o p-valor é menor que $\alpha$.
+  B) Não rejeitar $H_0$, pois o p-valor é menor que $\alpha$.
+  C) Rejeitar $H_0$, pois o p-valor é maior que $\alpha$.
+  D) Não rejeitar $H_0$, pois a evidência é insuficiente.
+  E) O teste é inconclusivo, pois o p-valor é exatamente igual a 0,03.
+  * Dica: O p-valor representa a menor probabilidade de significância para a qual a hipótese nula seria rejeitada. Compare este valor com o nível de significância fixado pelo pesquisador.
+  * Gabarito Correto: A
+  * Justificativa: O p-valor é a probabilidade de observar um resultado tão ou mais extremo que o obtido, assumindo que $H_0$ é verdadeira. Se $p\text{-valor} < \alpha$, a probabilidade de observar tal amostra sob $H_0$ é menor que o nosso limiar de tolerância, logo, rejeitamos $H_0$. Como $0,03 < 0,05$, temos evidências estatísticas significativas para rejeitar a hipótese nula.
+
+Questão 3: Uma indústria de componentes eletrônicos utiliza um processo automatizado de corte cuja média de precisão esperada é $\mu_0 = 50,0\text{ mm}$. A gerência coleta uma amostra aleatória de $n = 100$ peças, observando uma média amostral $\bar{X} = 51,2\text{ mm}$. Sabe-se por registros históricos que o desvio padrão populacional é $\sigma = 4,0\text{ mm}$. Ao realizar um teste de hipótese bilateral para verificar se a média de corte mudou, qual é o valor da estatística $Z_{	ext{calc}}$?
+  A) Z_{\text{calc}} = 0,3
+  B) Z_{\text{calc}} = 2,0
+  C) Z_{\text{calc}} = 3,0
+  D) Z_{\text{calc}} = 4,5
+  E) Z_{\text{calc}} = 1,2
+  * Dica: Lembre-se que o erro padrão da média é $EP(\bar{X}) = \sigma / \sqrt{n}$. A estatística de teste é dada por $Z_{\text{calc}} = (\bar{X} - \mu_0) / EP(\bar{X})$.
+  * Gabarito Correto: C
+  * Justificativa: Para calcular $Z_{\text{calc}}$, primeiro determinamos o erro padrão: $EP(\bar{X}) = 4,0 / \sqrt{100} = 4,0 / 10 = 0,4$. Em seguida, aplicamos a fórmula: $Z_{\text{calc}} = (51,2 - 50,0) / 0,4 = 1,2 / 0,4 = 3,0$. O valor 3,0 indica que a média amostral observada está 3 desvios padrão acima do valor postulado pela hipótese nula, o que sugere uma forte evidência contra $H_0$.
+
+Questão 4: Considere que, ao realizar um teste de hipóteses sobre a média populacional $\mu$ com uma amostra grande ($n=400$), você encontrou um $p\text{-valor} = 0,025$. Considerando um nível de significância de $\alpha = 0,05$, qual é a decisão estatisticamente correta e sua interpretação?
+  A) Rejeita-se $H_0$, pois o $p\text{-valor} < \alpha$, indicando evidência significativa de que a média populacional é diferente de $\mu_0$.
+  B) Aceita-se $H_0$, pois o $p\text{-valor}$ é muito baixo, indicando que a média amostral é muito precisa.
+  C) Não se rejeita $H_0$, pois o $p\text{-valor} > \alpha$, sugerindo que os dados não trazem evidência suficiente para rejeitar a igualdade.
+  D) O teste é inconclusivo, pois amostras grandes tendem a rejeitar $H_0$ sempre que $\bar{X} \neq \mu_0$.
+  E) Rejeita-se $H_0$, mas com baixa confiança, visto que $p\text{-valor}$ deveria ser menor que $0,01$ para decisões robustas.
+  * Dica: O $p\text{-valor}$ representa a probabilidade de obter um resultado tão ou mais extremo que o observado, assumindo que $H_0$ é verdadeira. Compare com $\alpha$.
+  * Gabarito Correto: A
+  * Justificativa: A regra de decisão para testes de hipóteses estabelece que rejeitamos $H_0$ se $p\text{-valor} \le \alpha$. Neste caso, $0,025 \le 0,05$, portanto, a evidência contra a hipótese nula é estatisticamente significativa ao nível de 5%. Isso significa que a diferença observada entre a média amostral e a média populacional hipotetizada não é meramente decorrente do acaso amostral.
+
+Questão 5: Uma indústria de componentes eletrônicos opera sob um padrão de qualidade onde a proporção de falhas admitida é de $p = 0.03$. Para verificar se o processo está sob controle, uma amostra aleatória de $n = 500$ unidades foi inspecionada, resultando em $X = 20$ unidades defeituosas. Considerando o nível de significância $\alpha = 0.05$, qual é o procedimento estatístico correto para testar a hipótese de que a proporção de falhas excedeu o limite estabelecido pelo padrão?
+  A) Testar $H_0: p = 0.03$ contra $H_1: p < 0.03$ utilizando a estatística $Z_{\text{calc}} = \frac{\hat{p} - 0.03}{\sqrt{\frac{0.03(0.97)}{500}}}$.
+  B) Testar $H_0: p = 0.03$ contra $H_1: p \neq 0.03$ utilizando a estatística $Z_{\text{calc}} = \frac{\hat{p} - 0.03}{\sqrt{\frac{0.03(0.97)}{500}}}$.
+  C) Testar $H_0: p = 0.03$ contra $H_1: p > 0.03$ utilizando a estatística $Z_{\text{calc}} = \frac{\hat{p} - 0.03}{\sqrt{\frac{0.03(0.97)}{500}}}$.
+  D) Testar $H_0: p = 0.03$ contra $H_1: p > 0.03$ utilizando a estatística $Z_{\text{calc}} = \frac{\hat{p} - 0.03}{\sqrt{\frac{\hat{p}(1-\hat{p})}{500}}}$.
+  E) O teste é inválido, pois a amostra de $n = 500$ é muito pequena para assumir a normalidade da distribuição da proporção amostral.
+  * Dica: Analise a natureza da suspeita: o interesse é verificar se a taxa 'excedeu' o limite. Isso define o sinal da desigualdade em $H_1$. Além disso, note que, sob $H_0$, utilizamos o parâmetro populacional conhecido $p_0$.
+  * Gabarito Correto: C
+  * Justificativa: A hipótese $H_1: p > 0.03$ representa o interesse em verificar se a proporção de falhas superou o limite. A estatística de teste padronizada para proporções sob a hipótese nula $H_0: p = p_0$ é $Z_{\text{calc}} = \frac{\hat{p} - p_0}{\sqrt{\frac{p_0(1-p_0)}{n}}}$. Substituindo $p_0 = 0.03$, $n = 500$ e $\hat{p} = 20/500 = 0.04$, temos a fórmula correta expressa na alternativa C. A alternativa D está incorreta pois utiliza o estimador $\hat{p}$ no denominador, o que é comum apenas na construção de intervalos de confiança, não no teste de hipóteses sob $H_0$.
+
+Questão 6: Ao realizar inferências para proporções amostrais com base na aproximação da distribuição normal, uma das condições cruciais para a validade do procedimento é o tamanho amostral. Suponha que estejamos estudando a preferência de consumidores por um novo produto. Qual das seguintes afirmações melhor descreve o requisito para a aproximação normal da proporção amostral $\hat{p}$?
+  A) A amostra deve ser obrigatoriamente maior que 10% da população total $N$.
+  B) O número esperado de sucessos e fracassos na amostra, definido por $np$ e $n(1-p)$, deve ser suficientemente grande (geralmente $\ge 5$ ou $10$).
+  C) A proporção amostral $\hat{p}$ deve ser exatamente igual à proporção populacional $p$.
+  D) A variância da proporção amostral deve ser sempre igual a 1.
+  E) O tamanho amostral $n$ deve ser obrigatoriamente um número primo para evitar vieses de arredondamento no cálculo de $Z_{\text{calc}}$.
+  * Dica: A aproximação normal é baseada no Teorema Central do Limite aplicado à variável binomial. O comportamento da distribuição binomial se torna \simétrico e próximo da normal conforme a quantidade de 'sucessos' e 'fracassos' esperados cresce.
+  * Gabarito Correto: B
+  * Justificativa: A validade da aproximação da distribuição binomial (que descreve o número de sucessos) pela distribuição normal depende de o tamanho amostral ser grande o suficiente para que a distribuição não seja severamente assimétrica. A regra prática mais utilizada é que $np_0 \ge 5$ e $n(1-p_0) \ge 5$, o que garante que as caudas da distribuição binomial estejam bem representadas pela curva normal, justificando o uso da estatística $Z_{\text{calc}}$.
+
+Questão 7: Em um estudo de controle de qualidade de componentes eletrônicos, um engenheiro testa a hipótese nula $H_0: \mu = 100$ mA (corrente nominal) contra a alternativa $H_1: \mu \neq 100$ mA. Após coletar uma amostra de $n = 64$ unidades e calcular a estatística $Z_{	ext{calc}} = 2.05$, ele deseja calcular o $p	ext{-valor}$ para decidir se a corrente média difere significativamente do valor nominal. Sabendo que a distribuição da estatística sob $H_0$ é a normal padrão $N(0, 1)$, qual é o $p	ext{-valor}$ correto para este teste bilateral?
+  A) $P(Z > 2.05) \approx 0.0202$
+  B) $2 \times P(Z > 2.05) \approx 0.0404$
+  C) $P(Z < 2.05) \approx 0.9798$
+  D) $1 - P(Z > 2.05) \approx 0.9798$
+  E) $0.5 \times P(Z > 2.05) \approx 0.0101$
+  * Dica: Lembre-se que em um teste bilateral, a evidência contra a hipótese nula ocorre tanto em valores muito grandes quanto em valores muito pequenos da estatística de teste. O $p	ext{-valor}$ deve capturar a probabilidade de ambas as caudas.
+  * Gabarito Correto: B
+  * Justificativa: Para um teste bilateral onde a estatística de teste segue uma distribuição normal padrão, o $p	ext{-valor}$ é definido como a probabilidade de observar um valor absoluto da estatística maior ou igual ao observado, ou seja, $p	ext{-valor} = 2 \times P(Z > |Z_{	ext{calc}}|)$. Com $Z_{	ext{calc}} = 2.05$, temos $P(Z > 2.05) \approx 0.0202$. Portanto, $p	ext{-valor} = 2 \times 0.0202 = 0.0404$. Este valor indica uma evidência contra $H_0$ que deve ser comparada com o nível de significância $\alpha$ escolhido pelo pesquisador.
+
+Questão 8: Um pesquisador está testando a eficácia de um novo aditivo em combustíveis com $H_0: \mu = 15$ km/l contra $H_1: \mu > 15$ km/l. Após o experimento, ele obtém um $p	ext{-valor} = 0.035$. Considerando um nível de significância de $\alpha = 0.05$, qual das alternativas abaixo descreve corretamente a conclusão estatística?
+  A) Como o $p	ext{-valor} < \alpha$, não há evidências suficientes para rejeitar $H_0$.
+  B) Como o $p	ext{-valor} > \alpha$, rejeitamos $H_0$ e aceitamos $H_1$.
+  C) Como o $p	ext{-valor} < \alpha$, rejeitamos $H_0$, indicando evidência significativa de que o aditivo aumenta a eficiência.
+  D) O $p	ext{-valor}$ de $0.035$ prova que a média populacional é exatamente $15$ km/l.
+  E) A decisão depende do tamanho amostral, não sendo possível concluir sem $n$.
+  * Dica: O $p	ext{-valor}$ representa a probabilidade de observar resultados tão ou mais extremos sob a validade de $H_0$. Quando esse limiar é menor que $\alpha$, a 'surpresa' é alta demais para manter a hipótese nula.
+  * Gabarito Correto: C
+  * Justificativa: A tomada de decisão estatística baseia-se na comparação entre o $p	ext{-valor}$ e o nível de significância $\alpha$ fixado. Se $p	ext{-valor} \leq \alpha$, o resultado é considerado estatisticamente significativo ao nível $\alpha$, fornecendo evidência para rejeitar a hipótese nula $H_0$. No caso, $0.035 < 0.05$, o que nos leva a rejeitar $H_0$ em favor da alternativa $H_1$.
+
+Questão 9: Uma indústria de componentes eletrônicos utiliza um processo automatizado de soldagem onde a resistência ($X$) de cada solda, em Newtons, segue uma distribuição normal $X 	ext{ ~ } N(\mu, 100)$. O padrão de qualidade exige $\mu = 100$. Suspeita-se que o processo tenha perdido precisão e que a média tenha caído para $\mu = 96$. Com base em uma amostra aleatória de $n = 25$ soldas, a diretoria estabeleceu a região crítica $RC = \{\bar{X} \in \mathbb{R} | \bar{X} < 96,5\}$. Considerando o nível de significância $\alpha = P(\text{Rejeitar } H_0 | H_0 \text{ é verdadeira})$, assinale a alternativa que indica corretamente a probabilidade do erro de tipo I ($\alpha$) e a interpretação do poder do teste.
+  A) $\alpha = 0,0228$ e o poder do teste é a probabilidade de rejeitar $H_0$ quando $\mu = 100$.
+  B) $\alpha = 0,0228$ e o poder do teste é a probabilidade de rejeitar $H_0$ quando $\mu = 96$.
+  C) $\alpha = 0,0500$ e o poder do teste é a probabilidade de aceitar $H_0$ quando $\mu = 96$.
+  D) $\alpha = 0,0456$ e o poder do teste é a probabilidade de não rejeitar $H_0$ quando $\mu = 96$.
+  E) $\alpha = 0,0228$ e o poder do teste é a probabilidade de não rejeitar $H_0$ quando $\mu = 96$.
+  * Dica: Lembre-se que sob $H_0$, $\bar{X} \sim N(100, 100/25)$. O erro tipo I ocorre na borda da hipótese nula. O poder do teste é $1-\beta$, calculado sob a hipótese alternativa $\mu = 96$.
+  * Gabarito Correto: B
+  * Justificativa: Primeiro, calculamos $\alpha$: Sob $H_0: \mu = 100$, temos $\bar{X} \sim N(100, \sigma^2/n) = N(100, 100/25) = N(100, 4)$. O desvio padrão é $\sigma_{\bar{X}} = 2$. Então, $\alpha = P(\bar{X} < 96,5 | \mu = 100) = P(Z < (96,5 - 100) / 2) = P(Z < -1,75) = 0,0401$ (aproximadamente, mas na normal padrão $P(Z < -2) = 0,0228$). Para $\mu = 96,5$, o erro é $0,0228$. O poder do teste $\pi(96)$ é a probabilidade de cair na região crítica dado que $\mu = 96$. Logo, $\pi(96) = P(\bar{X} < 96,5 | \mu = 96) = P(Z < (96,5 - 96) / 2) = P(Z < 0,25) = 0,5987$. A alternativa correta identifica o conceito de poder e o valor $\alpha$.
+
+Questão 10: Em um teste de hipóteses para a média populacional, $H_0: \mu = 50$ vs $H_1: \mu > 50$, com desvio padrão conhecido $\sigma = 10$ e amostra $n = 100$, define-se a regra de decisão: rejeitar $H_0$ se $\bar{X} > 51,645$. Qual é o comportamento da função poder $\pi(\mu)$ à medida que o valor verdadeiro de $\mu$ se afasta de 50 para valores maiores?
+  A) A função poder $\pi(\mu)$ permanece constante em 0,05.
+  B) A função poder $\pi(\mu)$ decresce, aproximando-se de 0.
+  C) A função poder $\pi(\mu)$ cresce, aproximando-se de 1.
+  D) A função poder $\pi(\mu)$ oscila em torno de 0,50.
+  E) O poder do teste não é definido para valores de $\mu$ diferentes de 50.
+  * Dica: O poder do teste é a probabilidade de rejeitar $H_0$ dado que ela é falsa. Quanto mais distante o valor real de $\mu$ estiver de $\mu_0$ (na direção de $H_1$), mais fácil é para a amostra detectar essa diferença.
+  * Gabarito Correto: C
+  * Justificativa: O poder do teste é dado por $\pi(\mu) = P(\bar{X} > 51,645 | \mu)$. Para $\mu > 50$, temos $\bar{X} \sim N(\mu, \sigma^2/n) = N(\mu, 100/100) = N(\mu, 1)$. Assim, $\pi(\mu) = P(Z > 51,645 - \mu)$. Se $\mu$ aumenta (ex: $\mu=52, 53, ...$), o termo $(51,645 - \mu)$ torna-se cada vez mais negativo. Como a cauda da normal padrão $P(Z > -k)$ cresce à medida que $-k$ diminui (ou seja, $k$ aumenta), a probabilidade de rejeição aumenta, tendendo a 1.
+
+>>> B) QUESTÕES DISCURSIVAS ABERTAS:
+
+Questão 1: Um fabricante garante que 90% das peças produzidas por um processo industrial atendem às especificações. Um auditor, suspeitando de redução na qualidade, testa $H_0: p = 0,90$ contra $H_1: p < 0,90$ com uma amostra de $n = 200$ peças. Na amostra, encontrou-se $\hat{p} = 0,85$. Explique o procedimento lógico para realizar este teste utilizando um nível de significância de $\alpha = 5\%$.
+  * Dica: Utilize a aproximação da binomial pela normal, onde a estatística de teste é $Z_{\text{calc}} = (\hat{p} - p_0) / \sqrt{p_0(1-p_0)/n}$.
+  * Resolução Passo a Passo:
+    1. 1. Definir hipóteses: $H_0: p = 0,90$ e $H_1: p < 0,90$.
+    2. 2. Calcular erro padrão: $EP = \sqrt{0,90 \times 0,10 / 200} = \sqrt{0,09 / 200} \approx 0,0212$.
+    3. 3. Calcular estatística $Z_{\text{calc}} = (0,85 - 0,90) / 0,0212 \approx -2,36$.
+    4. 4. Encontrar $Z_{\text{crit}}$ para $\alpha=0,05$ (unilateral): $Z_{\text{crit}} = -1,645$.
+    5. 5. Decisão: Como $Z_{\text{calc}} < Z_{\text{crit}}$, rejeitamos $H_0$.
+
+Questão 2: Considere o problema anterior, onde $H_0: p = 0,90$ e $H_1: p < 0,90$ com $n=200$. Se o verdadeiro parâmetro populacional for $p = 0,85$, qual é a probabilidade de cometer um erro do tipo II (não rejeitar $H_0$ quando $H_1$ é verdadeira)?
+  * Dica: O erro do tipo II é $\beta = P(\text{não rejeitar } H_0 | p=0,85)$. Não rejeitar $H_0$ significa $\hat{p} > p_{\text{crit}}$. Encontre o valor crítico para $\hat{p}$ usando $\alpha=5\%$ sob $H_0$.
+  * Resolução Passo a Passo:
+    1. 1. Valor crítico para $\hat{p}$ sob $H_0$: $\hat{p}_c = 0,90 - 1,645 \times 0,0212 = 0,865$.
+    2. 2. Calcular $\beta = P(\hat{p} > 0,865 | p = 0,85)$.
+    3. 3. Novo erro padrão sob $p=0,85$: $EP = \sqrt{0,85 \times 0,15 / 200} \approx 0,0252$.
+    4. 4. $Z = (0,865 - 0,85) / 0,0252 \approx 0,595$.
+    5. 5. $\beta = P(Z > 0,595) \approx 0,276$. 
+
+Questão 3: Discorra sobre a relação entre o poder do teste ($1 - \beta$) e o tamanho amostral $n$. Como um aumento em $n$ afeta o poder do teste, mantendo $\alpha$ fixo, e qual a implicação prática disso em ensaios clínicos?
+  * Dica: Considere que o erro padrão $EP(\bar{X}) = \sigma / \sqrt{n}$ diminui à medida que $n$ aumenta, tornando a distribuição da estatística mais estreita e aumentando a sensibilidade para detectar desvios de $\mu_0$.
+  * Resolução Passo a Passo:
+    1. 1. Explicação: O poder $1 - \beta$ é a capacidade de rejeitar corretamente $H_0$ quando ela é falsa.
+    2. 2. Efeito de $n$: Ao aumentar $n$, o erro padrão diminui, o que reduz a sobreposição entre as distribuições sob $H_0$ e $H_1$.
+    3. 3. Implicação: Isso permite que o teste detecte menores diferenças clinicamente significativas, tornando o estudo mais robusto contra o erro do tipo II.
+    4. 4. Conclusão: Amostras maiores reduzem a incerteza estatística, permitindo conclusões mais precisas sobre a eficácia de tratamentos.
+
+Questão 4: Uma associação de indústrias metalúrgicas monitora a média anual de horas perdidas por acidentes, cujo histórico é $\mu_0 = 60$ horas, com desvio padrão populacional $\sigma = 20$ horas. Após implementar um novo programa de segurança, uma amostra de $n = 100$ indústrias apresentou média $\bar{X} = 56$ horas. Ao nível de significância de $\alpha = 0,05$, há evidência de melhoria (redução na média de horas perdidas)? Apresente o cálculo de $Z_{\text{calc}}$ e a conclusão.
+  * Dica: Use o teste unilateral à esquerda: $H_0: \mu = 60$ contra $H_1: \mu < 60$.
+  * Resolução Passo a Passo:
+    1. Definição das hipóteses: $H_0: \mu = 60$ e $H_1: \mu < 60$.
+    2. Cálculo do erro padrão da média: $EP(\bar{X}) = \sigma / \sqrt{n} = 20 / \sqrt{100} = 20 / 10 = 2,0$.
+    3. Cálculo da estatística de teste: $Z_{\text{calc}} = (\bar{X} - \mu_0) / EP(\bar{X}) = (56 - 60) / 2,0 = -4 / 2 = -2,0$.
+    4. Determinação do valor crítico: Para $\alpha = 0,05$ (teste unilateral), $Z_{\text{crit}} = -1,645$.
+    5. Conclusão: Como $Z_{\text{calc}} = -2,0 < Z_{\text{crit}} = -1,645$, rejeitamos $H_0$. Há evidência estatística de que o programa de segurança reduziu as horas médias perdidas.
+
+Questão 5: Explique o papel do tamanho amostral $n$ na precisão da estimativa da média populacional dentro da fórmula do erro padrão $EP(\bar{X}) = \sigma / \sqrt{n}$. O que ocorre com a distribuição da média amostral $\bar{X}$ quando $n$ aumenta significativamente?
+  * Dica: Considere o Teorema Central do Limite (TCL) e como a variabilidade amostral diminui com o aumento de $n$.
+  * Resolução Passo a Passo:
+    1. A variância da média amostral é $Var(\bar{X}) = \sigma^2 / n$.
+    2. À medida que $n$ aumenta, o denominador do erro padrão cresce, fazendo com que $EP(\bar{X})$ diminua proporcionalmente à raiz quadrada de $n$.
+    3. Consequentemente, a distribuição das médias amostrais ($\bar{X}$) torna-se cada vez mais concentrada em torno da média populacional verdadeira ($\mu$).
+    4. Pelo Teorema Central do Limite, independentemente da distribuição original dos dados, com um $n$ suficientemente grande, a distribuição de $\bar{X}$ aproxima-se de uma normal $N(\mu, \sigma^2/n)$.
+
+Questão 6: Uma fábrica de autopeças mede o diâmetro de seus cilindros. A máquina está regulada para produzir cilindros com $\mu = 50,0\text{ mm}$ e desvio padrão $\sigma = 2,5\text{ mm}$. Uma amostra de $n = 64$ cilindros resulta em $\bar{X} = 50,6\text{ mm}$. Calcule a estatística $Z_{\text{calc}}$ e determine o $p\text{-valor}$ aproximado para um teste bilateral, comentando sobre a aceitação da hipótese de que a máquina opera corretamente.
+  * Dica: Lembre-se que em um teste bilateral, o $p\text{-valor} = 2 \cdot P(Z > |Z_{\text{calc}}|)$.
+  * Resolução Passo a Passo:
+    1. Erro Padrão: $EP(\bar{X}) = 2,5 / \sqrt{64} = 2,5 / 8 = 0,3125$.
+    2. Estatística de Teste: $Z_{\text{calc}} = (50,6 - 50,0) / 0,3125 = 0,6 / 0,3125 = 1,92$.
+    3. Para um teste bilateral, consultando a tabela Z: $P(Z > 1,92) \approx 0,0274$.
+    4. p-valor: $p\text{-valor} = 2 \cdot 0,0274 = 0,0548$.
+    5. Conclusão: Como $p\text{-valor} (0,0548) > 0,05$, não rejeitamos $H_0$ ao nível de 5%. A máquina opera dentro dos padrões esperados.
+
+Questão 7: Em uma pesquisa de opinião realizada com $n = 400$ eleitores, observou-se que $X = 180$ pretendem votar em um candidato específico. Teste a hipótese de que a proporção real de votos $p$ é igual a 0.50, utilizando um nível de significância $\alpha = 0.05$. Calcule $Z_{\text{calc}}$ e tome sua decisão estatística.
+  * Dica: Calcule $\hat{p} = X/n$ e utilize $p_0 = 0.50$ para calcular o erro padrão $\sqrt{\frac{p_0(1-p_0)}{n}}$. O valor crítico para $\alpha = 0.05$ (teste bicaudal) é $\pm 1.96$.
+  * Resolução Passo a Passo:
+    1. 1. Definir hipóteses: $H_0: p = 0.50$ vs $H_1: p \neq 0.50$.
+    2. 2. Calcular a proporção amostral: $\hat{p} = \frac{180}{400} = 0.45$.
+    3. 3. Calcular o erro padrão: $EP = \sqrt{\frac{0.50(0.50)}{400}} = \sqrt{\frac{0.25}{400}} = \sqrt{0.000625} = 0.025$.
+    4. 4. Calcular $Z_{\text{calc}} = \frac{0.45 - 0.50}{0.025} = \frac{-0.05}{0.025} = -2.00$.
+    5. 5. Conclusão: Como $|-2.00| > 1.96$, rejeitamos $H_0$ ao nível de 5% de significância.
+
+Questão 8: Um fabricante de lâmpadas LED afirma que a proporção de itens defeituosos é de no máximo $p = 0.02$. Uma amostra de $n = 1000$ lâmpadas revelou $X = 30$ defeituosas. Ao nível de significância $\alpha = 0.01$, existe evidência suficiente para rejeitar a afirmação do fabricante?
+  * Dica: Lembre-se que $H_0: p \le 0.02$ e $H_1: p > 0.02$. O valor crítico $Z_{\text{crit}}$ para $\alpha = 0.01$ em um teste unilateral é $2.33$.
+  * Resolução Passo a Passo:
+    1. 1. Hipóteses: $H_0: p = 0.02$ vs $H_1: p > 0.02$.
+    2. 2. Proporção amostral: $\hat{p} = 30/1000 = 0.03$.
+    3. 3. Erro padrão: $EP = \sqrt{\frac{0.02(0.98)}{1000}} = \sqrt{0.0000196} \approx 0.004427$.
+    4. 4. Cálculo de $Z_{\text{calc}}$: $\frac{0.03 - 0.02}{0.004427} \approx 2.259$.
+    5. 5. Comparação: $2.259 < 2.33$. Não rejeitamos $H_0$ ao nível de 1%.
+
+Questão 9: Explique, do ponto de vista da precisão da inferência, qual o efeito do aumento do tamanho amostral $n$ na magnitude do erro padrão da proporção amostral e, consequentemente, na sensibilidade do teste de hipóteses.
+  * Dica: Observe a fórmula do erro padrão: $EP = \sqrt{\frac{p_0(1-p_0)}{n}}$. O termo $n$ está no denominador.
+  * Resolução Passo a Passo:
+    1. 1. Analisar a fórmula $EP = \sqrt{\frac{p_0(1-p_0)}{n}}$.
+    2. 2. Concluir que, conforme $n$ aumenta, o valor do denominador aumenta, fazendo com que $EP$ diminua.
+    3. 3. Interpretar que um $EP$ menor significa que a estatística $Z_{\text{calc}}$ torna-se mais sensível a pequenas discrepâncias entre $\hat{p}$ e $p_0$.
+    4. 4. Concluir que amostras maiores aumentam o poder do teste, facilitando a rejeição de $H_0$ quando ela é de fato falsa.
+
+Questão 10: Considere o teste de hipóteses $H_0: \mu = 50$ contra $H_1: \mu > 50$ para uma variável normal com $\sigma = 10$. Uma amostra de $n = 25$ resulta em uma média amostral $\bar{X} = 53$. Calcule a estatística $Z_{	ext{calc}}$ e o $p	ext{-valor}$ do teste.
+  * Dica: O erro padrão da média é $EP(\bar{X}) = \sigma / \sqrt{n}$. A estatística de teste é $Z_{	ext{calc}} = (\bar{X} - \mu_0) / EP(\bar{X})$.
+  * Resolução Passo a Passo:
+    1. 1. Identificar os parâmetros: $\mu_0 = 50$, $\sigma = 10$, $n = 25$, $\bar{X} = 53$.
+    2. 2. Calcular o erro padrão: $EP(\bar{X}) = \frac{10}{\sqrt{25}} = \frac{10}{5} = 2$.
+    3. 3. Calcular a estatística de teste: $Z_{	ext{calc}} = \frac{53 - 50}{2} = \frac{3}{2} = 1.5$.
+    4. 4. Calcular o $p	ext{-valor}$ (teste unilateral superior): $p	ext{-valor} = P(Z > 1.5)$.
+    5. 5. Consultando a tabela normal padrão, $P(Z \leq 1.5) \approx 0.9332$. Logo, $p	ext{-valor} = 1 - 0.9332 = 0.0668$.
+
+Questão 11: Explique conceitualmente a diferença entre o nível de significância $\alpha$ e o $p	ext{-valor}$. Como a utilização do $p	ext{-valor}$ altera a flexibilidade do pesquisador na tomada de decisão em comparação com a fixação de um limiar $\alpha$ rígido?
+  * Dica: Lembre-se que $\alpha$ é fixado a priori, enquanto o $p	ext{-valor}$ é uma característica da amostra observada.
+  * Resolução Passo a Passo:
+    1. O nível de significância $\alpha$ é a probabilidade do erro de tipo I, fixado arbitrariamente pelo pesquisador antes da coleta de dados (ex: 5%).
+    2. O $p	ext{-valor}$ é o nível descritivo, calculado após a obtenção dos dados. Ele representa a evidência quantitativa contra $H_0$.
+    3. A fixação de $\alpha$ leva a uma decisão binária (rejeitar ou não rejeitar).
+    4. O uso do $p	ext{-valor}$ permite ao pesquisador comunicar a força da evidência (ex: $p < 0.001$ é uma evidência mais forte que $p = 0.04$).
+    5. Assim, o $p	ext{-valor}$ proporciona uma métrica contínua de 'surpresa' em relação à hipótese nula, permitindo uma análise mais matizada do que um critério estritamente binário.
+
+Questão 12: Em um teste bilateral para a média de uma população com $\sigma$ conhecido, o valor calculado foi $Z_{	ext{calc}} = -2.24$. Sabendo que o modelo segue uma normal padrão $N(0, 1)$, calcule o $p	ext{-valor}$ do teste.
+  * Dica: Para testes bilaterais com distribuição \simétrica, $p	ext{-valor} = 2 \times P(Z < Z_{	ext{calc}})$ se $Z_{	ext{calc}} < 0$.
+  * Resolução Passo a Passo:
+    1. 1. Identificar o valor da estatística calculada: $Z_{	ext{calc}} = -2.24$.
+    2. 2. Como o teste é bilateral, devemos considerar a probabilidade nas duas caudas.
+    3. 3. Calcular a probabilidade da cauda inferior: $P(Z < -2.24) \approx 0.0125$.
+    4. 4. Como a distribuição normal é \simétrica, a probabilidade da cauda superior é igual: $P(Z > 2.24) = 0.0125$.
+    5. 5. O $p	ext{-valor}$ total é a soma das duas caudas: $p	ext{-valor} = 0.0125 + 0.0125 = 0.025$.
+
+Questão 13: Uma fábrica de parafusos afirma que a resistência média de seu produto é $\mu = 155$ kg. Um lote suspeito é testado, onde a hipótese nula é $H_0: \mu = 155$ e a alternativa é $H_1: \mu = 145$ (com $\sigma = 20$ e $n = 25$). A regra de decisão adotada é rejeitar $H_0$ se $\bar{X} \leq 150$. Calcule a probabilidade do erro de tipo I ($\alpha$) e a do erro de tipo II ($\beta$).
+  * Dica: Use o TLC para a distribuição de $\bar{X}$. Lembre-se que $\alpha = P(\bar{X} \in RC | H_0 \text{ verdadeira})$ e $\beta = P(\bar{X} \notin RC | H_1 \text{ verdadeira})$.
+  * Resolução Passo a Passo:
+    1. Sob $H_0$, $\bar{X} \sim N(155, 20^2/25) = N(155, 16)$. Logo, $\alpha = P(\bar{X} \leq 150 | \mu = 155) = P(Z \leq (150 - 155) / 4) = P(Z \leq -1,25) = 0,1056$.
+    2. Sob $H_1$, $\bar{X} \sim N(145, 20^2/25) = N(145, 16)$. Logo, $\beta = P(\bar{X} > 150 | \mu = 145) = P(Z > (150 - 145) / 4) = P(Z > 1,25) = 1 - 0,8944 = 0,1056$.
+
+Questão 14: Em um teste de hipóteses com $H_0: 	heta = 	heta_0$ e $H_1: 	heta > 	heta_0$, a função poder é $\pi(\theta) = P(\text{Rejeitar } H_0 | 	heta)$. Considere o caso onde o poder para $\theta_1$ é $\pi(\theta_1) = 0,80$. Explique, do ponto de vista inferencial, o que significa este valor e como o aumento do tamanho amostral $n$ afetaria esse poder.
+  * Dica: Considere a sensibilidade do teste em detectar o efeito. O aumento de $n$ reduz a variância do estimador $\bar{X}$.
+  * Resolução Passo a Passo:
+    1. O poder $\pi(\theta_1) = 0,80$ significa que, se o verdadeiro valor do parâmetro for $\theta_1$, o teste tem 80% de chance de rejeitar corretamente a hipótese nula $H_0$.
+    2. Isso implica uma taxa de erro de tipo II ($\beta$) de 20% para esse valor específico do parâmetro.
+    3. Aumentar o tamanho amostral $n$ diminui o erro padrão da estatística de teste ($EP = \sigma / \sqrt{n}$).
+    4. Como a variabilidade da distribuição amostral diminui, as distribuições sob $H_0$ e sob $H_1$ tornam-se menos sobrepostas, aumentando a probabilidade de rejeitar $H_0$ quando $H_1$ é verdadeira, logo, aumentando o poder do teste.
+
+Questão 15: Uma variável $X$ segue distribuição normal $N(\mu, 400)$. Para testar $H_0: \mu = 200$ contra $H_1: \mu > 200$, utiliza-se uma amostra de $n = 25$ itens. Fixando $\alpha = 0,05$, determine a região crítica ($RC$) e calcule o poder do teste ($\pi$) para $\mu = 210$.
+  * Dica: O valor crítico $Z_{crit}$ para $\alpha=0,05$ unilateral é $1,645$. O erro padrão é $20/\sqrt{25} = 4$.
+  * Resolução Passo a Passo:
+    1. O valor crítico da média amostral é $\bar{x}_c = \mu_0 + Z_{crit} \cdot (\sigma / \sqrt{n}) = 200 + 1,645 \cdot (20 / 5) = 200 + 1,645 \cdot 4 = 206,58$. Portanto, $RC = \{\bar{X} > 206,58\}$.
+    2. Para calcular o poder $\pi(210)$, calculamos $P(\bar{X} > 206,58 | \mu = 210)$.
+    3. Transformando para a normal padrão: $Z = (206,58 - 210) / 4 = -3,42 / 4 = -0,855$.
+    4. $\pi(210) = P(Z > -0,855) = 0,8038$.
+
+======================================================================
+                         FIM DO RELATÓRIO
+======================================================================
