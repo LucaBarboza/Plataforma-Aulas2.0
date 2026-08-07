@@ -1,0 +1,104 @@
+{
+    "status": "sucesso",
+    "timestamp_inicio": "2026-08-07 13:47:33",
+    "tema": "Unidade 2 - Tópico 2.4.1: Testes de hipóteses: As hipóteses estatísticas",
+    "professor": "Luca",
+    "disciplina": "MATD38",
+    "tempo_total_segundos": 257.56,
+    "etapas": {
+        "1_indexacao_rag": {
+            "descricao": "Indexação dos Materiais de Apoio (RAG Pessoal)",
+            "status": "pulado",
+            "duracao_segundos": 0.0
+        },
+        "2_roteirista": {
+            "descricao": "Agente 1: Roteirista (Alinhamento de Escopo e Trilha)",
+            "status": "sucesso",
+            "duracao_segundos": 9.08
+        },
+        "3_escrita_revisao": {
+            "descricao": "Agente 2 + 2.5: Escritor & Revisor (Loop de Revisão Ativa)",
+            "status": "sucesso",
+            "duracao_segundos": 79.75,
+            "subtopicos": [
+                {
+                    "titulo": "A Lógica da Inferência: A Natureza das Hipóteses Estatísticas",
+                    "tentativas": 1,
+                    "max_tentativas": 5,
+                    "reprovacoes": 0,
+                    "feedbacks": [],
+                    "erros_api": {
+                        "429": 0,
+                        "503": 0,
+                        "outros": 0
+                    },
+                    "tempo_segundos": 15.62,
+                    "aprovado": true
+                },
+                {
+                    "titulo": "Arquitetura do Teste: Formulações Unilaterais e Bilaterais",
+                    "tentativas": 1,
+                    "max_tentativas": 5,
+                    "reprovacoes": 0,
+                    "feedbacks": [],
+                    "erros_api": {
+                        "429": 0,
+                        "503": 0,
+                        "outros": 0
+                    },
+                    "tempo_segundos": 17.06,
+                    "aprovado": true
+                },
+                {
+                    "titulo": "Erros de Decisão e o Controle de Significância",
+                    "tentativas": 1,
+                    "max_tentativas": 5,
+                    "reprovacoes": 0,
+                    "feedbacks": [],
+                    "erros_api": {
+                        "429": 0,
+                        "503": 0,
+                        "outros": 0
+                    },
+                    "tempo_segundos": 20.72,
+                    "aprovado": true
+                },
+                {
+                    "titulo": "O Procedimento Sistemático: Etapas para a Construção de Testes",
+                    "tentativas": 1,
+                    "max_tentativas": 5,
+                    "reprovacoes": 0,
+                    "feedbacks": [],
+                    "erros_api": {
+                        "429": 0,
+                        "503": 0,
+                        "outros": 0
+                    },
+                    "tempo_segundos": 26.35,
+                    "aprovado": true
+                }
+            ]
+        },
+        "4_lapidacao_editorial": {
+            "descricao": "Agente 3.5: Editor-Chefe (Unificação e Coerência Global)",
+            "status": "sucesso",
+            "duracao_segundos": 19.58
+        },
+        "5_expansao_prosa": {
+            "descricao": "Agente 3.75: Construtor de Prosa (Expansão Exaustiva de Livro)",
+            "status": "sucesso",
+            "duracao_segundos": 42.74
+        },
+        "6_caderno_exercicios": {
+            "descricao": "Agente 3: Caderno de Exercícios (Questões Fechadas e Abertas)",
+            "status": "sucesso",
+            "duracao_segundos": 68.96
+        },
+        "7_compilacao_interface": {
+            "descricao": "Fase 6: Compilação de Interface Streamlit",
+            "status": "sucesso",
+            "duracao_segundos": 35.63
+        }
+    },
+    "timestamp_fim": "2026-08-07 13:51:51"
+}
