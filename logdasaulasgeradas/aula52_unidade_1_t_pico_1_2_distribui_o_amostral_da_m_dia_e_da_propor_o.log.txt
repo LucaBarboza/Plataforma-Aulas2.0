@@ -1,0 +1,374 @@
+======================================================================
+       RELATÓRIO DE AUDITORIA E HISTÓRICO COMPLETO DA AULA
+======================================================================
+Tema Global: Unidade 1 - Tópico 1.2: Distribuição amostral da média e da proporção
+Professor: Luca
+Disciplina: MATD38
+Início da Geração: 2026-08-07 13:01:57
+Fim da Geração: 2026-08-07 13:06:20
+Tempo Total: 263.74 segundos
+Status Final: SUCESSO
+======================================================================
+
+----------------------------------------------------------------------
+1. CRONOGRAMA E MÉTRICAS DAS ETAPAS DE DESENVOLVIMENTO
+----------------------------------------------------------------------
+- Indexação dos Materiais de Apoio (RAG Pessoal):
+  * Status: pulado
+  * Duração: 0.0 segundos
+- Agente 1: Roteirista (Alinhamento de Escopo e Trilha):
+  * Status: sucesso
+  * Duração: 9.81 segundos
+- Agente 2 + 2.5: Escritor & Revisor (Loop de Revisão Ativa):
+  * Status: sucesso
+  * Duração: 99.33 segundos
+- Agente 3.5: Editor-Chefe (Unificação e Coerência Global):
+  * Status: sucesso
+  * Duração: 13.85 segundos
+- Agente 3.75: Construtor de Prosa (Expansão Exaustiva de Livro):
+  * Status: sucesso
+  * Duração: 31.12 segundos
+- Agente 3: Caderno de Exercícios (Questões Fechadas e Abertas):
+  * Status: sucesso
+  * Duração: 80.06 segundos
+- Fase 6: Compilação de Interface Streamlit:
+  * Status: sucesso
+  * Duração: 27.83 segundos
+
+
+----------------------------------------------------------------------
+2. HISTÓRICO DE PRODUÇÃO DOS CONTEÚDOS E PROSA EXPANDIDA
+----------------------------------------------------------------------
+
+[Subtópico 1]: O Conceito de Distribuição Amostral e Variabilidade Inferencial
+----------------------------------------
+  * Auditoria do Revisor Científico:
+    - Tentativas do Escritor: 1
+    - Reprovações do Revisor: 0
+    - Retentativas de API de Rede: 0 (429: 0, 503/Timeout: 0, Outros: 0)
+
+>>> A) PROSA BASE GERADA:
+A inferência estatística fundamenta-se na transição estratégica do desconhecido para o estimado. Em cenários onde o acesso à totalidade da população é inviável, extraímos amostras aleatórias para inferir parâmetros populacionais. Contudo, a média amostral $\bar{X}$ não é um valor fixo, mas uma variável aleatória que flutua conforme o plano amostral. A distribuição amostral descreve precisamente o comportamento probabilístico desses estimadores se o processo de amostragem fosse repetido infinitamente. Esta estrutura teórica é o alicerce que permite quantificar a precisão e a incerteza de nossas conclusões, transformando estimativas pontuais em processos rigorosos controlados pela probabilidade.
+
+>>> B) FORMALISMO MATEMÁTICO (LaTeX):
+$$E(\bar{X}) = \mu \quad \text{e} \quad Var(\bar{X}) = \frac{\sigma^2}{n}$$
+
+>>> C) PROSA EXPANDIDA FINAL DE LIVRO DIDÁTICO:
+A estatística inferencial constitui o alicerce intelectual que permite aos cientistas, engenheiros e tomadores de decisão transitar do microcosmo dos dados observados para o macrocosmo das verdades universais. Frequentemente, encontramo-nos em uma posição epistêmica onde a população de interesse — seja ela um conjunto infinito de peças produzidas em uma linha industrial, o comportamento de uma proteína em todos os seres humanos ou a totalidade dos resultados eleitorais de uma nação — é inacessível, seja por custos proibitivos, restrições físicas ou pela natureza intrínseca do fenômeno. Nesse cenário, o pesquisador não tem acesso ao parâmetro real, como a média populacional $\mu$ ou a variância populacional $\sigma^2$, sendo forçado a operar sob o regime da incerteza por meio de uma amostra aleatória de tamanho $n$. O cerne da inferência estatística reside justamente na capacidade de transformar o desconhecido em algo estimado com um nível de precisão rigorosamente controlado, mas, para que essa transição seja legítima, devemos abandonar a intuição simplista de que um cálculo feito sobre uma amostra é um valor estático e imutável.
+
+A verdade fundamental, e frequentemente negligenciada pelos iniciantes, é que a média amostral $\bar{X}$ não deve ser encarada como um número fixo, mas sim como uma variável aleatória que herda sua natureza da variabilidade contida na população. Imagine um experimento onde extraímos uma amostra aleatória de tamanho $n$ de uma população e calculamos sua média. Se repetíssemos esse processo de amostragem infinitas vezes, obtendo conjuntos distintos de observações, cada nova amostra produziria uma estimativa $\bar{X}$ ligeiramente diferente da anterior, flutuando ao redor do valor real $\mu$ devido à influência aleatória do acaso. Esse comportamento probabilístico, que descreve como a estatística $\bar{X}$ se distribui em um plano amostral infinito, é o que definimos como a distribuição amostral. É este conceito que conecta o erro amostral — a divergência natural entre o que observamos na nossa amostra e o que ocorre na população — ao formalismo matemático da probabilidade, permitindo-nos quantificar, com precisão, a margem de erro e a confiabilidade de nossas estimativas.
+
+Antes do desenvolvimento formal da teoria da distribuição amostral, a estatística operava de maneira puramente descritiva, sendo incapaz de avaliar rigorosamente a qualidade de uma estimativa. A evolução desse pensamento, que floresceu especialmente no início do século XX com expoentes como Ronald Fisher e Jerzy Neyman, permitiu que a comunidade científica tratasse a incerteza não como um ruído incontrolável, mas como uma variável que pode ser modelada. Ao compreender que $\bar{X}$ é um estimador não-viciado para $\mu$, estabelecemos um primeiro ponto de ancoragem teórico através da esperança matemática, expressa pela relação $$E(\bar{X}) = \mu \text{ onde } E(\cdot) \text{ denota o operador de esperança matemática aplicada à variável aleatória da média amostral}.$$ Esta igualdade nos assegura que, em média, as nossas estimativas coincidem com o valor populacional real, conferindo ao estimador a propriedade de ausência de vício, o que é fundamental para a validade científica de qualquer inferência de longo prazo.
+
+Contudo, a esperança por si só não basta; precisamos compreender a dispersão. Aqui, a teoria nos brinda com uma das descobertas mais belas da estatística matemática: a relação entre a variabilidade da população e a precisão da amostra. Quando extraímos uma amostra de tamanho $n$, a variância dessa média amostral, expressa como $$Var(\bar{X}) = \frac{\sigma^2}{n} \text{ sendo } \sigma^2 \text{ a variância da população e } n \text{ o tamanho da amostra},$$ revela um princípio de "lei de ferro" da estatística. Note como a variância amostral diminui à medida que aumentamos o tamanho da amostra $n$. Isso explica intuitivamente por que amostras maiores são mais precisas: o denominador $n$ atua como um atenuador da variabilidade populacional. À medida que o tamanho da amostra tende ao infinito, a variância da média amostral tende a zero, concentrando toda a probabilidade em torno de $\mu$, um fenômeno que pavimenta o caminho para a Lei dos Grandes Números e para o Teorema Central do Limite.
+
+É precisamente essa estrutura matemática que nos permite construir os chamados intervalos de confiança. Ao compreendermos que o desvio padrão da distribuição amostral — frequentemente chamado de erro padrão, $EP(\bar{X}) = \sqrt{Var(\bar{X})} = \frac{\sigma}{\sqrt{n}}$ — quantifica a flutuação esperada de nossas estimativas, podemos determinar, com base na área sob a curva de densidade, quão longe estamos dispostos a permitir que nossa estimativa se afaste do parâmetro real sob um determinado nível de significância $\alpha$. Sem o conhecimento da distribuição amostral, estaríamos cegos diante da incerteza; com ela, transformamos o erro aleatório em um dado gerenciável e rigoroso. A transição do dado pontual para o intervalo de confiança é a transição da adivinhação para a ciência, um salto de fé racional que fundamenta desde o controle estatístico de processos industriais até a validação de novos fármacos em testes clínicos.
+
+Ao avançarmos na exploração deste conceito, devemos nos atentar para o fato de que a distribuição amostral não depende apenas do tamanho da amostra $n$, mas também da natureza da distribuição populacional subjacente. Embora, sob condições de normalidade populacional, a distribuição de $\bar{X}$ seja exatamente normal, o poder da inferência estatística reside no fato de que, para amostras suficientemente grandes, o comportamento de $\bar{X}$ converge para a normalidade independentemente da forma original dos dados, em virtude da universalidade do Teorema Central do Limite. Essa resiliência matemática é o que confere à estatística inferencial sua vasta aplicabilidade, permitindo-nos fazer inferências sobre populações complexas mesmo quando o processo gerador de dados desconhecido não se ajusta perfeitamente a modelos teóricos simples. Portanto, o domínio das propriedades $E(\bar{X}) = \mu$ e $Var(\bar{X}) = \frac{\sigma^2}{n}$ não é apenas uma obrigação de notação para o acadêmico, mas o requisito mínimo para o exercício crítico e consciente do método científico em qualquer campo do conhecimento quantitativo.
+
+========================================
+
+[Subtópico 2]: O Teorema Limite Central e a Convergência para a Normalidade
+----------------------------------------
+  * Auditoria do Revisor Científico:
+    - Tentativas do Escritor: 1
+    - Reprovações do Revisor: 0
+    - Retentativas de API de Rede: 0 (429: 0, 503/Timeout: 0, Outros: 0)
+
+>>> A) PROSA BASE GERADA:
+A importância do Teorema Limite Central (TLC) para a estatística é monumental, atuando como o elo que confere ordem à aleatoriedade complexa. Ele postula que, sob condições de independência e variância finita, a média amostral de um grande volume de observações converge para uma distribuição normal, independentemente da forma original dos dados. Esse resultado viabiliza a inferência prática, fornecendo o rigor necessário para a construção de intervalos de confiança e testes de hipóteses quando o formato da população é desconhecido ou assimétrico.
+
+>>> B) FORMALISMO MATEMÁTICO (LaTeX):
+$$Z = \frac{\bar{X} - \mu}{\sigma / \sqrt{n}} \xrightarrow{n \to \infty} N(0, 1)$$
+
+>>> C) PROSA EXPANDIDA FINAL DE LIVRO DIDÁTICO:
+A magnitude intelectual do Teorema Limite Central (TLC) não reside meramente em uma formulação algébrica elegante, mas no fato de ser, indiscutivelmente, a pedra angular sobre a qual repousa a inferência estatística moderna. Durante séculos, a ciência debateu-se com a natureza errática do erro experimental e a variabilidade inata dos fenômenos naturais. Observadores do século XVIII, notadamente Abraham de Moivre e Pierre-Simon Laplace, perceberam, quase intuitivamente, que as somas de variáveis aleatórias tendiam a exibir um padrão de regularidade que ignorava a forma das distribuições subjacentes. A grande revelação do TLC é que a aleatoriedade, quando acumulada e devidamente normalizada, perde sua característica idiossincrática e se submete à geometria sublime da curva de Gauss, a distribuição normal $N(\mu, \sigma^2)$.
+
+Para compreender a lógica pedagógica do teorema, devemos nos despojar da ideia de que a normalidade é uma propriedade intrínseca da natureza. Na verdade, a maior parte dos fenômenos do mundo real não é normalmente distribuída; encontramo-nos cercados por assimetrias, distribuições multimodais e caudas pesadas. No entanto, quando nos focamos não na observação individual, mas na média amostral $\bar{X}$ de um grande volume de observações independentes, observamos o fenômeno da convergência. O TLC nos ensina que a operação de média atua como um operador de suavização que filtra as singularidades dos dados. À medida que o tamanho amostral $n$ cresce, a influência das peculiaridades da distribuição original é "diluída" pela agregação, e o comportamento probabilístico de $\bar{X}$ torna-se, inexoravelmente, determinado pela média populacional $\mu$ e pelo desvio padrão populacional $\sigma$.
+
+Formalmente, ao considerarmos uma sequência de variáveis aleatórias independentes e identicamente distribuídas (IID) com média finita $\mu$ e variância finita $\sigma^2$, a estatística padronizada que descrevemos como o quociente entre o desvio da média amostral em relação à média populacional e o erro padrão da média, definido como $\sigma / \sqrt{n}$, revela uma propriedade assintótica fundamental. A expressão matemática que consolida esse comportamento é dada por:
+
+$$Z = \frac{\bar{X} - \mu}{\sigma / \sqrt{n}} \xrightarrow{n \to \infty} N(0, 1)$$
+
+Neste formalismo, percebemos que o denominador $\sigma / \sqrt{n}$, conhecido como erro padrão da média, é o componente crítico que regula a dispersão. Conforme $n$ aumenta, o erro padrão diminui, indicando que a média amostral $\bar{X}$ torna-se um estimador cada vez mais preciso e concentrado em torno de $\mu$. A convergência para a distribuição normal padrão $N(0, 1)$ significa que, independentemente da forma original, se o nosso $n$ for suficientemente grande, podemos utilizar as tabelas da normal, o escore $Z_{\text{crit}}$ e os cálculos de probabilidade associados para realizar inferências com rigor matemático garantido. É este o mecanismo que permite ao pesquisador moderno determinar intervalos de confiança e conduzir testes de hipóteses sobre parâmetros populacionais sem a necessidade de conhecer a distribuição original de probabilidade da população em estudo.
+
+A intuição profunda que desejo transmitir aos senhores é que o TLC funciona como uma espécie de "equilibrador universal". Pensemos em um jogo de azar ou em um processo físico onde cada resultado individual é caótico. Ao somar ou tirar a média de milhares desses resultados, as flutuações positivas e negativas tendem a se cancelar, restando apenas uma estrutura central robusta. A exigência de variância finita $\sigma^2$ é, portanto, uma condição de existência indispensável; sem ela, as caudas da distribuição seriam tão pesadas que o efeito de "cancelamento" do erro não ocorreria, impedindo a convergência para o comportamento gaussiano. Este ponto é crucial para a prática científica: em campos onde lidamos com eventos de cauda longa, como finanças ou certos fenômenos climáticos, o TLC pode levar a previsões errôneas se a premissa de variância finita for violada.
+
+Historicamente, o desenvolvimento deste teorema resolveu o dilema de como medir a precisão de um experimento. Antes dele, a incerteza era vista como uma falha do observador; com o TLC, a incerteza passou a ser quantificada e estruturada. O erro de medida não é apenas "ruído", é um componente passível de modelagem. É por causa desta estrutura que podemos construir intervalos de confiança $IC$ com níveis de significância $\alpha$ pré-definidos. Quando realizamos um teste de hipóteses, estamos, no fundo, perguntando se o dado observado se desvia significativamente da média esperada sob a premissa da hipótese nula $H_0$. O TLC fornece a "régua" — a distribuição normal — que nos permite decidir se uma diferença observada é um evento raro e estatisticamente significante ou apenas uma flutuação amostral esperada dentro da margem de erro $E$.
+
+É vital notar que, embora a convergência para a normalidade seja garantida assintoticamente, a velocidade com que essa convergência ocorre depende da assimetria e da curtose da população original. Populações altamente assimétricas exigem um $n$ maior para que a distribuição da média amostral $\bar{X}$ se comporte como uma normal. Portanto, o rigor pedagógico exige que o aluno não encare o TLC como um dogma absoluto, mas como um limite matemático para o qual o sistema gravita. Ao trabalhar com amostras pequenas, o pesquisador deve ter cautela redobrada, possivelmente recorrendo à distribuição $t$ de Student, especialmente quando o desvio padrão populacional $\sigma$ é desconhecido e necessitamos utilizar o desvio padrão amostral $S$, que introduz uma variabilidade adicional que o TLC clássico, por si só, não captura inteiramente para amostras finitas e pequenas.
+
+Em síntese, o Teorema Limite Central é o fio condutor que une a teoria das probabilidades à inferência prática. Ele justifica por que a distribuição normal é a "distribuição por excelência" da estatística. Ao converter problemas complexos de somas de variáveis aleatórias em problemas tratáveis de áreas sob a curva gaussiana, o teorema não apenas simplifica o cálculo, mas confere legitimidade ao método científico. Sem o TLC, seríamos forçados a conhecer a estrutura completa da população para cada análise estatística realizada, o que tornaria a inferência sobre grandes populações — o propósito central de nossa disciplina — uma tarefa virtualmente impossível ou puramente especulativa. Através dele, a variabilidade torna-se previsível, e o caos encontra sua medida.
+
+========================================
+
+[Subtópico 3]: Distribuição Amostral da Proporção e Modelagem Binomial
+----------------------------------------
+  * Auditoria do Revisor Científico:
+    - Tentativas do Escritor: 1
+    - Reprovações do Revisor: 0
+    - Retentativas de API de Rede: 0 (429: 0, 503/Timeout: 0, Outros: 0)
+
+>>> A) PROSA BASE GERADA:
+Para variáveis qualitativas dicotômicas, a média aritmética dá lugar à proporção de sucessos. Fundamentada em variáveis de Bernoulli, a proporção amostral $\hat{p}$ atua como o estimador não-viesado da proporção populacional $p$. A análise de sua distribuição amostral revela uma variância dependente não apenas do tamanho da amostra, mas também da própria proporção, atingindo o máximo de incerteza quando os resultados são equiprováveis. Este domínio é essencial para pesquisas de opinião e métricas de conversão.
+
+>>> B) FORMALISMO MATEMÁTICO (LaTeX):
+$$E(\hat{p}) = p \quad \text{e} \quad Var(\hat{p}) = \frac{p(1-p)}{n}$$
+
+>>> C) PROSA EXPANDIDA FINAL DE LIVRO DIDÁTICO:
+Ao iniciarmos o estudo da inferência estatística, frequentemente nos concentramos em variáveis quantitativas que permitem o cálculo da média aritmética tradicional. Contudo, em uma parcela significativa das aplicações científicas e sociais, encontramo-nos diante de variáveis qualitativas dicotômicas, onde os dados não se manifestam por grandezas numéricas contínuas, mas pela ocorrência ou não de um evento específico. Para tratar tais fenômenos, devemos transitar do domínio da média amostral para o domínio da proporção amostral. Esta mudança de paradigma fundamenta-se na distribuição de Bernoulli, que serve como o bloco construtor elementar para a análise de processos onde apenas dois resultados são possíveis: o sucesso ou o fracasso. Quando observamos uma sequência de $n$ ensaios independentes, onde a probabilidade de sucesso é constante e denotada por $p$, estamos diante de um processo gerador de dados definido pela distribuição binomial, que nos permite quantificar a incerteza inerente à estimativa populacional.
+
+A proporção amostral, simbolizada por $\hat{p}$, não é meramente uma estatística descritiva; ela é um estimador pontual da proporção populacional $p$. Em termos matemáticos, se definirmos uma variável aleatória indicadora $X_i$ que assume o valor $1$ em caso de sucesso e $0$ em caso de fracasso, a nossa proporção amostral nada mais é do que a média aritmética destas variáveis indicadoras. Ao considerarmos a esperança matemática deste estimador, revelamos uma propriedade fundamental: a não-viesagem. A formalização do valor esperado demonstra que, sob condições de amostragem aleatória simples, o estimador converge, em média, para o parâmetro real da população, o que expressamos matematicamente pela relação $$E(\hat{p}) = p$$. Esta propriedade é a pedra angular que confere validade científica às pesquisas de opinião pública, auditorias de controle de qualidade e métricas de conversão digital, pois nos garante que, a longo prazo, não haverá uma tendência sistemática de superestimar ou subestimar o verdadeiro parâmetro populacional.
+
+Entretanto, a precisão de $\hat{p}$ não depende apenas da ausência de viés, mas da dispersão dos dados ao redor deste valor esperado, o que nos conduz à variância do estimador. A variância de uma proporção amostral é ditada por $$Var(\hat{p}) = \frac{p(1-p)}{n}$$. É crucial observar que a variância não é constante; ela é uma função parabólica da própria proporção populacional $p$. Intuitivamente, isso significa que a nossa incerteza estatística atinge o seu ápice quando os resultados são equiprováveis, ou seja, quando $p = 0,5$. Nestas circunstâncias, a variabilidade do estimador é máxima, exigindo, por conseguinte, tamanhos amostrais $n$ maiores para que possamos atingir um nível de precisão desejado. À medida que a proporção se aproxima dos extremos, zero ou um, a variância tende a zero, pois a homogeneidade da população reduz a margem para o erro amostral.
+
+A dependência da variância em relação ao tamanho da amostra $n$ no denominador é o mecanismo estatístico que nos permite controlar o erro. À medida que aumentamos a amostra, a variância de $\hat{p}$ diminui, o que, por meio do Teorema Central do Limite, implica que a distribuição amostral da proporção se torna cada vez mais concentrada ao redor do parâmetro $p$. Historicamente, a compreensão de que a incerteza pode ser reduzida através da ampliação do escopo observacional foi uma das maiores revoluções no pensamento científico. Antes da formalização rigorosa destas distribuições, as decisões sobre populações eram tomadas sob intuição ou observações anedóticas. Com o formalismo binomial, pesquisadores puderam, pela primeira vez, quantificar o risco de suas estimativas, estabelecendo intervalos de confiança que definem, com precisão matemática, os limites dentro dos quais o verdadeiro valor de $p$ deve residir.
+
+A modelagem binomial, portanto, é muito mais do que uma ferramenta de contagem; é uma estrutura teórica que permite inferir sobre a totalidade a partir da parte. Quando analisamos a distribuição amostral de $\hat{p}$, não estamos apenas descrevendo uma amostra específica, mas estamos desenhando um mapa de todas as proporções possíveis que poderiam ter sido observadas sob o mesmo desenho amostral. A elegância dessa teoria reside na simplicidade de seus parâmetros, mas não devemos subestimar a profundidade de suas implicações. A conexão entre a distribuição de Bernoulli, o somatório de ensaios binomiais e a estabilidade da proporção amostral permite que o estatístico aplique o rigor da teoria das probabilidades a qualquer fenômeno dicotômico, seja na genética, onde se estuda a presença de um alelo, ou nas ciências sociais, ao medir a intenção de voto ou o comportamento de consumo.
+
+Ao refletirmos sobre a expressão $$Var(\hat{p}) = \frac{p(1-p)}{n}$$, percebemos uma simetria fascinante. O produto $p(1-p)$ representa a variabilidade de um único experimento, enquanto a divisão por $n$ representa o efeito da agregação. Esta é a essência do pensamento estatístico: transformar o caos de observações individuais, que são intrinsecamente incertas, em estimativas estáveis e confiáveis através da acumulação de informação. Como estudantes e profissionais da estatística, é vital que compreendamos que o erro padrão, que é a raiz quadrada da variância acima, é a métrica fundamental da nossa ignorância. Quanto menor o erro padrão, maior é a nossa capacidade de distinguir um sinal real de um ruído estatístico. Assim, a distribuição amostral da proporção não é apenas uma convenção matemática, mas a base sobre a qual construímos o conhecimento científico em um mundo onde a certeza absoluta é inacessível, mas a precisão controlada é um objetivo perfeitamente alcançável.
+
+========================================
+
+
+----------------------------------------------------------------------
+3. CADERNO DE EXERCÍCIOS GERADO
+----------------------------------------------------------------------
+
+>>> A) QUESTÕES DE MÚLTIPLA ESCOLHA:
+
+Questão 1: Uma empresa de tecnologia monitora o tempo de processamento de servidores em nuvem, seguindo uma distribuição de probabilidade com média populacional $\mu = 120$ ms e variância $\sigma^2 = 64$ ms$^2$. Um engenheiro de DevOps seleciona aleatoriamente uma amostra aleatória simples (AAS) de $n = 16$ servidores para realizar um teste de carga. Considerando que a estatística de interesse é a média amostral $\bar{X}$, qual é o comportamento esperado para a variância da distribuição amostral da média, $Var(\bar{X})$, e como isso reflete a variabilidade inferencial?
+  A) A variância da média amostral é $4$ ms$^2$, indicando que o erro amostral é minimizado conforme aumentamos o tamanho da amostra.
+  B) A variância da média amostral é $16$ ms$^2$, mostrando que a média das amostras dispersa-se mais que os valores individuais da população.
+  C) A variância da média amostral é $64$ ms$^2$, mantendo-se constante independentemente do tamanho da amostra.
+  D) A variância da média amostral é $0.25$ ms$^2$, sugerindo uma maior dispersão da média amostral comparada à população.
+  E) A variância da média amostral é impossível de determinar sem conhecer a forma exata da distribuição original da população.
+  * Dica: Lembre-se da propriedade da variância da média amostral: $Var(\bar{X}) = \frac{\sigma^2}{n}$.
+  * Gabarito Correto: A
+  * Justificativa: Para uma AAS de tamanho $n=16$ retirada de uma população com variância $\sigma^2 = 64$, a variância da distribuição amostral da média é dada por $Var(\bar{X}) = \frac{\sigma^2}{n} = \frac{64}{16} = 4$. Este resultado é fundamental na inferência, pois demonstra que, ao aumentar o tamanho da amostra, a variabilidade do estimador $\bar{X}$ diminui, tornando a estimativa mais precisa e estável ao redor da média populacional $\mu$.
+
+Questão 2: Em um estudo sobre o consumo de energia elétrica de aparelhos IoT, sabe-se que a variável X (consumo diário) tem média $\mu$ e variância $\sigma^2$. Um pesquisador coleta várias amostras de tamanho $n$ e calcula para cada uma o valor de $S^2$ (variância amostral). Ao analisar a distribuição de $S^2$ em relação ao parâmetro $\sigma^2$, o pesquisador observa que $E(S^2) = \sigma^2$. O que essa propriedade estatística nos informa sobre o estimador $S^2$?
+  A) Que $S^2$ é um estimador viciado, pois subestima a variância populacional.
+  B) Que $S^2$ é um estimador não-viesado, permitindo que, em média, a estatística amostral acerte o valor do parâmetro populacional.
+  C) Que $S^2$ depende estritamente do tamanho amostral, sendo irrelevante para grandes populações.
+  D) Que a distribuição de $S^2$ é sempre uma distribuição normal, independentemente da distribuição da população original.
+  E) Que a variância amostral sempre coincidirá exatamente com a variância populacional em qualquer amostra coletada.
+  * Dica: O valor esperado do estimador ser igual ao parâmetro é a definição teórica de um estimador não-viesado.
+  * Gabarito Correto: B
+  * Justificativa: A propriedade $E(S^2) = \sigma^2$ caracteriza $S^2$ como um estimador não-viesado para a variância populacional $\sigma^2$. Em inferência estatística, um estimador não-viesado é altamente desejável, pois garante que, se repetíssemos o processo de amostragem indefinidamente, a média dos valores calculados de $S^2$ seria exatamente o parâmetro populacional $\sigma^2$. Isso reduz o erro sistemático nas nossas estimativas.
+
+Questão 3: Uma empresa de manufatura de dispositivos eletrônicos utiliza um sensor de alta precisão para monitorar o peso de componentes em uma linha de produção. Sabe-se, por histórico de longo prazo, que a variância do peso dos componentes fabricados é de $\sigma^2 = 4,0 \text{ gramas}^2$. O engenheiro responsável deseja estimar a média populacional $\mu$ do peso desses componentes utilizando a média amostral $\bar{X}$ de uma amostra aleatória simples de $n = 16$ unidades. Qual é a variância do estimador média amostral $Var(\bar{X})$ e qual a propriedade que garante que $\bar{X}$ é um estimador centrado em $\mu$?
+  A) Variância = 0,25 e o estimador é não-viesado, pois $E(\bar{X}) = \mu$.
+  B) Variância = 0,50 e o estimador é não-viesado, pois $E(\bar{X}) = \sigma^2/n$.
+  C) Variância = 0,25 e o estimador é viesado, pois $Var(\bar{X}) = \sigma^2/n$.
+  D) Variância = 4,00 e o estimador é não-viesado, pois $E(\bar{X}) = \mu$.
+  E) Variância = 0,0625 e o estimador é não-viesado, pois $E(\bar{X}) = \mu/n$.
+  * Dica: Lembre-se que $Var(\bar{X}) = \sigma^2/n$ e que a ausência de viés é definida pela igualdade entre o valor esperado do estimador e o parâmetro populacional.
+  * Gabarito Correto: A
+  * Justificativa: Para resolver esta questão, aplicamos as propriedades teóricas da média amostral. A variância do estimador é dada por $Var(\bar{X}) = \sigma^2/n$. Substituindo os valores, temos $Var(\bar{X}) = 4,0 / 16 = 0,25 \text{ g}^2$. Sobre a propriedade de não-viesamento, por definição, um estimador $T$ é não-viesado para um parâmetro $\theta$ se $E(T) = \theta$. Como $E(\bar{X}) = \mu$, a média amostral é um estimador não-viesado da média populacional.
+
+Questão 4: Em um estudo clínico para avaliar o tempo de reação de pacientes sob efeito de um novo medicamento, um pesquisador coleta amostras aleatórias de tamanhos diferentes. Ele observa que, ao aumentar o tamanho da amostra $n$ de 25 para 100, a variância do estimador média amostral $Var(\bar{X})$ sofre uma redução significativa. Assumindo que a variância populacional $\sigma^2$ permanece constante, qual é a razão entre a variância do estimador com $n=25$ e a variância com $n=100$?
+  A) 2
+  B) 4
+  C) 0,25
+  D) 10
+  E) 0,5
+  * Dica: Considere que $Var(\bar{X}_n) = \sigma^2/n$. A razão entre as variâncias é $\frac{\sigma^2/25}{\sigma^2/100}$.
+  * Gabarito Correto: B
+  * Justificativa: Calculamos a variância para cada tamanho de amostra: $Var(\bar{X}_{25}) = \sigma^2/25$ e $Var(\bar{X}_{100}) = \sigma^2/100$. A razão entre elas é dada por $\frac{\sigma^2/25}{\sigma^2/100} = \frac{100}{25} = 4$. Portanto, aumentar a amostra em 4 vezes reduz a variância do estimador para 1/4 do valor original, demonstrando o efeito da redução da incerteza com o aumento de $n$.
+
+Questão 5: Uma empresa de manufatura de componentes eletrônicos produz sensores cujo tempo de vida útil segue uma distribuição assimétrica, com média populacional $\mu = 1500$ horas e desvio padrão populacional $\sigma = 400$ horas. O controle de qualidade decide auditar lotes, sorteando amostras de $n = 64$ sensores e calculando a média amostral $\bar{X}$ do tempo de vida. De acordo com o Teorema Limite Central, qual é a distribuição aproximada da média amostral $\bar{X}$ e a probabilidade de que a média de uma amostra seja inferior a 1400 horas?
+  A) $\bar{X} \sim N(1500, 400)$; $P(\bar{X} < 1400) \approx 0.0228$.
+  B) $\bar{X} \sim N(1500, 50^2)$; $P(\bar{X} < 1400) \approx 0.0228$.
+  C) $\bar{X} \sim N(1500, 400^2)$; $P(\bar{X} < 1400) \approx 0.4013$.
+  D) $\bar{X} \sim N(1500, 25^2)$; $P(\bar{X} < 1400) \approx 0.0000$.
+  E) $\bar{X} \sim N(1500, 50)$; $P(\bar{X} < 1400) \approx 0.0456$.
+  * Dica: Lembre-se que o erro padrão da média é dado por $\sigma_{\bar{X}} = \sigma / \sqrt{n}$. O TLC garante que a distribuição amostral tende a uma Normal com média $\mu$ e variância $\sigma^2 / n$.
+  * Gabarito Correto: B
+  * Justificativa: Pelo Teorema Limite Central, $\bar{X} \sim N(\mu, \sigma^2 / n)$. Temos $\mu = 1500$, $\sigma = 400$ e $n = 64$. O desvio padrão da média é $EP(\bar{X}) = 400 / \sqrt{64} = 400 / 8 = 50$. Portanto, a variância é $50^2 = 2500$. Padronizando para $Z$: $Z = (1400 - 1500) / 50 = -100 / 50 = -2$. Consultando a tabela da normal, $P(Z < -2) \approx 0.0228$.
+
+Questão 6: Em um sistema de telecomunicações, o ruído por sinal recebido é uma variável aleatória com desvio padrão populacional conhecido de $\sigma = 12$ dB. Se coletarmos 144 observações independentes para estimar o ruído médio, qual é a probabilidade de que o erro amostral, definido como $|\bar{X} - \mu|$, seja superior a 2 dB?
+  A) Aproximadamente 0.0456
+  B) Aproximadamente 0.0228
+  C) Aproximadamente 0.0912
+  D) Aproximadamente 0.9544
+  E) Aproximadamente 0.0026
+  * Dica: O erro padrão é $\sigma / \sqrt{n}$. O erro amostral normalizado é $Z = (\bar{X} - \mu) / EP(\bar{X})$. O problema pede $P(|Z| > 2 / EP(\bar{X}))$.
+  * Gabarito Correto: A
+  * Justificativa: O erro padrão é $EP(\bar{X}) = 12 / \sqrt{144} = 12 / 12 = 1$. Queremos $P(|\bar{X} - \mu| > 2) = P(|Z| > 2 / 1) = P(|Z| > 2)$. Pela simetria da normal padrão, $P(Z > 2) + P(Z < -2) = 0.0228 + 0.0228 = 0.0456$.
+
+Questão 7: Um analista de controle de qualidade em uma planta de semicondutores monitora a taxa de falhas ($p$) em uma linha de produção, que é atualmente de 0.04. Para estimar a proporção de itens defeituosos, o analista coleta uma amostra aleatória de tamanho $n=100$ e calcula a proporção amostral $\hat{p}$. Se o analista decidir quadruplicar o tamanho da amostra para $n=400$, o que ocorrerá com o erro padrão da proporção $EP(\hat{p})$?
+  A) O erro padrão será reduzido à metade do valor original.
+  B) O erro padrão permanecerá inalterado, pois a proporção populacional $p$ é constante.
+  C) O erro padrão será reduzido a um quarto do valor original.
+  D) O erro padrão aumentará, pois a variabilidade aumenta com amostras maiores.
+  E) O erro padrão será reduzido para um valor menor que a metade, dependendo apenas da variância.
+  * Dica: Lembre-se da fórmula do erro padrão da proporção: $EP(\hat{p}) = \sqrt{\frac{p(1-p)}{n}}$. Observe como o termo $n$ aparece dentro da raiz quadrada.
+  * Gabarito Correto: A
+  * Justificativa: O erro padrão é dado por $EP(\hat{p}) = \sqrt{\frac{p(1-p)}{n}}$. Quando $n$ aumenta de 100 para 400, temos: $EP_{novo} = \sqrt{\frac{p(1-p)}{400}} = \sqrt{\frac{1}{4} \cdot \frac{p(1-p)}{100}} = \frac{1}{2} \sqrt{\frac{p(1-p)}{100}} = \frac{1}{2} EP_{original}$. Portanto, o erro padrão é reduzido à metade.
+
+Questão 8: Considere que uma empresa de tecnologia deseja estimar a proporção $p$ de usuários que preferem um novo design de interface. A amostra segue uma distribuição binomial $X \sim Bin(n, p)$, onde $X$ é o número de sucessos. Sobre a propriedade do estimador $\hat{p} = X/n$, assinale a alternativa correta.
+  A) O valor esperado do estimador é $E(\hat{p}) = p/n$.
+  B) O estimador $\hat{p}$ é viesado, pois seu valor esperado depende da variância amostral.
+  C) O estimador é não-viesado, pois $E(\hat{p}) = p$.
+  D) O valor esperado de $\hat{p}$ aumenta conforme o tamanho amostral $n$ aumenta.
+  E) A variância do estimador $\hat{p}$ independe da proporção populacional $p$.
+  * Dica: O valor esperado de uma variável binomial $X$ é $E(X) = n \cdot p$. Use a propriedade da linearidade da esperança: $E(X/n) = \frac{1}{n} E(X)$.
+  * Gabarito Correto: C
+  * Justificativa: Sabendo que $X \sim Bin(n, p)$, temos que $E(X) = n \cdot p$. Para o estimador da proporção $\hat{p} = X/n$, calculamos o valor esperado como $E(\hat{p}) = E(X/n) = \frac{1}{n} E(X) = \frac{1}{n} (n \cdot p) = p$. Como $E(\hat{p}) = p$, dizemos que o estimador é não-viesado.
+
+Questão 9: Em um processo de auditoria interna, uma empresa deseja estimar a média de gastos diários de seus $N = 2000$ departamentos. O gestor decide coletar uma amostra aleatória simples sem reposição. Considerando o Fator de Correção para Populações Finitas (FCPF), analise o comportamento da variância da média amostral $Var(ar{X})$ à medida que o tamanho da amostra $n$ aumenta em direção a $N$. Qual das alternativas descreve corretamente o fenômeno estatístico observado?
+  A) A variância da média amostral $Var(ar{X})$ aumenta conforme $n$ se aproxima de $N$, pois a incerteza sobre a população total cresce.
+  B) O fator de correção $(N-n)/(N-1)$ aproxima-se de zero quando $n 	o N$, indicando que a variância do estimador $ar{X}$ reduz-se significativamente, atingindo valor zero quando $n=N$.
+  C) O FCPF permanece constante e igual a 1, independentemente do tamanho da amostra $n$, não alterando a precisão do estimador.
+  D) A variância da média amostral é constante, independentemente do valor de $n$, uma vez que a variância populacional $\sigma^2$ é fixa.
+  E) O fator de correção não é aplicável em populações finitas quando $n$ é menor que 5% de $N$, sendo sua aplicação restrita apenas a amostragens censitárias.
+  * Dica: Analise o comportamento do termo $\frac{N-n}{N-1}$ nos limites quando $n$ é pequeno e quando $n$ se torna igual a $N$.
+  * Gabarito Correto: B
+  * Justificativa: A fórmula da variância da média amostral para populações finitas é dada por $Var(ar{X}) = \frac{\sigma^2}{n} \left( \frac{N - n}{N - 1} \right)$. À medida que o tamanho da amostra $n$ aumenta, o numerador do FCPF $(N-n)$ diminui. Quando $n=N$, o fator $(N-N)/(N-1) = 0$, o que implica $Var(ar{X}) = 0$. Isso faz sentido intuitivo: se amostramos todos os elementos da população ($n=N$), não há incerteza sobre a média, pois a média amostral torna-se a média populacional exata.
+
+Questão 10: Um hospital registra o tempo de espera de $N=500$ pacientes em uma ala específica. A variância populacional observada é $\sigma^2 = 25$ minutos$^2$. Se um pesquisador extrai uma amostra aleatória simples sem reposição de $n=100$ pacientes, qual é o valor aproximado da variância da média amostral $Var(\bar{X})$?
+  A) 0,2500
+  B) 0,2004
+  C) 0,0500
+  D) 0,2505
+  E) 0,1500
+  * Dica: Lembre-se de aplicar o Fator de Correção para Populações Finitas: $Var(\bar{X}) = \frac{\sigma^2}{n} \left( \frac{N - n}{N - 1} \right)$.
+  * Gabarito Correto: B
+  * Justificativa: Aplicando os valores fornecidos na fórmula: $Var(\bar{X}) = \frac{25}{100} \cdot \frac{500 - 100}{500 - 1} = 0,25 \cdot \frac{400}{499}$. Calculando a fração, temos $400/499 \approx 0,8016$. Multiplicando por 0,25, obtemos $0,25 \cdot 0,8016 = 0,2004$.
+
+>>> B) QUESTÕES DISCURSIVAS ABERTAS:
+
+Questão 1: Considere uma população pequena $P = \{2, 4, 6, 8\}$. Determine a média populacional $\mu$ e a variância populacional $\sigma^2$. Em seguida, suponha que selecionamos todas as amostras possíveis de tamanho $n = 2$ com reposição. Construa a distribuição amostral da média amostral $\bar{X}$ e calcule $E(\bar{X})$ e $Var(\bar{X})$. Verifique se $E(\bar{X}) = \mu$ e se $Var(\bar{X}) = \sigma^2 / n$.
+  * Dica: Calcule a média aritmética para cada uma das 16 possíveis amostras (4x4) e use as fórmulas $E(\bar{X}) = \sum \bar{x}_i P(\bar{X} = \bar{x}_i)$ e $Var(\bar{X}) = \sum (\bar{x}_i - \mu)^2 P(\bar{X} = \bar{x}_i)$.
+  * Resolução Passo a Passo:
+    1. Passo 1: $\mu = (2+4+6+8)/4 = 5$ e $\sigma^2 = [(2-5)^2 + (4-5)^2 + (6-5)^2 + (8-5)^2]/4 = (9+1+1+9)/4 = 5$.
+    2. Passo 2: As médias das 16 amostras possíveis $(X_1, X_2)$ são: 2, 3, 4, 5, 3, 4, 5, 6, 4, 5, 6, 7, 5, 6, 7, 8.
+    3. Passo 3: A distribuição de $\bar{X}$ é: $P(2)=1/16, P(3)=2/16, P(4)=3/16, P(5)=4/16, P(6)=3/16, P(7)=2/16, P(8)=1/16$.
+    4. Passo 4: $E(\bar{X}) = (2\cdot 1 + 3\cdot 2 + 4\cdot 3 + 5\cdot 4 + 6\cdot 3 + 7\cdot 2 + 8\cdot 1)/16 = 80/16 = 5$.
+    5. Passo 5: $Var(\bar{X}) = \sum (\bar{x}_i - 5)^2 P(\bar{X} = \bar{x}_i) = [(-3)^2\cdot 1 + (-2)^2\cdot 2 + (-1)^2\cdot 3 + 0\cdot 4 + 1^2\cdot 3 + 2^2\cdot 2 + 3^2\cdot 1]/16 = (9+8+3+0+3+8+9)/16 = 40/16 = 2.5$.
+    6. Passo 6: Conclusão: $E(\bar{X}) = 5 = \mu$ e $Var(\bar{X}) = 2.5 = 5/2 = \sigma^2/n$.
+
+Questão 2: Um processo de manufatura de componentes eletrônicos produz itens com uma resistência que segue uma distribuição normal com média $\mu = 500$ Ohms e desvio padrão $\sigma = 20$ Ohms. Se retirarmos uma amostra aleatória simples de $n = 25$ componentes, qual é o erro padrão da média, $EP(\bar{X})$, e qual a probabilidade de a média amostral ser inferior a 496 Ohms?
+  * Dica: O erro padrão da média é $EP(\bar{X}) = \sigma / \sqrt{n}$. Utilize a padronização $Z = (\bar{X} - \mu) / EP(\bar{X})$ para calcular a probabilidade.
+  * Resolução Passo a Passo:
+    1. Passo 1: Calcular o erro padrão: $EP(\bar{X}) = 20 / \sqrt{25} = 20 / 5 = 4$.
+    2. Passo 2: Padronizar o valor da média amostral: $Z = (496 - 500) / 4 = -4 / 4 = -1$.
+    3. Passo 3: A probabilidade $P(\bar{X} < 496)$ é equivalente a $P(Z < -1)$.
+    4. Passo 4: Consultando a tabela normal padrão, $P(Z < -1) \approx 0.1587$.
+
+Questão 3: Suponha que uma população de funcionários de uma empresa apresente salários com média $\mu = 3000$ e desvio padrão $\sigma = 1000$. O departamento de RH planeja coletar uma amostra de tamanho $n$ para estimar a média salarial. Se o objetivo é que o erro padrão da média seja, no máximo, 50, qual deve ser o tamanho da amostra $n$ necessário?
+  * Dica: Utilize a fórmula do erro padrão da média: $EP(\bar{X}) = \sigma / \sqrt{n}$ e resolva para $n$.
+  * Resolução Passo a Passo:
+    1. Passo 1: Estabelecer a desigualdade: $\sigma / \sqrt{n} \le 50$.
+    2. Passo 2: Substituir os valores conhecidos: $1000 / \sqrt{n} \le 50$.
+    3. Passo 3: Isolar $\sqrt{n}$: $\sqrt{n} \ge 1000 / 50$.
+    4. Passo 4: Calcular o valor: $\sqrt{n} \ge 20$.
+    5. Passo 5: Elevar ao quadrado para obter $n$: $n \ge 400$.
+
+Questão 4: Considere uma população com média $\mu$ e variância $\sigma^2$. Seja $\bar{X} = \frac{1}{n} \sum_{i=1}^{n} X_i$ a média de uma amostra aleatória simples. Demonstre, utilizando as propriedades da esperança, que $\bar{X}$ é um estimador não-viesado de $\mu$, ou seja, $E(\bar{X}) = \mu$.
+  * Dica: Lembre-se da linearidade da esperança: $E(aX + bY) = aE(X) + bE(Y)$, e que em uma amostra aleatória simples, todos os $X_i$ têm a mesma esperança $\mu$.
+  * Resolução Passo a Passo:
+    1. Definimos o valor esperado da média amostral: $E(\bar{X}) = E\left( \frac{1}{n} \sum_{i=1}^{n} X_i \right)$.
+    2. Pela propriedade da linearidade do valor esperado, retiramos a constante $1/n$: $E(\bar{X}) = \frac{1}{n} E\left( \sum_{i=1}^{n} X_i \right)$.
+    3. Aplicamos a propriedade da somatória: $E(\bar{X}) = \frac{1}{n} \sum_{i=1}^{n} E(X_i)$.
+    4. Como cada $X_i$ provém da mesma população, $E(X_i) = \mu$ para todo $i$: $E(\bar{X}) = \frac{1}{n} \sum_{i=1}^{n} \mu$.
+    5. O somatório de uma constante $\mu$ por $n$ vezes é $n\mu$: $E(\bar{X}) = \frac{1}{n} (n\mu) = \mu$.
+    6. Concluímos, portanto, que $E(\bar{X}) = \mu$, o que caracteriza o estimador como não-viesado.
+
+Questão 5: Ainda considerando uma amostra aleatória simples de tamanho $n$ retirada de uma população com variância $\sigma^2$, demonstre que a variância da média amostral é $Var(\bar{X}) = \frac{\sigma^2}{n}$.
+  * Dica: Lembre-se que $Var(aX) = a^2 Var(X)$ e que, para variáveis aleatórias independentes, $Var(\sum X_i) = \sum Var(X_i)$.
+  * Resolução Passo a Passo:
+    1. Definimos a variância da média amostral: $Var(\bar{X}) = Var\left( \frac{1}{n} \sum_{i=1}^{n} X_i \right)$.
+    2. Utilizamos a propriedade de que $Var(aX) = a^2 Var(X)$: $Var(\bar{X}) = \frac{1}{n^2} Var\left( \sum_{i=1}^{n} X_i \right)$.
+    3. Como os elementos da amostra aleatória simples são independentes, a variância da soma é a soma das variâncias: $Var(\bar{X}) = \frac{1}{n^2} \sum_{i=1}^{n} Var(X_i)$.
+    4. Sabemos que $Var(X_i) = \sigma^2$ para todo $i$: $Var(\bar{X}) = \frac{1}{n^2} \sum_{i=1}^{n} \sigma^2$.
+    5. O somatório de $\sigma^2$ por $n$ vezes resulta em $n\sigma^2$: $Var(\bar{X}) = \frac{1}{n^2} (n\sigma^2)$.
+    6. Simplificando os termos: $Var(\bar{X}) = \frac{\sigma^2}{n}$.
+
+Questão 6: Em um processo industrial, o diâmetro de peças metálicas segue uma distribuição com desvio padrão populacional $\sigma = 0,2 \text{ mm}$. Deseja-se estimar a média populacional dos diâmetros. Se a variância do estimador $\bar{X}$ deve ser no máximo $0,001 \text{ mm}^2$, qual é o tamanho mínimo de amostra $n$ necessário para garantir essa precisão?
+  * Dica: Utilize a fórmula da variância da média amostral: $Var(\bar{X}) = \frac{\sigma^2}{n}$ e isole $n$.
+  * Resolução Passo a Passo:
+    1. A fórmula para a variância do estimador é $Var(\bar{X}) = \frac{\sigma^2}{n}$.
+    2. Temos os valores: $\sigma = 0,2$, portanto $\sigma^2 = 0,04$. O limite desejado é $Var(\bar{X}) \le 0,001$.
+    3. Substituímos na fórmula: $0,001 = \frac{0,04}{n}$.
+    4. Isolamos $n$: $n = \frac{0,04}{0,001}$.
+    5. Calculamos o valor final: $n = 40$.
+
+Questão 7: Uma empresa de \logística monitora o peso de pacotes enviados. Sabe-se que o peso de um pacote individual tem distribuição desconhecida com média $\mu = 50$ kg e variância $\sigma^2 = 100$ kg². Se uma amostra de 100 pacotes é selecionada aleatoriamente, qual a probabilidade de que a média amostral $\bar{X}$ esteja entre 48,5 kg e 51,5 kg?
+  * Dica: Use o TLC para justificar que $\bar{X} \approx N(50, 100/100)$. Calcule o erro padrão e padronize os limites.
+  * Resolução Passo a Passo:
+    1. Identificamos os parâmetros: $\mu = 50$, $\sigma^2 = 100$, logo $\sigma = 10$, e $n = 100$.
+    2. Calculamos o erro padrão da média: $EP(\bar{X}) = \frac{\sigma}{\sqrt{n}} = \frac{10}{\sqrt{100}} = \frac{10}{10} = 1$.
+    3. Aplicamos o TLC: $\bar{X} \approx N(50, 1^2)$.
+    4. Padronizamos os limites: $Z_1 = \frac{48.5 - 50}{1} = -1.5$ e $Z_2 = \frac{51.5 - 50}{1} = 1.5$.
+    5. Calculamos a probabilidade: $P(-1.5 < Z < 1.5) = \Phi(1.5) - \Phi(-1.5) = 0.9332 - 0.0668 = 0.8664$.
+
+Questão 8: Um fabricante de cilindros industriais afirma que o diâmetro médio de sua produção é de 50 mm, com um desvio padrão de 2,5 mm. Para verificar o processo, retira-se uma amostra de $n = 25$ cilindros a cada hora. Se a média amostral $\bar{X}$ for menor que 49 mm ou maior que 51 mm, o processo é considerado desregulado. Qual a probabilidade de um falso alarme (parar o processo quando ele está, na verdade, regulado)?
+  * Dica: O erro padrão é $\sigma/\sqrt{n}$. O falso alarme ocorre quando a média da amostra cai fora do intervalo crítico sob a hipótese de que o processo está sob controle ($\mu=50$).
+  * Resolução Passo a Passo:
+    1. Parâmetros: $\mu = 50$, $\sigma = 2.5$, $n = 25$.
+    2. Erro padrão: $EP(\bar{X}) = \frac{2.5}{\sqrt{25}} = \frac{2.5}{5} = 0.5$.
+    3. Regra de decisão: Parar se $\bar{X} < 49$ ou $\bar{X} > 51$.
+    4. Padronizando: $Z_{\inf} = \frac{49 - 50}{0.5} = -2$ e $Z_{\sup} = \frac{51 - 50}{0.5} = 2$.
+    5. Probabilidade de erro: $P(\bar{X} < 49) + P(\bar{X} > 51) = P(Z < -2) + P(Z > 2) = 0.0228 + 0.0228 = 0.0456$.
+
+Questão 9: Em um estudo sobre o consumo de energia em uma planta industrial, sabe-se que o consumo mensal por máquina tem uma distribuição com média $\mu = 200$ kWh e desvio padrão $\sigma = 40$ kWh. Se a planta opera 64 máquinas, qual deve ser a margem de erro $E$ tal que o consumo médio total tenha 95% de probabilidade de estar contido em $\mu \pm E$?
+  * Dica: O nível de confiança de 95% na normal padrão corresponde a $Z_{crit} \approx 1.96$. A margem de erro é $E = Z_{crit} \times EP(\bar{X})$.
+  * Resolução Passo a Passo:
+    1. Parâmetros: $\mu = 200$, $\sigma = 40$, $n = 64$.
+    2. Erro padrão: $EP(\bar{X}) = \frac{40}{\sqrt{64}} = \frac{40}{8} = 5$.
+    3. Z crítico para 95%: $P(-Z < Z < Z) = 0.95 \implies Z \approx 1.96$.
+    4. Margem de erro: $E = Z \times EP(\bar{X}) = 1.96 \times 5$.
+    5. Cálculo: $E = 9.8$ kWh.
+
+Questão 10: Um gestor de marketing deseja estimar a taxa de conversão ($p$) de uma campanha digital. Ele assume que $p = 0.10$ e decide analisar uma amostra aleatória de $n=500$ interações. Calcule o valor esperado e o erro padrão da proporção amostral $\hat{p}$ nesta configuração.
+  * Dica: Utilize as fórmulas $E(\hat{p}) = p$ e $EP(\hat{p}) = \sqrt{\frac{p(1-p)}{n}}$.
+  * Resolução Passo a Passo:
+    1. Passo 1: Identificar os parâmetros $n = 500$ e $p = 0.10$.
+    2. Passo 2: Calcular o valor esperado: $E(\hat{p}) = p = 0.10$.
+    3. Passo 3: Calcular a variância: $Var(\hat{p}) = \frac{p(1-p)}{n} = \frac{0.10 \cdot (1 - 0.10)}{500} = \frac{0.09}{500} = 0.00018$.
+    4. Passo 4: Calcular o erro padrão: $EP(\hat{p}) = \sqrt{0.00018} \approx 0.0134$.
+
+Questão 11: Compare a variabilidade da proporção amostral entre dois processos industriais: o Processo A tem taxa de defeitos $p_A = 0.05$ e o Processo B tem taxa de defeitos $p_B = 0.25$. Ambos são monitorados com amostras de tamanho $n=200$. Calcule $Var(\hat{p}_A)$ e $Var(\hat{p}_B)$ e interprete qual processo apresenta maior incerteza na estimativa da proporção.
+  * Dica: A variabilidade da proporção é dada por $Var(\hat{p}) = \frac{p(1-p)}{n}$.
+  * Resolução Passo a Passo:
+    1. Passo 1: Calcular $Var(\hat{p}_A) = \frac{0.05 \cdot (1-0.05)}{200} = \frac{0.05 \cdot 0.95}{200} = \frac{0.0475}{200} = 0.0002375$.
+    2. Passo 2: Calcular $Var(\hat{p}_B) = \frac{0.25 \cdot (1-0.25)}{200} = \frac{0.25 \cdot 0.75}{200} = \frac{0.1875}{200} = 0.0009375$.
+    3. Passo 3: Comparar os resultados: $Var(\hat{p}_B) > Var(\hat{p}_A)$.
+    4. Passo 4: Interpretação: O Processo B apresenta maior variabilidade, pois a variância da distribuição de Bernoulli é máxima quando $p=0.5$ e diminui conforme $p$ se afasta de 0.5 em direção aos extremos.
+
+Questão 12: Explique, sob a ótica da variável de Bernoulli, por que a soma de $n$ observações independentes resulta em uma variável aleatória Binomial e como a proporção amostral é derivada desse processo.
+  * Dica: Considere que cada observação $X_i \sim Bernoulli(p)$ e que $X = \sum X_i$.
+  * Resolução Passo a Passo:
+    1. Passo 1: Definir a variável de Bernoulli $X_i \in \{0, 1\}$ com $P(X_i=1) = p$.
+    2. Passo 2: Explicar que a soma $X = \sum_{i=1}^n X_i$ conta o número total de sucessos em $n$ ensaios independentes, o que define a distribuição Binomial $X \sim Bin(n, p)$.
+    3. Passo 3: A proporção amostral é definida como $\hat{p} = \frac{X}{n}$.
+    4. Passo 4: Concluir que $\hat{p}$ é a média aritmética das variáveis de Bernoulli, representando a fração observada de sucessos na amostra.
+
+Questão 13: Considere uma população finita de $N=1000$ peças produzidas por uma máquina, com variância populacional $\sigma^2 = 400$. Calcule a variância da média amostral $Var(\bar{X})$ para uma amostra de tamanho $n=50$ extraída sem reposição. Compare este resultado com a variância da média amostral que seria obtida se a amostra fosse extraída com reposição.
+  * Dica: Utilize a fórmula $Var(\bar{X}) = \frac{\sigma^2}{n} \left( \frac{N - n}{N - 1} \right)$ para o caso sem reposição e $Var(\bar{X}) = \frac{\sigma^2}{n}$ para o caso com reposição.
+  * Resolução Passo a Passo:
+    1. 1. Para o caso com reposição: $Var(\bar{X})_{\text{rep}} = \frac{\sigma^2}{n} = \frac{400}{50} = 8$.
+    2. 2. Para o caso sem reposição, aplicamos o FCPF: $Var(\bar{X})_{\text{sem rep}} = \frac{400}{50} \cdot \frac{1000 - 50}{1000 - 1}$.
+    3. 3. Realizando o cálculo do fator: $8 \cdot \frac{950}{999} \approx 8 \cdot 0,95095 = 7,6076$.
+    4. 4. Conclusão: A variância da média amostral sem reposição (7,6076) é menor que a variância com reposição (8), demonstrando a maior precisão obtida pela amostragem sem reposição em populações finitas.
+
+Questão 14: Explique, sob a ótica estatística, por que a variância da média amostral diminui quando realizamos uma amostragem sem reposição em populações finitas, em comparação à amostragem com reposição. Qual é o papel do termo $(N-n)/(N-1)$ neste processo?
+  * Dica: Reflita sobre a independência das observações e a redução da incerteza ao explorar uma fração da população.
+  * Resolução Passo a Passo:
+    1. 1. Na amostragem com reposição, cada observação $X_i$ é independente e tem a mesma distribuição, resultando em $Var(\bar{X}) = \sigma^2/n$.
+    2. 2. Na amostragem sem reposição, a seleção de um elemento altera a composição da população restante, introduzindo dependência entre as escolhas.
+    3. 3. O fator $(N-n)/(N-1)$ atua como um corretor que ajusta a variância para refletir que, ao retirarmos mais elementos da população, temos maior conhecimento da mesma, diminuindo a incerteza teórica (variância) do estimador.
+    4. 4. Quando $n$ é uma fração pequena de $N$, o fator tende a 1; quando $n$ se aproxima de $N$, o fator tende a 0, reduzindo a variância a zero no censo.
+
+Questão 15: Em um estudo populacional com $N=500$, a variância da população é $\sigma^2=100$. Compare a variância da média amostral $Var(\bar{X})$ para os seguintes tamanhos de amostra sem reposição: $n_1=50$ e $n_2=250$. Calcule ambas e discuta a magnitude da redução da variância ao aumentar a amostra.
+  * Dica: Calcule $Var(\bar{X})$ usando a fórmula $Var(\bar{X}) = \frac{\sigma^2}{n} \left( \frac{N - n}{N - 1} \right)$ para ambos os casos.
+  * Resolução Passo a Passo:
+    1. 1. Para $n_1=50$: $Var(\bar{X})_1 = \frac{100}{50} \cdot \frac{500 - 50}{500 - 1} = 2 \cdot \frac{450}{499} \approx 2 \cdot 0,9018 = 1,8036$.
+    2. 2. Para $n_2=250$: $Var(\bar{X})_2 = \frac{100}{250} \cdot \frac{500 - 250}{500 - 1} = 0,4 \cdot \frac{250}{499} \approx 0,4 \cdot 0,5010 = 0,2004$.
+    3. 3. Observação: A variância reduziu significativamente (de aproximadamente 1,80 para 0,20), não apenas pelo aumento de $n$, mas também pela ação do FCPF, que tornou-se muito menor no segundo caso.
+
+======================================================================
+                         FIM DO RELATÓRIO
+======================================================================
