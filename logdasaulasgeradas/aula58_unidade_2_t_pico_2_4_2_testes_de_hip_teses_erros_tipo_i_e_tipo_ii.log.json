@@ -1,0 +1,106 @@
+{
+    "status": "sucesso",
+    "timestamp_inicio": "2026-08-07 13:51:55",
+    "tema": "Unidade 2 - Tópico 2.4.2: Testes de hipóteses: Erros tipo I e tipo II",
+    "professor": "Luca",
+    "disciplina": "MATD38",
+    "tempo_total_segundos": 237.52,
+    "etapas": {
+        "1_indexacao_rag": {
+            "descricao": "Indexação dos Materiais de Apoio (RAG Pessoal)",
+            "status": "pulado",
+            "duracao_segundos": 0.0
+        },
+        "2_roteirista": {
+            "descricao": "Agente 1: Roteirista (Alinhamento de Escopo e Trilha)",
+            "status": "sucesso",
+            "duracao_segundos": 7.05
+        },
+        "3_escrita_revisao": {
+            "descricao": "Agente 2 + 2.5: Escritor & Revisor (Loop de Revisão Ativa)",
+            "status": "sucesso",
+            "duracao_segundos": 92.88,
+            "subtopicos": [
+                {
+                    "titulo": "A Estrutura Lógica do Processo Decisório Inferencial",
+                    "tentativas": 1,
+                    "max_tentativas": 5,
+                    "reprovacoes": 0,
+                    "feedbacks": [],
+                    "erros_api": {
+                        "429": 0,
+                        "503": 0,
+                        "outros": 0
+                    },
+                    "tempo_segundos": 15.44,
+                    "aprovado": true
+                },
+                {
+                    "titulo": "Definições Formais de Erros Inferenciais e Probabilidades Associadas",
+                    "tentativas": 2,
+                    "max_tentativas": 5,
+                    "reprovacoes": 1,
+                    "feedbacks": [
+                        "1. [CONCEITO_INTUITIVO]: Foi detectado o uso indevido de um comando LaTeX '\\sim' dentro de uma string de texto natural, o que causa erro de renderização e quebra a fluidez. SUBSTITUA: 'mas \\sim a minimização' POR: 'mas sim, a minimização'. 2. [EXEMPLO_CANONICO - PASSO_A_PASSO_SOLUCAO]: No item 2, foi detectado o uso de quebra de linha inválida '\\n' dentro do ambiente de matemática e o uso de notação fora do padrão estrito. SUBSTITUA: '$$\\alpha = P(\\bar{X} > \\bar{x}_c | \\mu = 100) = 0,05 \n Z_{crit} = 1,645$$' POR: '$$\\alpha = P(\\bar{X} > \\bar{x}_c | \\mu = 100) = 0,05 \\quad \\text{e} \\quad Z_{\\text{crit}} = 1,645$$'. 3. [EXEMPLO_CANONICO - PASSO_A_PASSO_SOLUCAO]: Em todo o bloco de solução, a notação de valor crítico deve seguir rigorosamente a tabela de símbolos (utilizando subscrito \\text{crit} em formato LaTeX). SUBSTITUA: 'Z_{crit}' POR: 'Z_{\\text{crit}}' em todas as ocorrências do campo."
+                    ],
+                    "erros_api": {
+                        "429": 0,
+                        "503": 0,
+                        "outros": 0
+                    },
+                    "tempo_segundos": 37.48,
+                    "aprovado": true
+                },
+                {
+                    "titulo": "O Equilíbrio entre Significância e Poder do Teste",
+                    "tentativas": 1,
+                    "max_tentativas": 5,
+                    "reprovacoes": 0,
+                    "feedbacks": [],
+                    "erros_api": {
+                        "429": 0,
+                        "503": 0,
+                        "outros": 0
+                    },
+                    "tempo_segundos": 20.86,
+                    "aprovado": true
+                },
+                {
+                    "titulo": "Análise da Função Característica de Operação e Aplicações",
+                    "tentativas": 1,
+                    "max_tentativas": 5,
+                    "reprovacoes": 0,
+                    "feedbacks": [],
+                    "erros_api": {
+                        "429": 0,
+                        "503": 0,
+                        "outros": 0
+                    },
+                    "tempo_segundos": 19.1,
+                    "aprovado": true
+                }
+            ]
+        },
+        "4_lapidacao_editorial": {
+            "descricao": "Agente 3.5: Editor-Chefe (Unificação e Coerência Global)",
+            "status": "sucesso",
+            "duracao_segundos": 13.35
+        },
+        "5_expansao_prosa": {
+            "descricao": "Agente 3.75: Construtor de Prosa (Expansão Exaustiva de Livro)",
+            "status": "sucesso",
+            "duracao_segundos": 38.52
+        },
+        "6_caderno_exercicios": {
+            "descricao": "Agente 3: Caderno de Exercícios (Questões Fechadas e Abertas)",
+            "status": "sucesso",
+            "duracao_segundos": 52.96
+        },
+        "7_compilacao_interface": {
+            "descricao": "Fase 6: Compilação de Interface Streamlit",
+            "status": "sucesso",
+            "duracao_segundos": 31.12
+        }
+    },
+    "timestamp_fim": "2026-08-07 13:55:53"
+}
