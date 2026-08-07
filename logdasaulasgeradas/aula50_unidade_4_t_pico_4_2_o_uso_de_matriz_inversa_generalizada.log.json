@@ -1,0 +1,136 @@
+{
+    "status": "sucesso",
+    "timestamp_inicio": "2026-08-07 12:20:09",
+    "tema": "Unidade 4 - Tópico 4.2: O uso de matriz inversa generalizada",
+    "professor": "Luca",
+    "disciplina": "MATD41",
+    "tempo_total_segundos": 454.91,
+    "etapas": {
+        "1_indexacao_rag": {
+            "descricao": "Indexação dos Materiais de Apoio (RAG Pessoal)",
+            "status": "pulado",
+            "duracao_segundos": 0.0
+        },
+        "2_roteirista": {
+            "descricao": "Agente 1: Roteirista (Alinhamento de Escopo e Trilha)",
+            "status": "sucesso",
+            "duracao_segundos": 15.21
+        },
+        "3_escrita_revisao": {
+            "descricao": "Agente 2 + 2.5: Escritor & Revisor (Loop de Revisão Ativa)",
+            "status": "sucesso",
+            "duracao_segundos": 297.58,
+            "subtopicos": [
+                {
+                    "titulo": "Limitações da Inversão de Matrizes e o Conceito de Inversa Condicional",
+                    "tentativas": 5,
+                    "max_tentativas": 5,
+                    "reprovacoes": 5,
+                    "feedbacks": [
+                        "1. [CONTEUDO_FORMAL]: O uso de '~' dentro de frases LaTeX é informal e inadequado. SUBSTITUA: 'mas \\sim uma forma' POR: 'mas \\text{, na verdade, uma forma}'. 2. [PROPRIEDADES_DO_CONCEITO]: A utilização de '\\sim' para simetria é notação LaTeX para o símbolo de til, não para o adjetivo 'simétrica'. SUBSTITUA: 'uma matriz \\simétrica' POR: 'uma matriz \\text{simétrica}'. 3. [PRE_REQUISITOS_E_AUXILIARES]: O uso de '\\sim' para simetria é incorreto. SUBSTITUA: 'matrizes \\simétricas' POR: 'matrizes \\text{simétrica}'. 4. [FONTES_RAG]: [ERRO BIBLIOGRÁFICO] O modelo omitiu as páginas exatas consultadas nos documentos do RAG, fornecendo intervalos que não parecem mapear a precisão necessária. Por favor, verifique se 'pp. 5-10' na Aula 9 e 'pp. 49-51' no livro de Luna & Esteves correspondem estritamente à definição e ao exemplo apresentado.",
+                        "1. [ERRO DE NOTAÇÃO/LATEX]: O uso de '\\simétrica' ou '\\simétricas' viola a regra de não inserir palavras soltas em português dentro de ambientes matemáticos sem '\\text{}'. SUBSTITUA: '\\simétrica' POR: '\\text{simétrica}'. 2. [ERRO DE DIMENSÃO MATRICIAL NO EXEMPLO CANÔNICO]: A matriz A é de dimensão 4x3, portanto, o vetor de resultados 'g' deve ter 4 elementos e a inversa condicional 'A^{-}' deve ter dimensão 3x4. O exemplo atual usa 'g' com 3 elementos e 'A^{-}' como matriz 3x3. SUBSTITUA: 'g = \\begin{pmatrix} 14 \\\\ 6 \\\\ 8 \\end{pmatrix}' POR um vetor de 4 elementos compatível com A e ajuste a matriz A^{-} para 3x4. 3. [INCONSISTÊNCIA DE VARIÁVEIS]: No exemplo, o texto muda a notação da matriz original de A para X repentinamente. Mantenha a consistência da variável. SUBSTITUA: 'X^{\\top}X' POR 'A^{\\top}A'. 4. [RIGOR DIDÁTICO]: As propriedades do conceito devem utilizar '\\text{simétrica}' em vez de '\\simétrica'. Além disso, o símbolo de transposta deve ser sempre \\top e nunca 'T' ou comandos similares não padronizados. 5. [FORMALISMO]: No conceito formal, a notação A_{(n \\times m)} deve ser escrita como A_{n \\times m} para conformidade com a notação de matrizes padrão da disciplina.",
+                        "1) [CAMPO AFETADO]: 'pre_requisitos_e_auxiliares'. [MOTIVO DETALHADO]: A lista contém o uso incorreto de barras invertidas no termo '\\simétricas', violando a notação LaTeX padrão que não exige escape para palavras comuns, e desvia da terminologia acadêmica exigida. [INSTRUÇÃO DE CORREÇÃO]: SUBSTITUA: 'Conceitos de matrizes idempotentes e matrizes \\simétricas.' POR: 'Conceitos de matrizes idempotentes e matrizes simétricas.'. 2) [CAMPO AFETADO]: 'conceito_formal'. [MOTIVO DETALHADO]: Ausência de explicação detalhada para cada símbolo da definição $A A^{-} A = A$, conforme a diretriz de exigência de riqueza explicativa para equações. [INSTRUÇÃO DE CORREÇÃO]: SUBSTITUA: 'Onde $A_{n \\times m}$ é uma matriz real com posto $r(A) = k$. A matriz $A^{-}_{m \\times n}$ é denominada inversa condicional de $A$ se, e somente se, ela satisfaz a condição fundamental acima.' POR: 'Onde $A_{n \\times m}$ é uma matriz de dimensão $n \times m$ com posto $r(A) = k$. A matriz $A^{-}_{m \\times n}$ é denominada inversa condicional (ou generalizada) de $A$ se, e somente se, ela satisfaz a condição fundamental $A A^{-} A = A$. Os subscritos $n \times m$ e $m \times n$ indicam as dimensões das matrizes, sendo $n$ o número de linhas e $m$ o número de colunas.'. 3) [CAMPO AFETADO]: 'deducao_formal_passo_a_passo'. [MOTIVO DETALHADO]: O último passo contém uma falha lógica na explicação da verificação: a dedução está correta, mas falta clareza na explicação do termo $(I - A^{-} A) h$. [INSTRUÇÃO DE CORREÇÃO]: SUBSTITUA: 'Verificamos que, sob a condição $A A^{-} A = A$, o vetor $x$ satisfaz o sistema original para qualquer vetor $h$, demonstrando que $A^{-}$ fornece uma solução válida quando o sistema é consistente.' POR: 'Verificamos que, sob a condição $A A^{-} A = A$, o termo $A(I - A^{-} A) h$ resulta em $(A - A A^{-} A) h = (A - A) h = 0$, demonstrando que $A^{-}g$ é de fato uma solução particular que satisfaz o sistema original quando ele é consistente.'",
+                        "1. [CAMPO AFETADO]: 'conceito_intuitivo'. [MOTIVO DETALHADO]: O uso de '\\inúmeras' é um erro sintático de LaTeX (comando desconhecido). [INSTRUÇÃO DE CORREÇÃO]: SUBSTITUA 'encontramos \\inúmeras situações' POR 'encontramos inúmeras situações'. 2. [CAMPO AFETADO]: 'conceito_formal'. [MOTIVO DETALHADO]: O termo 'Onde' está fora do ambiente LaTeX de forma desconexa. [INSTRUÇÃO DE CORREÇÃO]: SUBSTITUA '$$A A^{-} A = A$$ Onde' POR '$$A A^{-} A = A$$, onde'. 3. [CAMPO AFETADO]: 'pre_requisitos_e_auxiliares'. [MOTIVO DETALHADO]: Uso indevido de comandos LaTeX '\\simétricas' em texto. [INSTRUÇÃO DE CORREÇÃO]: SUBSTITUA 'matrizes \\simétricas' POR 'matrizes simétricas'. 4. [CAMPO AFETADO]: 'deducao_formal_passo_a_passo'. [MOTIVO DETALHADO]: A explicação da notação deve ser rigorosa. Embora a matemática esteja correta, certifique-se de que os símbolos como $g$ e $h$ sigam o padrão de itálico LaTeX corretamente em todo o documento.",
+                        "1. [CAMPO AFETADO]: 'pre_requisitos_e_auxiliares'. [MOTIVO DETALHADO]: Uso de caracteres de escape inválidos para LaTeX dentro de um campo de lista string ('\\simétricas'). O símbolo de barra invertida em 'simétricas' está escapado incorretamente. [INSTRUÇÃO DE CORREÇÃO]: SUBSTITUA: 'Conceitos de matrizes idempotentes e matrizes \\simétricas' POR: 'Conceitos de matrizes idempotentes e matrizes simétricas'. 2. [CAMPO AFETADO]: 'conceito_formal'. [MOTIVO DETALHADO]: A definição LaTeX apresenta palavras em português fora do comando \\text{...}, o que é proibido pelas diretrizes de renderização do KaTeX. [INSTRUÇÃO DE CORREÇÃO]: SUBSTITUA: 'A matriz $A^{-}_{m \\times n}$ é denominada inversa condicional (ou generalizada) de $A$ se, e somente se, ela satisfaz a condição fundamental $A A^{-} A = A$. Os subscritos $n \\times m$ e $m \\times n$ indicam as dimensões das matrizes, sendo $n$ o número de linhas e $m$ o número de colunas.' POR: 'A matriz $A^{-}_{m \\times n}$ é denominada inversa condicional (ou generalizada) de $A$ se, e somente se, ela satisfaz a condição fundamental $A A^{-} A = A$. Os subscritos $n \\times m$ e $m \\times n$ indicam as dimensões das matrizes, sendo $n$ o número de linhas e $m$ o número de colunas. \n\n $$A A^{-} A = A$$ \text{ onde } A_{n \\times m} \text{ é uma matriz de dimensão } n \\times m \text{ com posto } r(A) = k.' 3. [CAMPO AFETADO]: 'deducao_formal_passo_a_passo'. [MOTIVO DETALHADO]: Falta de uso de \\text{...} para textos dentro de blocos matemáticos ou notação inadequada para variáveis explicativas. [INSTRUÇÃO DE CORREÇÃO]: SUBSTITUA: 'Verificamos que, sob a condição $A A^{-} A = A$, o termo $A(I - A^{-} A) h$ resulta em $(A - A A^{-} A) h = (A - A) h = 0$, demonstrando que $A^{-}g$ é de fato uma solução particular que satisfaz o sistema original quando ele é consistente.' POR: 'Verificamos que, sob a condição $A A^{-} A = A$, o termo $A(I - A^{-} A) h$ resulta em $(A - A A^{-} A) h = (A - A) h = 0$, demonstrando que $x^o = A^{-}g$ é de fato uma solução particular que satisfaz o sistema original quando ele é consistente.'"
+                    ],
+                    "erros_api": {
+                        "429": 0,
+                        "503": 0,
+                        "outros": 0
+                    },
+                    "tempo_segundos": 85.04,
+                    "aprovado": false
+                },
+                {
+                    "titulo": "A Arquitetura da Inversa de Moore-Penrose: Definição, Existência e Unicidade",
+                    "tentativas": 3,
+                    "max_tentativas": 5,
+                    "reprovacoes": 2,
+                    "feedbacks": [
+                        "O conteúdo apresenta erros sistemáticos de sintaxe LaTeX e violação de diretrizes notacionais conforme exigido. 1) [CAMPO AFETADO]: 'propriedades_do_conceito', 'pre_requisitos_e_auxiliares', 'exemplo_canonico'. [MOTIVO DETALHADO]: Uso incorreto do comando LaTeX '\\simétricas'. O comando '\\sim' é um operador de relação matemática (til). Palavras em português não devem ser precedidas por backslash. [INSTRUÇÃO DE CORREÇÃO]: SUBSTITUA '\\simétricas' POR 'simétricas'. 2) [CAMPO AFETADO]: 'propriedades_do_conceito'. [MOTIVO DETALHADO]: O uso de notação informal para o posto da matriz pode gerar ambiguidade. A notação padrão para posto deve ser escrita com texto em modo matemático. [INSTRUÇÃO DE CORREÇÃO]: SUBSTITUA 'r(A)' POR '\\text{posto}(A)'. 3) [CAMPO AFETADO]: 'conceito_formal'. [MOTIVO DETALHADO]: As descrições textuais das condições de Penrose precisam ser mais integradas ao ambiente matemático. [INSTRUÇÃO DE CORREÇÃO]: GARANTA que todo texto explicativo acompanhando fórmulas siga o padrão '\\text{ }'. 4) [CAMPO AFETADO]: 'exemplo_canonico'. [MOTIVO DETALHADO]: A dedução exige mais rigor formal ao descrever o uso da DVS ou decomposição. [INSTRUÇÃO DE CORREÇÃO]: SUBSTITUA 'A matriz X é \\simétrica' POR 'A matriz $X$ é simétrica'.",
+                        "1. [CAMPO AFETADO]: 'conceito_formal'. [MOTIVO DETALHADO]: Uso de comando LaTeX não padrão '\\nobreak' dentro da definição, o que pode causar erros de renderização. Além disso, há mistura de texto livre com blocos matemáticos de forma inconsistente em relação à norma acadêmica solicitada. [INSTRUÇÃO DE CORREÇÃO]: SUBSTITUA: 'Seja $A \\nobreak \\text{ uma matriz...' POR: 'Seja $A$ uma matriz de dimensão $(n \\times m)$ sobre o corpo dos números reais. A inversa generalizada de Moore-Penrose, denotada por $A^{+}$, é a única matriz $(m \\times n)$ que satisfaz as quatro condições de Penrose:' 2. [CAMPO AFETADO]: 'propriedades_do_conceito'. [MOTIVO DETALHADO]: Erro de sintaxe LaTeX ao utilizar '\\\\simétricas' (comando inválido ou mal formatado). O uso de duplas barras invertidas para texto comum está incorreto. [INSTRUÇÃO DE CORREÇÃO]: SUBSTITUA: '\\\\simétricas' POR: '\\text{simétricas}'. Aplique essa correção em todos os itens da lista onde '\\\\' foi usado indevidamente antes de palavras. 3. [CAMPO AFETADO]: 'fontes_rag'. [MOTIVO DETALHADO]: Embora o conteúdo utilize o RAG, a notação de páginas deve ser exata. O conteúdo atual está correto, mas certifique-se de que a formatação não contenha espaços ou caracteres extras que possam quebrar a estrutura. O campo está aprovado no requisito de metadados, mas a revisão do texto principal requer atenção técnica."
+                    ],
+                    "erros_api": {
+                        "429": 0,
+                        "503": 0,
+                        "outros": 0
+                    },
+                    "tempo_segundos": 51.28,
+                    "aprovado": true
+                },
+                {
+                    "titulo": "Algoritmos Computacionais e Métodos de Cálculo da Inversa Generalizada",
+                    "tentativas": 5,
+                    "max_tentativas": 5,
+                    "reprovacoes": 5,
+                    "feedbacks": [
+                        "1. [CONCEITO_FORMAL]: O texto contém palavras soltas em português dentro de blocos matemáticos LaTeX, violando a regra de renderização do KaTeX. SUBSTITUA: '$$A^{+} = C^{\\top} (CC^{\\top})^{-1} (B^{\\top} B)^{-1} B^{\\top}$$ Onde $U$ e $V$ são matrizes ortogonais que contêm os vetores singulares à esquerda e à direita, respectivamente, e $\\Lambda^{1/2}$ é a matriz diagonal contendo os valores singulares. O algoritmo de Dwivedi permite encontrar $B$ e $C$ através de uma série de passos iterativos de decomposição em produtos externos de vetores, encerrando o processo após $k$ passos, onde $k$ é o posto da matriz.' POR: '$$A^{+} = C^{\\top} (CC^{\\top})^{-1} (B^{\\top} B)^{-1} B^{\\top}$$ \\text{Onde } U \\text{ e } V \\text{ são matrizes ortogonais que contêm os vetores singulares à esquerda e à direita, respectivamente, e } \\Lambda^{1/2} \\text{ é a matriz diagonal contendo os valores singulares. O algoritmo de Dwivedi permite encontrar } B \\text{ e } C \\text{ através de uma série de passos iterativos de decomposição em produtos externos de vetores, encerrando o processo após } k \\text{ passos, onde } k \\text{ é o posto da matriz.}'. 2. [DEDUCAO_FORMAL_PASSO_A_PASSO]: Erro de renderização por palavras em português dentro do LaTeX. SUBSTITUA: 'Partimos da decomposição $A = BC$, onde $B$ e $C$ possuem posto completo $k$.' POR: 'Partimos da decomposição $A = BC$, \\text{ onde } B \\text{ e } C \\text{ possuem posto completo } k.'. 3. [EXEMPLO_CANONICO]: Termos explicativos dentro do LaTeX violam o padrão de renderização. SUBSTITUA: 'Passo 1: Selecionar $a_{11} = 4$. Calcular $u_1 = \\frac{1}{4}(4, 2, 2)^{\\top} = (1, 0.5, 0.5)^{\\top}$ e $v_1^{\\top} = (4, 2, 2)$.' POR: 'Passo 1: \\text{Selecionar } a_{11} = 4. \\text{ Calcular } u_1 = \\frac{1}{4}(4, 2, 2)^{\\top} = (1, 0.5, 0.5)^{\\top} \\text{ e } v_1^{\\top} = (4, 2, 2).'.",
+                        "1. [CAMPO AFETADO]: 'conceito_formal'. [MOTIVO DETALHADO]: O bloco contém uma mistura inadequada de sintaxe matemática (ambiente de exibição $$) com prosa em português, violando as diretrizes de renderização do KaTeX. A prosa explicativa deve ser separada ou estar adequadamente contida em blocos \\text{...}. Além disso, a notação de dimensão e operadores deve seguir o padrão LaTeX exigido. [INSTRUÇÃO DE CORREÇÃO]: SUBSTITUA: '$$A^{+} = C^{\\top} (CC^{\\top})^{-1} (B^{\\top} B)^{-1} B^{\\top} \\text{ onde } A = BC \\text{ com } r(A) = r(B) = r(C) = k.$$ \\text{Onde } A \\text{ é a matriz original de dimensão } (n \\times m) \\text{ e posto } k, B \\text{ é uma matriz de dimensão } (n \\times k) \\text{ com posto coluna completo } k, \\text{ e } C \\text{ é uma matriz de dimensão } (k \\times m) \\text{ com posto linha completo } k. \\text{ Esta representação, obtida via algoritmos como o de Dwivedi, permite o cálculo da inversa de Moore-Penrose } A^{+} \\text{ através de submatrizes de posto completo.}' POR: 'A inversa de Moore-Penrose é definida por $$A^{+} = C^{\\top}(CC^{\\top})^{-1}(B^{\\top}B)^{-1}B^{\\top}$$, onde $$A = BC$$. Aqui, $$A$$ é a matriz original de dimensão $$(n \\times m)$$ e posto $$k$$, $$B$$ é uma matriz de dimensão $$(n \\times k)$$ com posto coluna completo $$k$$, e $$C$$ é uma matriz de dimensão $$(k \\times m)$$ com posto linha completo $$k$$. Esta representação, obtida via algoritmos como o de Dwivedi, permite o cálculo da inversa de Moore-Penrose $$A^{+}$$ através de submatrizes de posto completo.' 2. [CAMPO AFETADO]: 'deducao_formal_passo_a_passo'. [MOTIVO DETALHADO]: Há frases como 'Verificamos a condição (a) de Penrose' sem a devida indexação LaTeX para os termos, tornando o texto menos legível como documento acadêmico. [INSTRUÇÃO DE CORREÇÃO]: Adicione delimitação LaTeX em todas as variáveis, como $$AA^{+}A = A$$, e garanta que todas as passagens algébricas estejam em blocos de parágrafos coerentes.",
+                        "1. [CONTEÚDO_FORMAL]: O uso de \"Inversa de Moore-Penrose\" sem explicar a notação $A^{+}$ ou as quatro condições de Penrose explicitamente no texto formal viola a diretriz de profundidade. 2. [DEDUÇÃO_FORMAL]: O uso de textos como '\\text{ onde }' dentro de equações é aceitável, mas há inconsistências de renderização no LaTeX como '..}' ao final de linhas. 3. [EXEMPLO_CANÔNICO]: O exemplo utiliza uma notação de matriz $A = \\begin{pmatrix} 4 & 2 & 2 \\\\ 2 & 2 & 0 \\\\ 2 & 0 & 2 \\end{pmatrix}$, contudo, o passo a passo precisa de mais rigor explicativo. 4. [ERRO BIBLIOGRÁFICO]: As fontes indicadas não possuem os números de páginas conferíveis com o conteúdo acadêmico citado na disciplina de modelos lineares. SUBSTITUA: 'pp. 34-37' POR: 'pp. 34-37, seção 1.6' e 'pp. 6-10' POR: 'pp. 6-10, cap. 9'. 5. [NOTAÇÃO]: O uso de 'u_1' e 'v_1' sem definir que estes provêm da decomposição em posto completo é vago. SUBSTITUA: 'u_1 = \frac{1}{4}(4, 2, 2)^{\top}' POR: 'u_1 = \frac{1}{a_{11}} \text{col}_1(A) = \frac{1}{4}(4, 2, 2)^{\top}'.",
+                        "1. [CAMPO AFETADO]: 'conceito_formal'. [MOTIVO DETALHADO]: Uso de notação inadequada para o posto. A notação exigida para graus de liberdade ou posto deve ser consistente e o texto exige clareza acadêmica total ao descrever os símbolos. [INSTRUÇÃO DE CORREÇÃO]: SUBSTITUA: 'posto $$k$$' POR: 'posto $$k$$ (onde $$k = r(A)$$)'. 2. [CAMPO AFETADO]: 'deducao_formal_passo_a_passo'. [MOTIVO DETALHADO]: Erro de sintaxe LaTeX. O uso de blocos de texto soltos dentro ou fora dos delimitadores $$ $$ deve ser consistente com o padrão de renderização. Além disso, falta explicitar a relação do posto $$r(A)=k$$ na dedução. [INSTRUÇÃO DE CORREÇÃO]: SUBSTITUA: 'Partimos da decomposição de posto completo $$A = BC$$, \\text{ onde } B \\text{ é } (n \\times k) \\text{ e } C \\text{ é } (k \\times m) \\text{ com } r(B) = r(C) = k.' POR: 'Partimos da decomposição de posto completo $$A = BC$$, \text{ onde } B \text{ é } (n \times k) \text{ e } C \text{ é } (k \times m) \text{ com posto coluna completo } r(B) = k \text{ e posto linha completo } r(C) = k.'. 3. [CAMPO AFETADO]: 'exemplo_canonico'. [MOTIVO DETALHADO]: A notação de vetores transpostos no exemplo precisa seguir o rigor da notação matricial padrão. [INSTRUÇÃO DE CORREÇÃO]: SUBSTITUA: 'v_1^{\\top} = (4, 2, 2)' POR: 'v_1^{\\top} = \begin{pmatrix} 4 & 2 & 2 \\\\\\end{pmatrix}' em todos os passos onde vetores linha são representados. 4. [CAMPO AFETADO]: 'fontes_rag'. [MOTIVO DETALHADO]: O capítulo 'Aula 9' não é uma referência bibliográfica técnica robusta conforme exigido pela literatura acadêmica padrão. [INSTRUÇÃO DE CORREÇÃO]: SUBSTITUA: 'Aula 9: Inversa Generalizada de Matrizes' POR: 'Notas de Aula: Álgebra Linear Aplicada'.",
+                        "1. [CAMPO AFETADO]: 'propriedades_do_conceito', 'pre_requisitos_e_auxiliares', 'condicoes_de_contorno'. [MOTIVO DETALHADO]: O Escritor utilizou a contrabarra dupla com caracteres especiais (como '\\simétricas') fora do modo LaTeX, o que quebra a renderização. Além disso, 'cap.' dentro das fontes e outros textos deve seguir a padronização formal LaTeX. [INSTRUÇÃO DE CORREÇÃO]: SUBSTITUA: '\\simétricas' POR: 'simétricas' (ou '\\text{simétricas}' se dentro de ambiente matemático). 2. [CAMPO AFETADO]: 'fontes_rag'. [MOTIVO DETALHADO]: [ERRO BIBLIOGRÁFICO] O modelo omitiu a especificação precisa de páginas para a fonte de Bispo, N., tratando o capítulo como paginação. [INSTRUÇÃO DE CORREÇÃO]: SUBSTITUA: 'pp. 6-10, \\cap. 9' POR: 'pp. 6-10' (certifique-se de que o campo 'capitulo' contenha apenas o nome do capítulo e 'paginas_utilizadas' contenha o intervalo numérico exato). 3. [CAMPO AFETADO]: 'conceito_formal'. [MOTIVO DETALHADO]: Ausência de explicação detalhada para cada símbolo (como o que representa U, V, e os elementos da diagonal). [INSTRUÇÃO DE CORREÇÃO]: Adicione após a fórmula: 'Onde $U$ e $V$ são as matrizes de vetores singulares, e $\\Lambda^{1/2}$ é a matriz diagonal de valores singulares.'"
+                    ],
+                    "erros_api": {
+                        "429": 0,
+                        "503": 0,
+                        "outros": 0
+                    },
+                    "tempo_segundos": 85.28,
+                    "aprovado": false
+                },
+                {
+                    "titulo": "Aplicações em Modelos de Posto Incompleto e Sistemas de Equações Normais",
+                    "tentativas": 1,
+                    "max_tentativas": 5,
+                    "reprovacoes": 0,
+                    "feedbacks": [],
+                    "erros_api": {
+                        "429": 0,
+                        "503": 0,
+                        "outros": 0
+                    },
+                    "tempo_segundos": 23.47,
+                    "aprovado": true
+                },
+                {
+                    "titulo": "Propriedades Fundamentais e Álgebra das Inversas Generalizadas",
+                    "tentativas": 3,
+                    "max_tentativas": 5,
+                    "reprovacoes": 2,
+                    "feedbacks": [
+                        "1. [CAMPO AFETADO]: 'propriedades_do_conceito'. [MOTIVO DETALHADO]: Uso indevido de contra-barra antes de palavras comuns, resultando em comandos LaTeX inexistentes e inválidos. [INSTRUÇÃO DE CORREÇÃO]: SUBSTITUA: 'Se A é \\simétrica, então $A^{+}$ também é \\simétrica.' POR: 'Se A é simétrica, então $A^{+}$ também é simétrica.' 2. [CAMPO AFETADO]: 'propriedades_do_conceito'. [MOTIVO DETALHADO]: Uso de contra-barra antes da palavra 'simétricas' resultando em comando inexistente. [INSTRUÇÃO DE CORREÇÃO]: SUBSTITUA: 'As matrizes $AA^{+}$ e $A^{+}A$ são \\simétricas e idempotentes.' POR: 'As matrizes $AA^{+}$ e $A^{+}A$ são simétricas e idempotentes.'",
+                        "1. [CONCEITO_FORMAL]: Violou a diretriz 2a (palavras em português dentro do LaTeX sem \text). O comentário 'o que implica que' está fora de um ambiente \text. 2. [PROPRIEDADES_DO_CONCEITO]: Violou a diretriz 2a. A expressão 'isto é' deve estar dentro de \text{...} ou fora do delimitador $. 3. [DEDUCAO_FORMAL_PASSO_A_PASSO]: Violou a diretriz 2a. O trecho 'A idempotência de...' contém texto descritivo misturado com LaTeX sem a devida segregação. 4. [EXEMPLO_CANONICO]: Embora numericamente correto, a notação $X^{\top}X$ e os vetores resultantes devem ter atenção redobrada à legibilidade. 5. [NOTACAO]: A diretriz de estilo para Estatística de Regressão Linear exige que $e_i$ seja usado para resíduos, e embora o texto esteja coerente, é necessário garantir que todos os símbolos como $\\bar{y}_{1.}$ sigam a padronização de nomenclatura de índices do curso (subscritos alinhados). 6. SUBSTITUA: 'que se observem as propriedades de invariância.' POR: 'que se observem as propriedades de invariância \text{ (definidas pela invariância da projeção orthogonal)}.' 7. SUBSTITUA: '$AA^{l} = (AA^{l})^{\\top}$ \n\nEm que: \n- $A$ é a matriz original de dimensão $(m \\times n)$ com posto $r(A) = k$. \n- $A^{l}$ é a inversa de mínimos quadrados (também denominada inversa condicional). \n- A condição (1) garante a consistência do sistema de equações normais associado. \n- A condição (2) assegura que o produto $AA^{l}$ seja \\simétrico, o que implica que $AA^{l}$ atua como um projetor ortogonal sobre o espaço coluna de $A$.' POR: '$AA^{l} = (AA^{l})^{\\top}$ \\text{, em que: } A \\text{ é a matriz original de dimensão } (m \\times n) \\text{ com posto } r(A) = k; A^{l} \\text{ é a inversa de mínimos quadrados (denominada inversa condicional); a condição (1) garante a consistência do sistema de equações normais associado; a condição (2) assegura que o produto } AA^{l} \\text{ seja simétrico, implicando que } AA^{l} \\text{ atua como projetor ortogonal sobre o espaço coluna de } A$.'"
+                    ],
+                    "erros_api": {
+                        "429": 0,
+                        "503": 0,
+                        "outros": 0
+                    },
+                    "tempo_segundos": 52.53,
+                    "aprovado": true
+                }
+            ]
+        },
+        "4_lapidacao_editorial": {
+            "descricao": "Agente 3.5: Editor-Chefe (Unificação e Coerência Global)",
+            "status": "sucesso",
+            "duracao_segundos": 11.21
+        },
+        "5_expansao_prosa": {
+            "descricao": "Agente 3.75: Construtor de Prosa (Expansão Exaustiva de Livro)",
+            "status": "sucesso",
+            "duracao_segundos": 20.94
+        },
+        "6_caderno_exercicios": {
+            "descricao": "Agente 3: Caderno de Exercícios (Questões Fechadas e Abertas)",
+            "status": "sucesso",
+            "duracao_segundos": 78.76
+        },
+        "7_compilacao_interface": {
+            "descricao": "Fase 6: Compilação de Interface Streamlit",
+            "status": "sucesso",
+            "duracao_segundos": 28.42
+        }
+    },
+    "timestamp_fim": "2026-08-07 12:27:44"
+}
