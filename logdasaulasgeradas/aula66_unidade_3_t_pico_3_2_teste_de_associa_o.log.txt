@@ -1,0 +1,346 @@
+======================================================================
+       RELATÓRIO DE AUDITORIA E HISTÓRICO COMPLETO DA AULA
+======================================================================
+Tema Global: Unidade 3 - Tópico 3.2: Teste de associação
+Professor: Luca
+Disciplina: MATD38
+Início da Geração: 2026-08-07 15:14:21
+Fim da Geração: 2026-08-07 15:18:28
+Tempo Total: 247.27 segundos
+Status Final: SUCESSO
+======================================================================
+
+----------------------------------------------------------------------
+1. CRONOGRAMA E MÉTRICAS DAS ETAPAS DE DESENVOLVIMENTO
+----------------------------------------------------------------------
+- Indexação dos Materiais de Apoio (RAG Pessoal):
+  * Status: pulado
+  * Duração: 0.0 segundos
+- Agente 1: Roteirista (Alinhamento de Escopo e Trilha):
+  * Status: sucesso
+  * Duração: 6.71 segundos
+- Agente 2 + 2.5: Escritor & Revisor (Loop de Revisão Ativa):
+  * Status: sucesso
+  * Duração: 90.92 segundos
+- Agente 3.5: Editor-Chefe (Unificação e Coerência Global):
+  * Status: sucesso
+  * Duração: 15.45 segundos
+- Agente 3.75: Construtor de Prosa (Expansão Exaustiva de Livro):
+  * Status: sucesso
+  * Duração: 46.04 segundos
+- Agente 3: Caderno de Exercícios (Questões Fechadas e Abertas):
+  * Status: sucesso
+  * Duração: 56.71 segundos
+- Fase 6: Compilação de Interface Streamlit:
+  * Status: sucesso
+  * Duração: 30.26 segundos
+
+
+----------------------------------------------------------------------
+2. HISTÓRICO DE PRODUÇÃO DOS CONTEÚDOS E PROSA EXPANDIDA
+----------------------------------------------------------------------
+
+[Subtópico 1]: A Lógica das Tabelas de Contingência e a Hipótese de Independência
+----------------------------------------
+  * Auditoria do Revisor Científico:
+    - Tentativas do Escritor: 1
+    - Reprovações do Revisor: 0
+    - Retentativas de API de Rede: 0 (429: 0, 503/Timeout: 0, Outros: 0)
+
+>>> A) PROSA BASE GERADA:
+As tabelas de contingência representam a base da análise estatística para dados categóricos, permitindo o exame simultâneo de duas variáveis. A estrutura bidimensional destas tabelas facilita a observação de como as frequências de uma categoria se distribuem em relação a outra, permitindo investigar a existência de associações estatísticas entre elas. O cerne deste tópico reside na validação da hipótese de independência, confrontando as frequências observadas com o modelo hipotético de ausência de relação, onde as frequências esperadas são derivadas através do produto das probabilidades marginais.
+
+>>> B) FORMALISMO MATEMÁTICO (LaTeX):
+$$H_0: p_{ij} = p_{i.} \cdot p_{.j}, \quad \forall i=1, \dots, r; \, j=1, \dots, s$$ $$E_{ij} = \frac{n_{i.} \cdot n_{.j}}{n} \quad \text{e} \quad \chi^2_{\text{calc}} = \sum_{i=1}^{r} \sum_{j=1}^{s} \frac{(O_{ij} - E_{ij})^2}{E_{ij}}$$
+
+>>> C) PROSA EXPANDIDA FINAL DE LIVRO DIDÁTICO:
+# A Lógica das Tabelas de Contingência e a Hipótese de Independência
+
+A análise de dados estatísticos transcende a mera descrição de variáveis isoladas, alcançando sua plenitude quando somos capazes de investigar a relação intrínseca entre dois fenômenos qualitativos. No cerne dessa investigação encontra-se a tabela de contingência, uma ferramenta robusta e elegante, frequentemente denominada de tabela de dupla entrada ou tabulação cruzada. Historicamente, a necessidade de estruturar frequências categóricas surgiu diante da limitação dos modelos contínuos em explicar fenômenos sociais e biológicos onde a observação se dá por classificação. Antes da consolidação dos métodos qui-quadrado, o pensamento estatístico era predominantemente voltado para a comparação de médias; contudo, a ciência exigia uma métrica para a "associação" entre categorias. A tabela de contingência preenche essa lacuna ao organizar as contagens amostrais em uma matriz de $r$ linhas e $s$ colunas, onde cada célula, denotada pelo índice $ij$, representa a interseção de uma categoria da variável linha com uma categoria da variável coluna.
+
+Ao estruturarmos um conjunto de dados sob o formato de uma tabela de contingência, nosso objetivo primordial não é apenas descrever o comportamento de cada variável de forma marginal, mas sim testar a existência de uma dependência estrutural entre elas. A questão fundamental que o estatístico deve formular é: "as frequências observadas $O_{ij}$ nas células da tabela divergem significativamente daquilo que esperaríamos ver se as variáveis fossem totalmente independentes?". Para responder a essa interrogação, estabelecemos o formalismo da hipótese de independência, representada pela hipótese nula $H_0$. Sob o paradigma da independência estatística, a probabilidade de uma observação cair na célula $ij$, denotada por $p_{ij}$, deve ser estritamente igual ao produto das probabilidades marginais das categorias correspondentes. Formalmente, definimos a nossa hipótese de nulidade como:
+
+$$H_0: p_{ij} = p_{i.} \cdot p_{.j}, \quad \forall i=1, \dots, r; \, j=1, \dots, s$$
+
+Nesta expressão, $p_{i.}$ representa a probabilidade marginal da linha $i$ e $p_{.j}$ a probabilidade marginal da coluna $j$. A beleza deste modelo reside na sua simplicidade teórica: se não existe relação entre os fatores, o conhecimento da categoria de um indivíduo em uma variável não fornece nenhuma informação adicional sobre a sua categoria na outra variável. Consequentemente, a frequência esperada $E_{ij}$ em cada célula, sob a vigência de $H_0$, torna-se o produto da proporção esperada pela amostra total $n$. Ao substituirmos as probabilidades desconhecidas pelos seus estimadores amostrais, as frequências marginais observadas ($n_{i.}$ e $n_{.j}$), derivamos a fórmula operacional das frequências esperadas:
+
+$$E_{ij} = \frac{n_{i.} \cdot n_{.j}}{n}$$
+
+Este cálculo é, em essência, o cálculo de uma "proporção teórica". Estamos, na prática, distribuindo o total amostral $n$ entre as células da tabela de forma proporcional ao peso que cada linha e cada coluna exerce sobre o total, como se estivéssemos preenchendo a tabela sob condições de absoluta aleatoriedade, onde a sorte seria o único fator determinante da frequência. Quando os valores observados $O_{ij}$ se afastam sistematicamente desses valores esperados $E_{ij}$, somos levados a suspeitar que a hipótese de independência não se sustenta, sugerindo que a variável linha exerce, de alguma forma, uma influência ou associação sobre a variável coluna.
+
+Para quantificar esse afastamento, utilizamos a estatística qui-quadrado de Pearson. A lógica por trás dessa estatística é medir a soma dos quadrados das diferenças normalizadas. Ao subtrairmos a frequência esperada da observada ($O_{ij} - E_{ij}$), estamos capturando o resíduo ou o erro de predição do nosso modelo de independência. O ato de elevar ao quadrado garante que desvios positivos e negativos não se cancelem mutuamente, tratando ambos os tipos de discrepância como evidências contra $H_0$. A divisão pelo valor esperado $E_{ij}$ é um passo crítico de normalização: ela pondera o erro pelo tamanho da base de comparação, impedindo que células com frequências muito baixas distorçam desproporcionalmente o resultado final do teste. A formulação final que nos permite decidir sobre a rejeição ou não da hipótese de independência é expressa por:
+
+$$\chi^2_{\text{calc}} = \sum_{i=1}^{r} \sum_{j=1}^{s} \frac{(O_{ij} - E_{ij})^2}{E_{ij}}$$
+
+Este valor, $\chi^2_{\text{calc}}$, segue, sob certas condições de regularidade — notadamente um tamanho amostral suficientemente grande que permita a aproximação pela distribuição qui-quadrado — uma distribuição com graus de liberdade dados por $(r-1)(s-1)$. A interpretação prática é direta: quanto maior for o valor de $\chi^2_{\text{calc}}$, mais distantes estamos de um cenário de independência. Se o valor calculado ultrapassar o valor crítico da distribuição qui-quadrado para um nível de significância $\alpha$ pré-definido, rejeitamos $H_0$ em favor da hipótese alternativa $H_1$, a qual postula a existência de uma associação estatisticamente significativa entre as variáveis analisadas.
+
+É imperativo notar que o uso desta metodologia pressupõe que as observações sejam independentes entre si e que a amostra seja grande o suficiente para evitar que o denominador $E_{ij}$ conduza a estimativas instáveis. Em situações onde as frequências esperadas são muito reduzidas, a aproximação pelo qui-quadrado perde sua validade, exigindo métodos alternativos como o teste exato de Fisher. Contudo, em uma vasta gama de aplicações, desde estudos clínicos que correlacionam tratamentos a resultados de pacientes até pesquisas de mercado que relacionam perfis de consumo a faixas etárias, a lógica das tabelas de contingência permanece como o pilar central. Ela não apenas nos fornece um teste de hipóteses, mas nos convida a observar os dados de uma maneira estruturada, onde cada célula contada é um fragmento de um mosaico maior de evidências sobre o comportamento das variáveis em estudo. Dominar essa técnica não é apenas aprender uma fórmula, mas compreender a transição do caos das frequências puras para a ordem da inferência estatística, permitindo ao pesquisador separar o ruído do acaso das associações que, de fato, carregam significado científico e prático.
+
+========================================
+
+[Subtópico 2]: A Estatística Qui-Quadrado de Pearson: Derivação e Intuição
+----------------------------------------
+  * Auditoria do Revisor Científico:
+    - Tentativas do Escritor: 1
+    - Reprovações do Revisor: 0
+    - Retentativas de API de Rede: 0 (429: 0, 503/Timeout: 0, Outros: 0)
+
+>>> A) PROSA BASE GERADA:
+A estatística de Pearson quantifica a divergência entre observação e teoria através do desvio quadrático normalizado. Esta métrica é robusta pois pondera cada célula da tabela pelo seu valor esperado, assegurando que variações em categorias menos frequentes não sejam negligenciadas, mantendo a proporcionalidade necessária para uma inferência válida. O valor calculado é escalar e serve como medida da 'surpresa' da amostra perante a independência teórica.
+
+>>> B) FORMALISMO MATEMÁTICO (LaTeX):
+$$\chi^2_{\text{calc}} = \sum_{i=1}^{r} \sum_{j=1}^{s} \frac{(O_{ij} - E_{ij})^2}{E_{ij}} \sim \chi^2((r-1)(s-1))$$
+
+>>> C) PROSA EXPANDIDA FINAL DE LIVRO DIDÁTICO:
+A estatística de Pearson quantifica a divergência entre observação e teoria através do desvio quadrático normalizado. Esta métrica é robusta pois pondera cada célula da tabela pelo seu valor esperado, assegurando que variações em categorias menos frequentes não sejam negligenciadas, mantendo a proporcionalidade necessária para uma inferência válida. O valor calculado é escalar e serve como medida da 'surpresa' da amostra perante a independência teórica.
+
+========================================
+
+[Subtópico 3]: Procedimentos Inferenciais para Testes de Associação
+----------------------------------------
+  * Auditoria do Revisor Científico:
+    - Tentativas do Escritor: 1
+    - Reprovações do Revisor: 0
+    - Retentativas de API de Rede: 0 (429: 0, 503/Timeout: 0, Outros: 0)
+
+>>> A) PROSA BASE GERADA:
+A inferência estatística exige um protocolo rigoroso para mitigar erros. Ao fixar o nível de significância $\alpha$, definimos a tolerância ao erro do tipo I. O uso da região crítica ($RC$) ou do p-valor fornece os critérios de decisão necessários para a rejeição da hipótese nula. Esta abordagem é extensível a testes direcionais, aumentando o poder estatístico quando existe suspeita prévia sobre a natureza da associação.
+
+>>> B) FORMALISMO MATEMÁTICO (LaTeX):
+$$p\text{-valor} = P(\chi^2_{gl} \geq \chi^2_{\text{calc}} | H_0) \leq \alpha$$
+
+>>> C) PROSA EXPANDIDA FINAL DE LIVRO DIDÁTICO:
+A estatística inferencial, em sua essência mais profunda, não é apenas um conjunto de ferramentas computacionais, mas uma lente rigorosa através da qual o pesquisador observa o caos dos dados para extrair a ordem latente sob a forma de associações. Quando investigamos a natureza da relação entre duas variáveis categóricas, o desafio metodológico central consiste em distinguir entre um padrão de distribuição que emergiu de meras flutuações amostrais — o ruído estocástico inerente a qualquer coleta de dados — e uma associação real, sistemática e biologicamente ou socialmente plausível. É aqui que os procedimentos inferenciais para testes de associação se tornam a espinha dorsal de qualquer investigação científica de nível universitário. Antes do formalismo que hoje dominamos, o entendimento da dependência entre variáveis era puramente empírico, muitas vezes refém da intuição visual ou de interpretações enviesadas de tabelas de contingência. A formalização matemática, consolidada por pioneiros como Karl Pearson, permitiu-nos transitar de uma observação subjetiva para um arcabouço probabilístico onde o erro pode ser quantificado e, crucialmente, controlado.
+
+O ponto de partida de todo esse rigor é a formulação das hipóteses. Definimos a hipótese nula, $H_0$, como o estado de completa independência entre as variáveis, estabelecendo um cenário onde a probabilidade conjunta é simplesmente o produto das probabilidades marginais. Em contrapartida, a hipótese alternativa, $H_1$, assume que essa independência foi violada, sugerindo que o conhecimento sobre o estado de uma variável oferece informações valiosas sobre o estado da outra. A nossa missão, enquanto estatísticos, é calcular a verossimilhança de nossos dados observados sob a premissa de que $H_0$ seja verdadeira. Ao fixar o nível de significância $\alpha$, estamos estabelecendo, de forma arbitrária e responsável, a nossa tolerância máxima ao erro do tipo I, que é o equívoco fundamental de declarar uma associação como existente quando, na realidade, ela é apenas um artefato da aleatoriedade amostral. Este limiar é o nosso guardião ético na análise de dados, separando o sinal do ruído com precisão matemática.
+
+A região crítica ($RC$) atua como o conjunto de valores da estatística de teste que, por serem tão improváveis sob a vigência de $H_0$, obrigam-nos a rejeitar essa hipótese. Quando calculamos uma estatística $\chi^2_{\text{calc}}$, estamos quantificando a divergência entre as frequências observadas e as frequências que seriam esperadas se, hipoteticamente, as variáveis fossem perfeitamente independentes. Se o valor observado é suficientemente extremo, situando-se além do limite imposto pelo $\alpha$ escolhido, concluímos que a hipótese de independência é insustentável. O p-valor, que definimos formalmente através da expressão $$p\text{-valor} = P(\chi^2_{gl} \geq \chi^2_{\text{calc}} | H_0) \leq \alpha$$, representa a probabilidade de obtermos uma estatística de teste tão ou mais extrema do que a que observamos, assumindo que a hipótese nula é verdadeira. Este conceito é a chave mestra da inferência moderna: quanto menor o p-valor, menor a credibilidade que podemos atribuir a $H_0$, conferindo ao pesquisador um critério de decisão objetivo e reprodutível.
+
+É imperativo compreender que a distribuição qui-quadrado, cujos graus de liberdade ($gl$) dependem das dimensões da tabela de contingência, é apenas o modelo probabilístico sobre o qual operamos. A aplicação rigorosa exige que as premissas de frequência esperada sejam respeitadas, evitando que aproximações assintóticas percam sua validade diante de amostras pequenas ou esperanças de célula muito reduzidas. Além disso, a extensão deste protocolo para testes direcionais altera o paradigma inferencial, exigindo um maior rigor na formulação de $H_1$. Quando possuímos uma suspeita prévia, baseada em teoria robusta ou evidências anteriores, sobre a natureza dessa associação — como a direção da inclinação ou a tendência específica de uma dependência — podemos direcionar nosso teste, aumentando o poder estatístico e permitindo a detecção de associações mais sutis que um teste bilateral poderia negligenciar.
+
+Este procedimento inferencial não é, portanto, uma mera aplicação de fórmulas, mas um exercício de racionalidade crítica. Ao aplicar o teste de associação, o pesquisador deve estar plenamente consciente de que a rejeição de $H_0$ não prova a existência de causalidade, mas sim que a evidência empírica é incompatível com a hipótese de independência estatística. O rigor no manuseio das estatísticas $\chi^2_{\text{calc}}$, na interpretação do p-valor em relação ao nível de significância $\alpha$ e na verificação constante das condições de validade do teste, compõe o que chamamos de integridade estatística. Em um mundo inundado de dados, a capacidade de executar esses protocolos com maestria não é apenas uma habilidade técnica, mas uma responsabilidade intelectual fundamental, garantindo que as conclusões científicas sejam sustentadas por fundamentos sólidos, verificáveis e, acima de tudo, cientificamente defensáveis.
+
+========================================
+
+[Subtópico 4]: Métricas de Intensidade e Extensões do Teste
+----------------------------------------
+  * Auditoria do Revisor Científico:
+    - Tentativas do Escritor: 1
+    - Reprovações do Revisor: 0
+    - Retentativas de API de Rede: 0 (429: 0, 503/Timeout: 0, Outros: 0)
+
+>>> A) PROSA BASE GERADA:
+Identificar a existência de associação é apenas o primeiro passo. Quantificar sua intensidade e estender o teste para homogeneidade de populações distintas amplia significativamente o valor analítico do teste qui-quadrado. Métricas como o coeficiente de contingência e de Tschuprow permitem interpretar a 'força' do elo estatístico detectado.
+
+>>> B) FORMALISMO MATEMÁTICO (LaTeX):
+$$C = \sqrt{\frac{\chi^2_{\text{calc}}}{\chi^2_{\text{calc}} + n}}, \quad T = \sqrt{\frac{\chi^2_{\text{calc}} / n}{\sqrt{(r-1)(s-1)}}}$$
+
+>>> C) PROSA EXPANDIDA FINAL DE LIVRO DIDÁTICO:
+Ao iniciarmos nossa incursão pela análise categórica, é imperativo que superemos a visão puramente dicotômica da inferência estatística, que frequentemente se reduz à pergunta simplista: "Existe uma associação estatisticamente significativa entre estas duas variáveis?". Embora o teste qui-quadrado de independência seja uma ferramenta robusta para descartar a hipótese nula de independência, ele padece de uma limitação intrínseca quando utilizado isoladamente: a estatística $\chi^2_{\text{calc}}$ é, em última instância, uma função direta do tamanho amostral $n$. Em amostras de grande magnitude, mesmo disparidades ínfimas e clinicamente irrelevantes entre frequências observadas e esperadas podem levar a uma rejeição de $H_0$. Por essa razão, o pesquisador rigoroso não deve se satisfazer apenas com a verificação de significância, mas deve buscar a quantificação da magnitude desse efeito, movendo-se do terreno da inferência para o campo das medidas de associação, as quais descrevem a intensidade do vínculo entre as variáveis independentemente da dimensão da amostra.
+
+O primeiro instrumento que encontramos para essa tarefa é o coeficiente de contingência, frequentemente denotado pela letra $C$. A intuição por trás desta métrica reside na tentativa de normalizar a estatística $\chi^2_{\text{calc}}$ de modo a situá-la em um intervalo que possibilite uma interpretação intuitiva. A formulação matemática proposta, expressa por $C = \sqrt{\frac{\chi^2_{\text{calc}}}{\chi^2_{\text{calc}} + n}}$, busca ajustar a dispersão dos dados pela massa total da observação, garantindo que o valor esteja contido em um domínio compreensível. No entanto, é dever pedagógico alertar o estudante de que o coeficiente de contingência apresenta uma peculiaridade geométrica: ele nunca atinge a unidade, mesmo em casos de associação perfeita, a menos que a tabela de contingência seja infinita ou possua um número de categorias que permita tal convergência. Em tabelas $r \times s$, o valor máximo de $C$ é dependente das dimensões da matriz, o que exige cautela na comparação de coeficientes obtidos de tabelas com estruturas distintas. Este é o preço que pagamos pela simplicidade da fórmula: um coeficiente que, embora potente para análises internas, carece de uma escala universal absoluta em sua interpretação primária.
+
+Para contornar as limitações inerentes às formas não quadráticas das matrizes de contingência, a estatística avançada recorre ao coeficiente de Tschuprow, representado pela letra $T$. Diferente do coeficiente de contingência simples, o coeficiente de Tschuprow introduz uma correção específica para os graus de liberdade das dimensões da tabela, utilizando os parâmetros $r$ e $s$, que denotam, respectivamente, o número de linhas e colunas. A expressão $T = \sqrt{\frac{\chi^2_{\text{calc}} / n}{\sqrt{(r-1)(s-1)}}}$ atua como um refinamento ao ajustar a dispersão pelo produto das raízes dos graus de liberdade, proporcionando um valor que é notavelmente mais equilibrado quando lidamos com tabelas heterogêneas. Ao observar a estrutura de $T$, percebemos que o termo no denominador atua como um normalizador da complexidade da tabela, permitindo que o pesquisador compreenda a força da associação sem que a disparidade no número de categorias entre as variáveis induza a um viés de interpretação artificial.
+
+Historicamente, a necessidade de tais métricas surgiu da maturidade da estatística aplicada no início do século XX, quando o próprio Karl Pearson e seus sucessores compreenderam que o teste de qui-quadrado, em sua forma pura, não oferecia um "tamanho de efeito". A ciência, em seu amadurecimento, passou a demandar não apenas evidências de que algo ocorre, mas o quanto esse algo impacta o fenômeno estudado. Imagine um estudo clínico avaliando a eficácia de um novo fármaco em populações distintas; ao encontrar um $p\text{-valor} < 0,05$, o pesquisador apenas afirma que a associação é improvável de ser fruto do acaso. Contudo, ao calcular o coeficiente de Tschuprow, ele pode comunicar que a "força" dessa associação é, por exemplo, de 0,45 em uma escala de 0 a 1, fornecendo um dado de utilidade prática muito superior para a tomada de decisão médica. Sem essas extensões, a estatística corre o risco de tornar-se uma ferramenta de "sim ou não", perdendo sua essência como a linguagem quantitativa da realidade.
+
+Ao estendermos o teste para a homogeneidade de populações distintas, o rigor analítico exige que verifiquemos se a estrutura das frequências se mantém constante através de diferentes estratos. Aqui, os coeficientes de intensidade servem como uma prova de estresse: se a associação detectada em uma população global perde a intensidade quando subdividimos o conjunto de dados, podemos estar diante de um fenômeno de interdependência que não é homogêneo, mas sim modulado por variáveis ocultas. A aplicação conjunta destas métricas permite ao estatístico construir um diagnóstico mais preciso, interpretando o $p\text{-valor}$ como um indicador de confiabilidade da evidência e os coeficientes $C$ e $T$ como indicadores da relevância substantiva do fenômeno detectado. É, portanto, através desta combinação que elevamos nossa análise de um simples exercício de contagem para uma verdadeira investigação analítica das estruturas latentes nos dados.
+
+Por fim, é fundamental que o acadêmico compreenda que o uso dessas métricas não substitui o julgamento crítico acerca da natureza dos dados. A interpretação de um coeficiente de intensidade elevado, por exemplo, não implica causalidade. Assim como a estatística $\chi^2_{\text{calc}}$ quantifica o desvio da independência estatística, o coeficiente de Tschuprow quantifica o desvio do padrão de aleatoriedade, mas ambos permanecem no domínio das relações observadas. Ao consolidar seu domínio sobre o formalismo matemático e a interpretação conceitual dessas métricas, o estudante estará apto a transitar entre a teoria das distribuições e a prática da análise de dados, munido de uma caixa de ferramentas que permite não apenas testar hipóteses, mas também descrever com precisão a magnitude das forças que modelam a variabilidade nas populações que estamos investigando. A estatística, quando praticada com tal profundidade, deixa de ser apenas uma técnica de validação para tornar-se uma lente de alta precisão capaz de revelar a força dos elos que compõem o tecido das observações científicas.
+
+========================================
+
+
+----------------------------------------------------------------------
+3. CADERNO DE EXERCÍCIOS GERADO
+----------------------------------------------------------------------
+
+>>> A) QUESTÕES DE MÚLTIPLA ESCOLHA:
+
+Questão 1: Uma empresa de tecnologia deseja avaliar se a preferência de seus usuários por dois sistemas operacionais (Android ou iOS) é influenciada pelo nível de escolaridade dos mesmos. Foram coletados dados de 500 clientes, classificados em três níveis de escolaridade (Ensino Médio, Superior, Pós-Graduação). Sob a hipótese nula ($H_0$) de que a preferência pelo sistema operacional independe do nível de escolaridade, como devemos calcular a frequência esperada ($E_{ij}$) para a casela que representa 'Ensino Médio' e 'Android'?
+  A) $E_{ij} = \frac{n_{i.} \cdot n_{.j}}{n}$
+  B) $E_{ij} = n \cdot (p_{i.} + p_{.j})$
+  C) $E_{ij} = n_{i.} \cdot n_{.j}$
+  D) $E_{ij} = \frac{n_{i.} + n_{.j}}{n}$
+  E) $E_{ij} = \frac{n}{n_{i.} \cdot n_{.j}}$
+  * Dica: Lembre-se que, sob independência, a probabilidade conjunta é o produto das marginais: $p_{ij} = p_{i.} \cdot p_{.j}$. Multiplique essa probabilidade pelo tamanho amostral total $n$.
+  * Gabarito Correto: A
+  * Justificativa: A hipótese de independência estatística estabelece que a probabilidade de uma observação cair na casela $(i, j)$ é o produto das probabilidades marginais: $p_{ij} = p_{i.} \cdot p_{.j}$. Como as probabilidades marginais são estimadas por $p_{i.} = \frac{n_{i.}}{n}$ e $p_{.j} = \frac{n_{.j}}{n}$, a frequência esperada $E_{ij}$ é obtida multiplicando-se a probabilidade estimada pelo total $n$, resultando em $E_{ij} = n \cdot \left(\frac{n_{i.}}{n}\right) \cdot \left(\frac{n_{.j}}{n}\right) = \frac{n_{i.} \cdot n_{.j}}{n}$.
+
+Questão 2: Em um teste de independência de qui-quadrado para uma tabela de contingência de dimensões $3 \times 4$ (3 linhas e 4 colunas), ao nível de significância $\alpha = 0.05$, qual é o número de graus de liberdade ($gl$) correto para consultar a distribuição $\chi^2$ na tabela estatística?
+  A) 12
+  B) 6
+  C) 7
+  D) 5
+  E) 2
+  * Dica: O número de graus de liberdade para tabelas de contingência é dado pela fórmula $gl = (r-1)(s-1)$, onde $r$ é o número de linhas e $s$ o número de colunas.
+  * Gabarito Correto: B
+  * Justificativa: Para uma tabela com $r$ linhas e $s$ colunas, os graus de liberdade são calculados como $gl = (r-1)(s-1)$. Substituindo os valores fornecidos ($r=3, s=4$): $gl = (3-1)(4-1) = 2 \cdot 3 = 6$. Este valor determina a forma da distribuição $\chi^2(gl)$ sob a hipótese nula.
+
+Questão 3: Uma rede de varejo deseja avaliar se a preferência dos clientes por três tipos de formas de pagamento (Cartão de Crédito, Débito, Dinheiro) é independente da região geográfica de suas lojas (Norte, Sul). Em uma amostra aleatória de 500 transações, foram registradas as frequências observadas. Sob a hipótese nula $H_0$ de independência, o cálculo das frequências esperadas $E_{ij}$ é realizado para cada célula da tabela de contingência. Qual das seguintes afirmações melhor descreve a intuição por trás do termo $\frac{(O_{ij} - E_{ij})^2}{E_{ij}}$ na estatística $\chi^2_{\text{calc}}$?
+  A) Ele mede o desvio absoluto das frequências, ponderando o erro pela média aritmética global de transações por categoria.
+  B) Ele quantifica a variância amostral total das preferências dos consumidores dentro de cada região, ignorando as frequências esperadas.
+  C) Ele representa o quadrado do desvio relativo de cada célula, normalizando a discrepância pela frequência esperada para garantir que células com poucas observações tenham impacto proporcional no teste.
+  D) Ele calcula a probabilidade exata de ocorrência de cada célula sob a hipótese de que as frequências observadas são identicamente distribuídas às esperadas.
+  E) Ele define a correlação linear entre as variáveis categóricas, indicando a força da associação sem necessidade de normalização pelos valores esperados.
+  * Dica: Lembre-se de que a estatística de Pearson serve para medir 'surpresa'. Por que dividir pelo valor esperado $E_{ij}$?
+  * Gabarito Correto: C
+  * Justificativa: A estatística $\chi^2_{\text{calc}} = \sum \sum \frac{(O_{ij} - E_{ij})^2}{E_{ij}}$ foi desenhada para medir a distância entre o que observamos ($O_{ij}$) e o que seria esperado sob independência ($E_{ij}$). A normalização pela divisão por $E_{ij}$ é fundamental: desvios em células com poucas ocorrências esperadas teriam um impacto artificialmente baixo se não fossem ponderados, e desvios em células com muitas ocorrências teriam um impacto desproporcional. Assim, a divisão ajusta o peso de cada desvio, permitindo uma métrica de 'surpresa' comparável entre diferentes escalas de frequência.
+
+Questão 4: Considere o teste de independência em uma tabela de contingência com $r=3$ linhas e $s=4$ colunas. Se a estatística calculada for $\chi^2_{\text{calc}} = 15.20$ e o valor crítico para $\alpha = 0.05$ for $\chi^2_{\text{crit}} = 12.59$, qual é a conclusão estatística correta sobre a relação entre as variáveis?
+  A) Não há evidências suficientes para rejeitar $H_0$, portanto, as variáveis são independentes ao nível de 5%.
+  B) A hipótese nula de independência é rejeitada, indicando evidências de associação entre as variáveis ao nível de significância de 5%.
+  C) O número de graus de liberdade é 12, o que invalida o teste para uma amostra menor que 30 observações.
+  D) O valor de $\chi^2_{\text{calc}}$ é muito próximo de zero, sugerindo uma dependência perfeita entre as variáveis.
+  E) A conclusão depende da soma total de frequências, que deve ser obrigatoriamente superior a 1000 para que o teste seja robusto.
+  * Dica: Compare o valor calculado com a região crítica definida pelo valor crítico.
+  * Gabarito Correto: B
+  * Justificativa: Para um teste de independência com $r=3$ e $s=4$, os graus de liberdade são $gl = (r-1)(s-1) = (2)(3) = 6$. Como o valor calculado $\chi^2_{\text{calc}} = 15.20$ é superior ao valor crítico $\chi^2_{\text{crit}} = 12.59$ (que delimita a região de rejeição para $\alpha=0.05$), o valor cai na região crítica. Portanto, rejeitamos a hipótese nula $H_0$ de independência, concluindo que existe uma associação estatisticamente significativa entre as variáveis.
+
+Questão 5: Em um estudo de ergonomia, observou-se a relação entre a postura do trabalhador (Ergonômica vs. Inadequada) e a ocorrência de dores lombares (Presente vs. Ausente). Com uma amostra de $n = 200$ funcionários, deseja-se testar se a postura e a dor lombar são independentes ao nível de significância $\alpha = 0,05$. A tabela de contingência resultante gerou uma estatística de teste $\chi^2_{\text{calc}} = 4,85$. Sabendo que para $gl = 1$ o valor crítico é $\chi^2_{\text{crit}}(0,05; 1) = 3,84$, qual deve ser a decisão estatística e sua justificativa?
+  A) Rejeita-se $H_0$, pois $\chi^2_{\text{calc}} < \chi^2_{\text{crit}}$, indicando independência entre os fatores.
+  B) Não se rejeita $H_0$, pois a estatística de teste não ultrapassou o limiar de significância definido pela região crítica.
+  C) Rejeita-se $H_0$, pois $\chi^2_{\text{calc}} > \chi^2_{\text{crit}}$, sugerindo evidência estatística de associação entre postura e dor lombar.
+  D) Não se rejeita $H_0$, pois o tamanho amostral $n=200$ é insuficiente para realizar testes de associação via $\chi^2$.
+  E) O teste é inconclusivo, pois o $p\text{-valor}$ é exatamente igual a $\alpha = 0,05$.
+  * Dica: Lembre-se da regra de decisão: a região crítica $RC$ para o teste qui-quadrado é composta pelos valores que superam o valor crítico tabelado.
+  * Gabarito Correto: C
+  * Justificativa: Para um teste de independência qui-quadrado, definimos $H_0$ como a hipótese de independência entre as variáveis. A região crítica é definida como $RC = \{ \chi^2 : \chi^2 > \chi^2_{\text{crit}} \}$. Como $\chi^2_{\text{calc}} = 4,85$ e $\chi^2_{\text{crit}} = 3,84$, temos $4,85 > 3,84$, o que significa que o valor calculado cai dentro da região de rejeição. Portanto, rejeitamos a hipótese nula $H_0$ em favor da existência de uma associação entre a postura ergonômica e a presença de dores lombares.
+
+Questão 6: Ao avaliar a eficácia de um novo layout de site, comparou-se a taxa de cliques de dois grupos (Grupo A e Grupo B) em uma tabela de contingência $2 \times 2$. O teste de independência resultou em um $p\text{-valor} = 0,025$. Considerando um nível de significância de $\alpha = 0,05$, qual das afirmações abaixo melhor interpreta o resultado?
+  A) A probabilidade de $H_0$ ser verdadeira é de 2,5%.
+  B) Como $p\text{-valor} < \alpha$, os dados fornecem evidência suficiente para rejeitar a hipótese de independência entre o layout e a taxa de cliques.
+  C) O valor $0,025$ representa a probabilidade de cometer o erro tipo II.
+  D) O teste falhou em detectar uma associação, pois o $p\text{-valor}$ é muito baixo.
+  E) A associação observada entre o grupo e a taxa de cliques é puramente devida ao acaso amostral.
+  * Dica: O $p\text{-valor}$ é a probabilidade de obter resultados tão ou mais extremos sob a vigência da hipótese nula. Compare este valor com o limiar $\alpha$.
+  * Gabarito Correto: B
+  * Justificativa: O $p\text{-valor}$ mede a probabilidade de observar uma estatística de teste pelo menos tão extrema quanto a obtida, assumindo que a hipótese nula ($H_0$) é verdadeira. Quando $p\text{-valor} \leq \alpha$, a evidência contra $H_0$ é forte o suficiente para rejeitá-la. No caso, $0,025 < 0,05$, confirmando que a associação entre o layout e o comportamento de cliques é estatisticamente significante.
+
+Questão 7: Uma empresa de consultoria realizou um estudo de mercado para avaliar a associação entre o nível de escolaridade (Ensino Fundamental, Ensino Médio, Ensino Superior) e o interesse em um novo serviço digital de assinatura (Baixo, Médio, Alto). Com base em uma amostra de $n = 500$ consumidores, o teste qui-quadrado de Pearson resultou em uma estatística $\chi^2_{\text{calc}} = 45$. Considerando uma tabela de contingência de $3 \times 3$, qual é a interpretação correta utilizando o Coeficiente de Contingência de Pearson ($C$) para medir a intensidade desta associação?
+  A) O coeficiente $C$ é aproximadamente $0,287$, indicando uma associação moderada.
+  B) O valor de $C$ é $0,0825$, o que comprova que as variáveis são independentes.
+  C) O coeficiente $C$ resulta em $0,45$, indicando uma associação perfeita entre as variáveis.
+  D) O valor de $C$ é $0,21$, o que demonstra que a amostra é insuficiente para o teste.
+  E) O coeficiente $C$ não pode ser calculado, pois $n$ deve ser necessariamente superior a 1000.
+  * Dica: Lembre-se da fórmula $C = \sqrt{\frac{\chi^2_{\text{calc}}}{\chi^2_{\text{calc}} + n}}$.
+  * Gabarito Correto: A
+  * Justificativa: A fórmula do coeficiente de contingência é $C = \sqrt{\frac{\chi^2_{\text{calc}}}{\chi^2_{\text{calc}} + n}}$. Substituindo os valores dados: $C = \sqrt{\frac{45}{45 + 500}} = \sqrt{\frac{45}{545}} \approx \sqrt{0,08257} \approx 0,287$. Este valor, estando distante de zero, aponta para uma associação relevante, sendo comum interpretar valores próximos a 0,3 como indicativos de intensidade moderada para este tipo de métrica.
+
+Questão 8: Em um estudo de controle de qualidade, deseja-se comparar se a proporção de produtos defeituosos é a mesma em três diferentes linhas de produção ($P_1, P_2, P_3$). Foram coletadas amostras independentes de cada linha e classificados os produtos em 'Conforme' e 'Não-conforme'. Sobre o teste estatístico a ser aplicado, assinale a alternativa correta:
+  A) Deve-se utilizar o teste de independência, testando se a linha de produção está associada à qualidade do produto, o que é conceitualmente equivalente ao teste de homogeneidade $H_0: P_1 = P_2 = P_3$.
+  B) O teste de homogeneidade requer que as populações sejam dependentes entre si para que a estatística $\chi^2_{\text{calc}}$ seja válida.
+  C) A hipótese de homogeneidade postula que as variâncias populacionais devem ser iguais, independentemente das proporções de defeitos.
+  D) O teste de homogeneidade só é aplicável se o tamanho da amostra $n$ for idêntico para as três linhas de produção.
+  E) A estatística de teste para homogeneidade não utiliza a distribuição $\chi^2$, mas \sim a distribuição $F$ de Snedecor devido à comparação de variâncias.
+  * Dica: Reflita sobre a diferença entre testar associação em uma única população (independência) e comparar a distribuição entre várias populações (homogeneidade).
+  * Gabarito Correto: A
+  * Justificativa: O teste de homogeneidade ($H_0: P_1 = P_2 = \dots = P_r$) verifica se a distribuição de uma variável categórica (qualidade) é a mesma em diferentes populações (linhas de produção). Matematicamente, a estrutura do teste de homogeneidade em tabelas de contingência compartilha a mesma estatística de Pearson $\chi^2_{\text{calc}} = \sum \frac{(O - E)^2}{E}$ e os mesmos graus de liberdade $(r-1)(s-1)$ que o teste de independência, sendo conceitualmente intercambiáveis na forma de cálculo, embora com interpretações populacionais distintas.
+
+>>> B) QUESTÕES DISCURSIVAS ABERTAS:
+
+Questão 1: Uma indústria farmacêutica testou a eficácia de duas drogas (A e B) em 200 pacientes. Os resultados foram: Droga A (60 eficazes, 40 não eficazes), Droga B (40 eficazes, 60 não eficazes). Teste a hipótese de independência entre o tipo de droga e a eficácia ao nível $\alpha = 0.05$. Apresente o cálculo da estatística $\chi^2_{	ext{calc}}$, o valor de $gl$ e a conclusão do teste.
+  * Dica: Monte a tabela de contingência, calcule as frequências esperadas $E_{ij}$ assumindo $H_0$ verdadeira, e aplique a fórmula $\chi^2_{	ext{calc}} = \sum \frac{(O_{ij} - E_{ij})^2}{E_{ij}}$.
+  * Resolução Passo a Passo:
+    1. 1. Tabela Observada ($O_{ij}$): Droga A (Eficaz=60, Não=40), Droga B (Eficaz=40, Não=60). Totais: Linha A=100, Linha B=100, Coluna Eficaz=100, Coluna Não=100, Total $n=200$.
+    2. 2. Frequências Esperadas ($E_{ij}$): Como todos os totais marginais são iguais a 100 e $n=200$, $E_{ij} = (100 \cdot 100) / 200 = 50$ para todas as quatro células.
+    3. 3. Cálculo da Estatística: $\chi^2_{	ext{calc}} = \frac{(60-50)^2}{50} + \frac{(40-50)^2}{50} + \frac{(40-50)^2}{50} + \frac{(60-50)^2}{50} = \frac{100}{50} + \frac{100}{50} + \frac{100}{50} + \frac{100}{50} = 2 + 2 + 2 + 2 = 8.0$.
+    4. 4. Graus de Liberdade: $gl = (2-1)(2-1) = 1$.
+    5. 5. Conclusão: Para $\alpha=0.05$ e $gl=1$, o valor crítico $\chi^2_{	ext{crit}} = 3.841$. Como $8.0 > 3.841$, rejeitamos $H_0$, indicando dependência entre droga e eficácia.
+
+Questão 2: Explique, sob a lógica da hipótese de independência, o que significa um valor observado da estatística $\chi^2_{	ext{calc}}$ próximo de zero versus um valor muito grande. Como isso se relaciona com a comparação entre frequências observadas ($O_{ij}$) e esperadas ($E_{ij}$)?
+  * Dica: Considere a estrutura da fórmula $\chi^2_{	ext{calc}} = \sum \frac{(O_{ij} - E_{ij})^2}{E_{ij}}$ e o papel das diferenças quadráticas.
+  * Resolução Passo a Passo:
+    1. A estatística $\chi^2_{	ext{calc}}$ mede o desvio acumulado entre os dados observados e os esperados.
+    2. Se $\chi^2_{	ext{calc}} \approx 0$, então $(O_{ij} - E_{ij}) \approx 0$ para todos os pares $(i, j)$, significando que os dados observados estão muito próximos do que seria esperado sob independência perfeita, logo, não há evidência para rejeitar $H_0$.
+    3. Se $\chi^2_{	ext{calc}}$ é muito grande, significa que existe pelo menos uma casela onde $(O_{ij} - E_{ij})^2$ é substancial, indicando que a frequência observada desvia significativamente do cenário de independência teórica, sugerindo que as variáveis são associadas.
+
+Questão 3: Considere uma tabela de contingência onde a variável $X$ tem 3 categorias e a variável $Y$ tem 2 categorias. O valor da estatística calculada é $\chi^2_{	ext{calc}} = 5.25$. Determine se rejeitamos a hipótese nula de independência a um nível de significância de $\alpha = 0.10$. (Dado: Valor crítico da $\chi^2$ para $gl=2$ e $\alpha=0.10$ é $4.605$).
+  * Dica: Compare $\chi^2_{	ext{calc}}$ com $\chi^2_{	ext{crit}}$ e aplique a regra de decisão do teste de hipóteses.
+  * Resolução Passo a Passo:
+    1. 1. Identificar $gl$: Para $r=3$ e $s=2$, temos $gl = (3-1)(2-1) = 2$.
+    2. 2. Identificar critério: O valor crítico é $\chi^2_{	ext{crit}} = 4.605$ para $\alpha=0.10$.
+    3. 3. Decisão: Comparamos $\chi^2_{	ext{calc}} = 5.25$ com $\chi^2_{	ext{crit}} = 4.605$.
+    4. 4. Conclusão: Como $5.25 > 4.605$, o valor cai na região de rejeição ($RC$). Portanto, rejeitamos $H_0$ a um nível de significância de 10%.
+
+Questão 4: Em uma fábrica, observou-se o número de falhas em três linhas de montagem (A, B, C) durante uma semana. Os dados observados foram: Linha A (10 falhas), Linha B (15 falhas), Linha C (25 falhas), totalizando 50 falhas. Teste a hipótese de que as falhas são equiprováveis entre as três linhas usando um nível de significância de $\alpha=0.05$.
+  * Dica: Sob a hipótese nula $H_0$ de que as falhas são equiprováveis, qual a frequência esperada $E_i$ para cada uma das 3 linhas?
+  * Resolução Passo a Passo:
+    1. 1. Definir $H_0: p_A = p_B = p_C = 1/3$ (falhas equiprováveis).
+    2. 2. Calcular a frequência esperada $E_i = 50 / 3 \approx 16.67$ para cada linha.
+    3. 3. Calcular a estatística: $\chi^2_{\text{calc}} = \frac{(10-16.67)^2}{16.67} + \frac{(15-16.67)^2}{16.67} + \frac{(25-16.67)^2}{16.67}$.
+    4. 4. Resultado aritmético: $\chi^2_{\text{calc}} = \frac{44.49}{16.67} + \frac{2.79}{16.67} + \frac{69.39}{16.67} = 2.668 + 0.167 + 4.162 = 6.997$.
+    5. 5. Comparar com o valor crítico da tabela $\chi^2(gl=2)$ para $\alpha=0.05$: $\chi^2_{\text{crit}} = 5.991$.
+    6. 6. Como $6.997 > 5.991$, rejeitamos $H_0$.
+
+Questão 5: Uma tabela de contingência $2 \times 2$ apresenta as seguintes frequências observadas: Célula (1,1)=20, Célula (1,2)=30, Célula (2,1)=30, Célula (2,2)=20. Calcule a estatística $\chi^2_{	ext{calc}}$ e determine se as variáveis são independentes.
+  * Dica: Lembre-se da fórmula $E_{ij} = \frac{n_{i.} \cdot n_{.j}}{n}$.
+  * Resolução Passo a Passo:
+    1. 1. Total $n = 20+30+30+20 = 100$.
+    2. 2. Totais marginais: linha 1=50, linha 2=50, coluna 1=50, coluna 2=50.
+    3. 3. Valores esperados $E_{ij}$: $E_{11} = (50*50)/100 = 25$, $E_{12} = 25$, $E_{21} = 25$, $E_{22} = 25$.
+    4. 4. Cálculo: $\chi^2_{\text{calc}} = \frac{(20-25)^2}{25} + \frac{(30-25)^2}{25} + \frac{(30-25)^2}{25} + \frac{(20-25)^2}{25}$.
+    5. 5. Resultado: $\chi^2_{\text{calc}} = 1 + 1 + 1 + 1 = 4.0$.
+    6. 6. Conclusão: Comparando com $\chi^2_{\text{crit}}(gl=1, \alpha=0.05) = 3.841$, como $4.0 > 3.841$, rejeitamos $H_0$.
+
+Questão 6: Explique, sob a ótica da 'surpresa estatística', por que o valor da estatística $\chi^2_{	ext{calc}}$ tende a ser maior quando as frequências observadas divergem das frequências esperadas sob a hipótese nula de independência.
+  * Dica: Considere o termo $(O_{ij} - E_{ij})^2$. O que acontece com ele quando a diferença aumenta?
+  * Resolução Passo a Passo:
+    1. 1. A hipótese nula de independência pressupõe que as frequências observadas devem ser próximas das esperadas ($O_{ij} \approx E_{ij}$).
+    2. 2. O termo no numerador $(O_{ij} - E_{ij})^2$ captura a magnitude do erro. Se as frequências observadas são muito diferentes das esperadas, essa diferença eleva ao quadrado torna-se um valor positivo grande.
+    3. 3. A estatística $\chi^2_{\text{calc}}$ é a soma de todos esses erros normalizados.
+    4. 4. Consequentemente, quanto maior a divergência, maior a 'surpresa' e, portanto, maior o valor da estatística.
+    5. 5. Valores altos da estatística indicam que a hipótese de independência é pouco verossímil frente aos dados observados.
+
+Questão 7: Em um experimento com 300 componentes eletrônicos, classificou-se a falha como 'Precoce' ou 'Tardia' e a origem do componente como 'Fornecedor X' ou 'Fornecedor Y'. A frequência esperada $E_{ij}$ é calculada pelo produto das frequências marginais dividida pelo total da amostra. Se temos $100$ componentes do Fornecedor X e $200$ do Fornecedor Y, e o total de falhas precoces é $150$, qual a frequência esperada $E_{ij}$ de falhas precoces para o Fornecedor X?
+  * Dica: A fórmula da frequência esperada é $E_{ij} = \frac{(\text{Total da Linha } i) \cdot (\text{Total da Coluna } j)}{n}$.
+  * Resolução Passo a Passo:
+    1. Identificamos os totais marginais e amostral: $n = 300$, $\text{Total linha (Falhas Precoces)} = 150$, $\text{Total coluna (Fornecedor X)} = 100$.
+    2. Aplicamos a fórmula da frequência esperada: $$E_{ij} = \frac{150 \cdot 100}{300}$$
+    3. Calculamos o valor final: $$E_{ij} = \frac{15000}{300} = 50$$
+    4. Conclusão: A frequência esperada de falhas precoces para o Fornecedor X é de 50 unidades.
+
+Questão 8: Considere uma tabela de contingência de dimensão $3 \times 2$ (3 níveis de satisfação vs 2 tipos de serviço). Determine os graus de liberdade ($gl$) e calcule o valor crítico $\chi^2_{\text{crit}}$ para um nível de significância $\alpha = 0,05$.
+  * Dica: Lembre-se que para uma tabela $r \times s$, os graus de liberdade são dados por $gl = (r-1)(s-1)$.
+  * Resolução Passo a Passo:
+    1. Definimos $r=3$ (linhas) e $s=2$ (colunas).
+    2. Calculamos $gl$: $$gl = (3-1) \cdot (2-1) = 2 \cdot 1 = 2$$
+    3. Consultamos a distribuição $\chi^2$ com $gl=2$ para $\alpha=0,05$.
+    4. O valor crítico correspondente na tabela de distribuição é aproximadamente $5,99$.
+
+Questão 9: Discuta matematicamente por que, em um teste qui-quadrado de independência, a estatística $\chi^2_{\text{calc}}$ sempre resulta em um valor não negativo. Como isso impacta a forma da região crítica?
+  * Dica: Analise a estrutura da fórmula: $\chi^2_{\text{calc}} = \sum \frac{(O_{ij} - E_{ij})^2}{E_{ij}}$.
+  * Resolução Passo a Passo:
+    1. A estatística é composta por uma soma de termos da forma $\frac{(O_{ij} - E_{ij})^2}{E_{ij}}$.
+    2. O numerador $(O_{ij} - E_{ij})^2$ é o quadrado de uma diferença real, logo é sempre $\geq 0$.
+    3. O denominador $E_{ij}$ é uma contagem esperada baseada em totais marginais, sendo estritamente positiva ($E_{ij} > 0$).
+    4. Como a soma de valores não negativos é não negativa, $\chi^2_{\text{calc}} \geq 0$.
+    5. Conclusão: Como a estatística é sempre positiva, a região crítica para rejeitar $H_0$ é sempre localizada na cauda superior (direita) da distribuição qui-quadrado.
+
+Questão 10: Em um estudo industrial, foram coletados dados de 200 itens produzidos, sendo classificados por origem (A, B, C) e tipo de falha (Tipo I, Tipo II, Tipo III). A estatística calculada foi $\chi^2_{\text{calc}} = 30$. Calcule o Coeficiente T de Tschuprow ($T$) para esta tabela de contingência $3 \times 3$.
+  * Dica: Use a fórmula $T = \sqrt{\frac{\chi^2_{\text{calc}} / n}{\sqrt{(r-1)(s-1)}}}$, onde $n=200$, $r=3$ e $s=3$.
+  * Resolução Passo a Passo:
+    1. 1. Identificar os parâmetros: $n = 200$, $\chi^2_{\text{calc}} = 30$, $r = 3$ (linhas), $s = 3$ (colunas).
+    2. 2. Calcular o termo $\sqrt{(r-1)(s-1)} = \sqrt{(3-1)(3-1)} = \sqrt{2 \times 2} = \sqrt{4} = 2$.
+    3. 3. Calcular a razão $\frac{\chi^2_{\text{calc}}}{n} = \frac{30}{200} = 0,15$.
+    4. 4. Aplicar a fórmula de Tschuprow: $T = \sqrt{\frac{0,15}{2}} = \sqrt{0,075} \approx 0,2738$.
+
+Questão 11: Explique a diferença conceitual e prática entre o teste de independência e o teste de homogeneidade, ambos baseados na estatística $\chi^2_{\text{calc}}$. Em que situação cada um é aplicado?
+  * Dica: Pense sobre a origem dos dados: eles vêm de uma única amostra (cruzando duas variáveis) ou de várias amostras distintas (comparando grupos)?
+  * Resolução Passo a Passo:
+    1. 1. Teste de Independência: Utilizado quando se tem uma única amostra de tamanho $n$ e duas variáveis qualitativas X e Y, com o objetivo de verificar se as variáveis estão associadas (se a distribuição de X independe de Y).
+    2. 2. Teste de Homogeneidade: Utilizado quando temos $r$ populações distintas e queremos verificar se a distribuição de uma variável categórica é a mesma (homogênea) em todas elas ($H_0: P_1 = P_2 = \dots = P_r$).
+    3. 3. Praticamente, ambos utilizam a mesma estatística $\chi^2_{\text{calc}} = \sum \sum \frac{(n_{ij} - n_{ij}^*)^2}{n_{ij}^*}$ e a mesma distribuição $\chi^2(gl)$ com $gl = (r-1)(s-1)$ graus de liberdade.
+    4. 4. A diferença fundamental é o desenho amostral: o primeiro foca em associação dentro de um grupo, o segundo em comparação entre grupos.
+
+Questão 12: Considere que a estatística $\chi^2_{\text{calc}}$ depende fortemente do tamanho da amostra $n$. Se tivermos um estudo de associação com $n = 1000$ e outro com $n = 100$, ambos apresentando o mesmo padrão de distribuição relativa, qual métrica você recomendaria para comparar a intensidade da associação entre eles e por quê?
+  * Dica: Considere a normalização das estatísticas de associação (C ou T).
+  * Resolução Passo a Passo:
+    1. 1. A estatística $\chi^2_{\text{calc}}$ aumenta linearmente com o tamanho da amostra $n$ para uma mesma configuração de frequências relativas, tornando difícil a comparação direta de intensidade apenas pelo valor de $\chi^2_{\text{calc}}$.
+    2. 2. Recomenda-se utilizar o Coeficiente de Contingência $C$ ou o Coeficiente $T$ de Tschuprow.
+    3. 3. Essas métricas normalizam o valor de $\chi^2_{\text{calc}}$ pelo tamanho da amostra ($n$), permitindo uma interpretação entre 0 e 1.
+    4. 4. O coeficiente $T$, em particular, ajusta-se conforme a dimensão da tabela $(r, s)$, o que provê uma medida de associação mais estável para comparação entre estudos com diferentes estruturas amostrais.
+
+======================================================================
+                         FIM DO RELATÓRIO
+======================================================================
