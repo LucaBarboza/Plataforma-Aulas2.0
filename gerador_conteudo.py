@@ -383,6 +383,7 @@ Cubra o [TÓPICO_SOLICITADO] com profundidade matemática adequada. NÃO PASSE P
                 print(f"      [AVISO] Erro ao ler progresso markdown: {e_read}")
         
         feedbacks = []
+        historico_rascunhos = []
         erros_429 = 0
         erros_503 = 0
         erros_outros = 0
@@ -482,9 +483,9 @@ Sua missão é atuar como o produtor científico principal do conteúdo teórico
 
 3. 'fontes_rag' (lista de FonteRDetalhada):
    Cada item representa uma fonte bibliográfica e deve conter:
-   - 'livro_autor' (string): Sobrenome dos autores e título clássico do livro.
-   - 'capitulo' (string): Capítulo e seção consultada.
-   - 'paginas_utilizadas' (string): O número exato da página ou intervalo de páginas consultadas (ex: "p. 142" ou "pp. 210-214"). ATENÇÃO: A ausência de páginas exatas é motivo de reprovação pelo Revisor.
+   - 'livro_autor' (string): OBRIGATÓRIO. Sobrenome dos autores e título clássico do livro, slide ou material de apoio.
+   - 'capitulo' (string): OBRIGATÓRIO. Nome ou número do capítulo, seção ou unidade consultada.
+   - 'paginas_utilizadas' (string): O número da página ou intervalo de páginas (ex: "p. 142" ou "pp. 210-214"). Caso a página não conste no RAG, utilize "p. S/N". ATENÇÃO: A omissão do nome do livro/material ou do capítulo/seção causará REPROVAÇÃO IMEDIATA pelo Revisor.
 
 ---
 
@@ -521,8 +522,12 @@ Sua missão é atuar como o produtor científico principal do conteúdo teórico
                 print("      [REVISOR] Analisando rigor matemático e profundidade...")
                 laudo_revisao = auditar_subtopico_local(dados_escritor_dict, diretrizes_texto)
                 
+                obj_rascunho = laudo_revisao.conteudo_corrigido or SubtopicoValidado(**dados_escritor_dict)
+                nota_rascunho = getattr(laudo_revisao, "nota_qualidade", 50)
+                historico_rascunhos.append((nota_rascunho, obj_rascunho))
+
                 if laudo_revisao.aprovado:
-                    print("      [OK] Bloco APROVADO pelo revisor científico!")
+                    print(f"      [OK] Bloco APROVADO pelo revisor científico! (Nota: {nota_rascunho}/100)")
                     bloco_aprovado = True
                     if status_callback:
                         status_callback({
@@ -531,11 +536,7 @@ Sua missão é atuar como o produtor científico principal do conteúdo teórico
                             "titulo": sub.titulo
                         })
                     
-                    # Usa o conteúdo revisado se fornecido, senão cria do dict bruto
-                    if laudo_revisao.conteudo_corrigido:
-                        subtopico_atual_dados = laudo_revisao.conteudo_corrigido
-                    else:
-                        subtopico_atual_dados = SubtopicoValidado(**dados_escritor_dict)
+                    subtopico_atual_dados = obj_rascunho
                     
                     # Captura os metadados do grounding normais do RAG
                     fontes_capturadas = []
@@ -574,7 +575,7 @@ Sua missão é atuar como o produtor científico principal do conteúdo teórico
                         print(f"      [AVISO] Erro ao gravar progresso markdown: {e_md}")
                 else:
                     # Se reprovado, o laudo vira o prompt da próxima iteração do laço while!
-                    print(f"      [REPROVADO] Bloco REPROVADO! Motivo: {laudo_revisao.comentario_correcao}")
+                    print(f"      [REPROVADO] Bloco REPROVADO (Nota: {nota_rascunho}/100)! Motivo: {laudo_revisao.comentario_correcao}")
                     feedbacks.append(laudo_revisao.comentario_correcao)
                     if status_callback:
                         status_callback({
@@ -635,16 +636,11 @@ Sua missão é atuar como o produtor científico principal do conteúdo teórico
                         })
                     time.sleep(3)
                 
-        # Se estourar os retries e não aprovar, salva o último gerado para não travar o pipeline
-        if not subtopico_atual_dados and dados_escritor_dict:
-            subtopico_atual_dados = SubtopicoValidado(**dados_escritor_dict)
-            subtopico_atual_dados.fontes_rag = [
-                FonteRDetalhada(
-                    livro_autor="Fonte nao mapeada",
-                    capitulo="Falhas na revisao",
-                    paginas_utilizadas="p. S/N"
-                )
-            ]
+        # Se estourar os retries e não aprovar 100%, seleciona o rascunho com a MAIOR NOTA entre todas as tentativas
+        if not subtopico_atual_dados and historico_rascunhos:
+            melhor_nota, melhor_rascunho = max(historico_rascunhos, key=lambda x: x[0])
+            print(f"      [BEST ATTEMPT SELECTION] Selecionando o rascunho de MAIOR NOTA ({melhor_nota}/100) para evitar travamento...")
+            subtopico_atual_dados = melhor_rascunho
             
         if subtopico_atual_dados:
             aulas_conteudo_final.append(subtopico_atual_dados)

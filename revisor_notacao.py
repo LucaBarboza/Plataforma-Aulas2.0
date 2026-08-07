@@ -54,6 +54,10 @@ class DecisaoRevisao(BaseModel):
     aprovado: bool = Field(
         description="Defina como True se o conteúdo for profundo, correto e seguir 100% da notação. Defina como False se precisar de correções."
     )
+    nota_qualidade: int = Field(
+        default=100,
+        description="Nota de 0 a 100 avaliando o rigor acadêmico, a exaustividade teórica, o formato em LaTeX e o grounding do bloco."
+    )
     comentario_correcao: Optional[str] = Field(
         default=None,
         description="Se aprovado for False, escreva um laudo técnico estruturado em tópicos numerados de forma ultra-detalhada e cirúrgica, identificando precisamente o erro e fornecendo a correção explícita no formato 'SUBSTITUA [trecho errado] POR [trecho correto]' para guiar o Escritor sem qualquer ambiguidade."
@@ -70,13 +74,13 @@ def auditar_subtopico_local(bloco_bruto_dict: dict, diretrizes_texto: str) -> De
     # Garante que temos a chave configurada
     if not os.environ.get("GEMINI_API_KEY"):
         print("[ERRO] Erro no Revisor: Chave de API 'GEMINI_API_KEY' não configurada.")
-        return DecisaoRevisao(aprovado=True, conteudo_corrigido=SubtopicoValidado(**bloco_bruto_dict))
+        return DecisaoRevisao(aprovado=True, nota_qualidade=100, conteudo_corrigido=SubtopicoValidado(**bloco_bruto_dict))
 
     try:
         client = genai.Client(http_options={"timeout": 300_000})
     except Exception as e:
         print(f"[ERRO] Erro ao inicializar o cliente GenAI no Revisor: {e}")
-        return DecisaoRevisao(aprovado=True, conteudo_corrigido=SubtopicoValidado(**bloco_bruto_dict))
+        return DecisaoRevisao(aprovado=True, nota_qualidade=100, conteudo_corrigido=SubtopicoValidado(**bloco_bruto_dict))
     
     bloco_bruto_str = json.dumps(bloco_bruto_dict, ensure_ascii=False, indent=2)
 
@@ -96,7 +100,7 @@ Sua missão é atuar como auditor científico: você deve avaliar rigorosamente 
    b) Uso de pacotes LaTeX incompatíveis com o KaTeX do Streamlit (como `\\textgreek`, `\\bm`, `\\boldsymbol{{\\text{{...}}}}`).
    c) Barras invertidas mal formadas ou caracteres quebrados de escape.
 3. Exigência de Profundidade Explicações Ricas (SEM TEXTOS CURTOS): Avalie se o conteúdo de fato ENSINA o conceito com máxima riqueza. Reprove o bloco (`aprovado = False`) se a prosa for rasa, sucinta ou superficial, se o `conceito_intuitivo` for curto ou não explicar o contexto do mundo real, se as equações no `conceito_formal` forem apresentadas sem a explicação por extenso de cada símbolo e variável, ou se o exemplo prático não contiver a substituição numérica passo a passo e laudo conclusivo detalhado.
-4. Avaliação de Grounding (Páginas do RAG): Inspecione o campo 'fontes_rag'. Se qualquer fonte não contiver o número ou intervalo exato de páginas consultadas (ex: omitir ou responder "p. não especificada"), REPROVE imediatamente.
+4. Avaliação de Grounding (Metadados do RAG): Inspecione o campo 'fontes_rag'. Exija obrigatoriamente que cada fonte especifique o Nome do Livro/Slide/Material ('livro_autor') e a Seção ou Capítulo ('capitulo'). Se o nome do material ou a seção/capítulo estiverem em branco, nulos ou genéricos (ex: 'N/A' ou 'Fonte não mapeada'), REPROVE o bloco (`aprovado = False`). O número de página exato ('paginas_utilizadas') é opcional e a sua ausência (ex: 'p. S/N' ou 'p. não especificada') NÃO deve reprovar o bloco.
 5. Critério de Dificuldade e Profundidade: Avalie se a dedução passo a passo está completa, logicamente contínua e acompanhada de frases explicativas em cada passagem.
 6. Fidelidade à Fonte Primária do Professor: Verifique se o conteúdo prioriza e reflete fielmente os materiais de apoio e notações do professor (fonte primária), utilizando os livros da biblioteca RAG apenas como suporte secundário.
 7. Auditoria de Fidelidade de Terminologia e Vocabulário do Professor: Reprove o bloco (`aprovado = False`) se o Escritor tiver substituído as palavras técnicas e o vocabulário preferido do professor (ex: se o professor usa 'Valor Esperado' e o texto usou 'Esperança Matemática', ou se o professor usa 'Resíduo' e o texto usou 'Erro Amostral') por termos alternativos da literatura. Exija a aplicação da terminologia idêntica à do material do docente.
@@ -106,20 +110,22 @@ Sua missão é atuar como auditor científico: você deve avaliar rigorosamente 
 ### INSTRUÇÕES PARA PREENCHIMENTO DO SCHEMA DE RETORNO
 
 1. 'aprovado' (boolean):
-   - Defina como True apenas se o conteúdo atender 100% dos requisitos de notação exata, exaustividade teórica, dedução contígua e páginas do RAG mapeadas de forma perfeita.
+   - Defina como True apenas se o conteúdo atender 100% dos requisitos de notação exata, exaustividade teórica, dedução contígua e metadados de RAG (Livro/Slide e Seção/Capítulo).
    - Defina como False caso encontre qualquer desvio.
 
-2. 'comentario_correcao' (string):
+2. 'nota_qualidade' (integer):
+   - Atribua uma nota de 0 a 100 avaliando o nível de qualidade global deste rascunho. Subtraia pontos para cada pequeno deslize (ex: falta de \\text, pequenas imprecisões no RAG, frases resumidas). Se aprovado 100%, atribua entre 90 e 100.
+
+3. 'comentario_correcao' (string):
    - Se 'aprovado' for False, preencha este campo obrigatoriamente com um laudo técnico extremamente minucioso, didático e cirúrgico. Para CADA erro ou desvio encontrado no conteúdo:
      1) [CAMPO AFETADO]: Especifique exatamente qual chave JSON continha o erro (ex: 'conceito_formal', 'deducao_formal_passo_a_passo', 'exemplo_canonico', 'fontes_rag').
      2) [MOTIVO DETALHADO]: Explique detalhadamente por que está incorreto e qual a regra violada do bloco [DIRETRIZES_DE_ESTILO].
-     3) [INSTRUÇÃO DE CORREÇÃO]: Forneça a instrução exata no formato:
-        "SUBSTITUA: '[trecho incorreto]' POR: '[trecho corrigido com a notação LaTeX exata e rigor Didático]'".
+     3) [INSTRUÇÃO DE CORREÇÃO CIRÚRGICA]: Forneça a instrução EXATA no formato estrito:
+        "SUBSTITUA: '[trecho incorreto exato]' POR: '[trecho corrigido com a notação LaTeX exata e rigor Didático]'".
    - Liste todos os pontos de forma numerada (1, 2, 3...) de maneira cristalina para que o Agente Escritor saiba exatamente como corrigir cada linha sem errar novamente.
-   - IMPORTANTE (MANDATÓRIO PARA FALHA DE GROUNDING): Se houver fontes sem as páginas exatas do RAG, insira explicitamente: '[ERRO BIBLIOGRÁFICO] O modelo omitiu as páginas exatas consultadas nos documentos do RAG. Refaça a busca e mapeie o número da página.'
    - Se 'aprovado' for True, retorne null ou "".
 
-3. 'conteudo_corrigido' (objeto SubtopicoValidado ou null):
+4. 'conteudo_corrigido' (objeto SubtopicoValidado ou null):
    - Se 'aprovado' for True, retorne neste campo o objeto de conteúdo revisado.
    - Se 'aprovado' for False, retorne null.
 
