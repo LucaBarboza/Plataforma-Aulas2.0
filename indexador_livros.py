@@ -25,7 +25,7 @@ def remover_acentos(texto):
     return "".join([c for c in nfkd_form if not unicodedata.combining(c)])
 
 def inicializar_e_indexar(nome_professor: str, codigo_disciplina: str, pasta_livros: str):
-    client = genai.Client(http_options={"timeout": 120_000})
+    client = genai.Client(http_options={"timeout": 300_000})
     
     # Gerando o nome da Store (usa plataforma-estatistica-db se for 'global', caso contrário cria Store específica)
     if nome_professor.lower().strip() == "global":

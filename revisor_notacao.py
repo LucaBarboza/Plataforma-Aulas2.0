@@ -73,7 +73,7 @@ def auditar_subtopico_local(bloco_bruto_dict: dict, diretrizes_texto: str) -> De
         return DecisaoRevisao(aprovado=True, conteudo_corrigido=SubtopicoValidado(**bloco_bruto_dict))
 
     try:
-        client = genai.Client(http_options={"timeout": 120_000})
+        client = genai.Client(http_options={"timeout": 300_000})
     except Exception as e:
         print(f"[ERRO] Erro ao inicializar o cliente GenAI no Revisor: {e}")
         return DecisaoRevisao(aprovado=True, conteudo_corrigido=SubtopicoValidado(**bloco_bruto_dict))

@@ -140,7 +140,7 @@ def gerar_conteudo_aula(nome_professor: str, codigo_disciplina: str, tema_solici
         raise ValueError("Chave de API 'GEMINI_API_KEY' não configurada. Configure a chave nos Secrets do Streamlit ou no ambiente.")
 
     try:
-        client = genai.Client(http_options={"timeout": 120_000})
+        client = genai.Client(http_options={"timeout": 300_000})
     except Exception as e:
         print(f"[ERRO] Erro ao inicializar o cliente do Google GenAI: {e}")
         return None
@@ -298,9 +298,9 @@ Cubra o [TÓPICO_SOLICITADO] com profundidade matemática adequada. NÃO PASSE P
                         "tipo_erro": "429"
                     })
                 time.sleep(espera)
-            elif ("503" in erro_str or "UNAVAILABLE" in erro_str or "500" in erro_str) and tentativas_roteiro < 10:
+            elif ("503" in erro_str or "UNAVAILABLE" in erro_str or "500" in erro_str or "timeout" in erro_str.lower()) and tentativas_roteiro < 10:
                 espera = min(5 * tentativas_roteiro, 30)
-                print(f"[AVISO ROTEIRISTA] Servidor ocupado (503). Retentando em {espera}s...")
+                print(f"[AVISO ROTEIRISTA] Servidor ocupado/Timeout. Retentando em {espera}s...")
                 if status_callback:
                     status_callback({
                         "etapa": "erro_api",
@@ -318,7 +318,8 @@ Cubra o [TÓPICO_SOLICITADO] com profundidade matemática adequada. NÃO PASSE P
                         "tipo_erro": "outro"
                     })
                 time.sleep(3)
-                raise e_rot
+                if tentativas_roteiro >= 10 or ("timeout" not in erro_str.lower() and "connection" not in erro_str.lower()):
+                    raise e_rot
 
     t_fim_roteirista = time.time()
     print(f"[OK] Roteiro gerado com sucesso! {len(roteiro_pedagogico.esquema_paginas)} subtópicos mapeados.")
@@ -608,10 +609,10 @@ Sua missão é atuar como o produtor científico principal do conteúdo teórico
                             "tipo_erro": "429"
                         })
                     time.sleep(tempo_espera)
-                elif "503" in erro_str or "UNAVAILABLE" in erro_str or "500" in erro_str:
+                elif "503" in erro_str or "UNAVAILABLE" in erro_str or "500" in erro_str or "timeout" in erro_str.lower():
                     erros_503 += 1
                     tempo_espera = min(5 * erros_api_consecutivos, 30)
-                    print(f"      [AVISO API] Servidor ocupado (503). Retentando em {tempo_espera}s...")
+                    print(f"      [AVISO API] Servidor ocupado/Timeout. Retentando em {tempo_espera}s...")
                     if status_callback:
                         status_callback({
                             "etapa": "erro_api",

@@ -129,6 +129,10 @@ def construir_relatorio_prosa_txt(exec_log, teoria_gigante_path, exercicios_path
                     relatorio.append(f"  * Auditoria do Revisor Científico:")
                     relatorio.append(f"    - Tentativas do Escritor: {sub_info.get('tentativas', 1)}")
                     relatorio.append(f"    - Reprovações do Revisor: {sub_info.get('reprovacoes', 0)}")
+                    erros_api = sub_info.get("erros_api", {})
+                    if erros_api:
+                        total_sub_api = sum(erros_api.values())
+                        relatorio.append(f"    - Retentativas de API de Rede: {total_sub_api} (429: {erros_api.get('429', 0)}, 503/Timeout: {erros_api.get('503', 0)}, Outros: {erros_api.get('outros', 0)})")
                     feedbacks = sub_info.get("feedbacks", [])
                     if feedbacks:
                         relatorio.append("    - Histórico de Feedbacks de Correção:")
@@ -800,21 +804,11 @@ def run_page():
 
         tempo_inicio_ms = int(st.session_state.get("tempo_inicio", time.time()) * 1000)
 
-        total_erros_api = status_info.get("total_erros_api", 0)
-        api_badge_html = ""
-        if total_erros_api > 0:
-            api_badge_html = f"""
-                <div style="background: rgba(245, 158, 11, 0.15); color: #F59E0B; padding: 0.3rem 0.8rem; border-radius: 15px; border: 1px solid rgba(245, 158, 11, 0.3); font-size: 0.9rem; font-weight: 600; margin-top: 0.5rem; text-align: center;">
-                    ⚠️ API Retries: {total_erros_api}
-                </div>
-            """
-
         loader_html = f"""
             <div class="loader-container">
                 {batch_badge_html}
                 <div class="loader-ring"></div>
                 <div class="loader-timer" id="live-timer-el" data-start-ms="{tempo_inicio_ms}">{tempo_str}</div>
-                {api_badge_html}
                 <div class="loader-status">{status_info.get("etapa_atual", "Processando")}</div>
                 <div class="loader-substatus">{status_info.get("subetapa_detalhe", "")}</div>
                 {subtopicos_html}

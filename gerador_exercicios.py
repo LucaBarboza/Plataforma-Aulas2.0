@@ -56,7 +56,7 @@ def gerar_caderno_exercicios(caminho_payload_teoria: str, nome_professor: str = 
         raise ValueError("Chave de API 'GEMINI_API_KEY' não configurada. Configure a chave nos Secrets do Streamlit ou no ambiente.")
 
     try:
-        client = genai.Client(http_options={"timeout": 120_000})
+        client = genai.Client(http_options={"timeout": 300_000})
     except Exception as e:
         print(f"[ERRO] Erro ao inicializar o cliente do Google GenAI: {e}")
         return None

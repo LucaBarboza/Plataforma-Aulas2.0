@@ -47,7 +47,7 @@ carregar_chave_api()
 def programar_fatia_teoria(dados_subtopico: dict, nome_simulador: str, descricao_simulador: str = "", motor_grafico: str = "plotly", chave_suffix: str = "", cor_principal: str = "#1E3A8A", cor_critica: str = "#991B1B", cor_secundaria: str = "#10B981", cor_alerta: str = "#F59E0B") -> str:
     # Garante a inicialização da chave
     carregar_chave_api()
-    client = genai.Client(http_options={"timeout": 120_000})
+    client = genai.Client(http_options={"timeout": 300_000})
     
     grafico_especifico = f"""Crie um gráfico Plotly premium altamente interativo e condizente com a proposta. 
         Configure o gráfico com as seguintes diretrizes estritas de layout de forma absoluta:
@@ -237,7 +237,7 @@ Retorne APENAS o código Python corrigido completo dentro do bloco:
 # ==============================================================================
 def programar_fatia_exercicios(dados_exercicios: dict) -> str:
     carregar_chave_api()
-    client = genai.Client(http_options={"timeout": 120_000})
+    client = genai.Client(http_options={"timeout": 300_000})
     
     prompt = """
     Você é um Engenheiro de Software especialista em interfaces educacionais interativas no Streamlit.

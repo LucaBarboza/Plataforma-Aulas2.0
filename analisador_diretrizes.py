@@ -18,7 +18,7 @@ def processar_arquivo_diretrizes_ia(arquivos_info) -> dict:
     if not os.environ.get("GEMINI_API_KEY"):
         raise ValueError("Chave de API 'GEMINI_API_KEY' não configurada no ambiente ou secrets.")
 
-    client = genai.Client(http_options={"timeout": 120_000})
+    client = genai.Client(http_options={"timeout": 300_000})
     
     # Normaliza a entrada para uma lista de tuplas (caminho, nome)
     if isinstance(arquivos_info, tuple) and len(arquivos_info) == 2:

@@ -41,7 +41,7 @@ def carregar_chave_api():
 def lapidar_conteudo_global(caminho_payload_teoria: str, diretrizes_texto: str = None):
     # Garante a inicialização da chave
     carregar_chave_api()
-    client = genai.Client(http_options={"timeout": 120_000})
+    client = genai.Client(http_options={"timeout": 300_000})
 
     if not os.path.exists(caminho_payload_teoria):
         print(f"[ERRO] O arquivo '{caminho_payload_teoria}' não foi encontrado.")
@@ -172,7 +172,7 @@ Sua missão é atuar como editor unificador: você deve lapidar, costurar e orga
 
 def expandir_subtopico_para_prosa_livro(dados_subtopico: dict, diretrizes_texto: str = None) -> str:
     carregar_chave_api()
-    client = genai.Client(http_options={"timeout": 120_000})
+    client = genai.Client(http_options={"timeout": 300_000})
     
     prompt = f"""
     Você é um Professor Catedrático de Estatística Matemática. Sua única missão é pegar o esboço conceitual e formal de um subtópico e expandi-lo em um capítulo longo, denso e exaustivo de um livro didático de nível universitário premium.
