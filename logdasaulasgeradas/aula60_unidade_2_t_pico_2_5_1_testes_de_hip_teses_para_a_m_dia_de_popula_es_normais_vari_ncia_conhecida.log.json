@@ -1,0 +1,104 @@
+{
+    "status": "sucesso",
+    "timestamp_inicio": "2026-08-07 14:01:10",
+    "tema": "Unidade 2 - Tópico 2.5.1: Testes de hipóteses para a média de populações Normais (Variância conhecida)",
+    "professor": "Luca",
+    "disciplina": "MATD38",
+    "tempo_total_segundos": 983.87,
+    "etapas": {
+        "1_indexacao_rag": {
+            "descricao": "Indexação dos Materiais de Apoio (RAG Pessoal)",
+            "status": "pulado",
+            "duracao_segundos": 0.0
+        },
+        "2_roteirista": {
+            "descricao": "Agente 1: Roteirista (Alinhamento de Escopo e Trilha)",
+            "status": "sucesso",
+            "duracao_segundos": 5.97
+        },
+        "3_escrita_revisao": {
+            "descricao": "Agente 2 + 2.5: Escritor & Revisor (Loop de Revisão Ativa)",
+            "status": "sucesso",
+            "duracao_segundos": 397.08,
+            "subtopicos": [
+                {
+                    "titulo": "A Estrutura Lógica do Teste de Hipóteses",
+                    "tentativas": 1,
+                    "max_tentativas": 5,
+                    "reprovacoes": 0,
+                    "feedbacks": [],
+                    "erros_api": {
+                        "429": 0,
+                        "503": 0,
+                        "outros": 0
+                    },
+                    "tempo_segundos": 17.33,
+                    "aprovado": true
+                },
+                {
+                    "titulo": "Formalismo Matemático do Teste para Média com Variância Conhecida",
+                    "tentativas": 1,
+                    "max_tentativas": 5,
+                    "reprovacoes": 0,
+                    "feedbacks": [],
+                    "erros_api": {
+                        "429": 0,
+                        "503": 0,
+                        "outros": 1
+                    },
+                    "tempo_segundos": 321.96,
+                    "aprovado": true
+                },
+                {
+                    "titulo": "Regras de Decisão Unilaterais e Bilaterais",
+                    "tentativas": 1,
+                    "max_tentativas": 5,
+                    "reprovacoes": 0,
+                    "feedbacks": [],
+                    "erros_api": {
+                        "429": 0,
+                        "503": 1,
+                        "outros": 0
+                    },
+                    "tempo_segundos": 38.4,
+                    "aprovado": true
+                },
+                {
+                    "titulo": "Aplicações Práticas e Interpretação de Resultados",
+                    "tentativas": 1,
+                    "max_tentativas": 5,
+                    "reprovacoes": 0,
+                    "feedbacks": [],
+                    "erros_api": {
+                        "429": 0,
+                        "503": 0,
+                        "outros": 0
+                    },
+                    "tempo_segundos": 19.38,
+                    "aprovado": true
+                }
+            ]
+        },
+        "4_lapidacao_editorial": {
+            "descricao": "Agente 3.5: Editor-Chefe (Unificação e Coerência Global)",
+            "status": "sucesso",
+            "duracao_segundos": 17.63
+        },
+        "5_expansao_prosa": {
+            "descricao": "Agente 3.75: Construtor de Prosa (Expansão Exaustiva de Livro)",
+            "status": "sucesso",
+            "duracao_segundos": 280.4
+        },
+        "6_caderno_exercicios": {
+            "descricao": "Agente 3: Caderno de Exercícios (Questões Fechadas e Abertas)",
+            "status": "sucesso",
+            "duracao_segundos": 68.34
+        },
+        "7_compilacao_interface": {
+            "descricao": "Fase 6: Compilação de Interface Streamlit",
+            "status": "sucesso",
+            "duracao_segundos": 213.03
+        }
+    },
+    "timestamp_fim": "2026-08-07 14:17:33"
+}
