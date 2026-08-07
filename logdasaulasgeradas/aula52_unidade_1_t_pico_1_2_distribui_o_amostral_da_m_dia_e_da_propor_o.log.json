@@ -1,0 +1,118 @@
+{
+    "status": "sucesso",
+    "timestamp_inicio": "2026-08-07 13:01:57",
+    "tema": "Unidade 1 - Tópico 1.2: Distribuição amostral da média e da proporção",
+    "professor": "Luca",
+    "disciplina": "MATD38",
+    "tempo_total_segundos": 263.74,
+    "etapas": {
+        "1_indexacao_rag": {
+            "descricao": "Indexação dos Materiais de Apoio (RAG Pessoal)",
+            "status": "pulado",
+            "duracao_segundos": 0.0
+        },
+        "2_roteirista": {
+            "descricao": "Agente 1: Roteirista (Alinhamento de Escopo e Trilha)",
+            "status": "sucesso",
+            "duracao_segundos": 9.81
+        },
+        "3_escrita_revisao": {
+            "descricao": "Agente 2 + 2.5: Escritor & Revisor (Loop de Revisão Ativa)",
+            "status": "sucesso",
+            "duracao_segundos": 99.33,
+            "subtopicos": [
+                {
+                    "titulo": "O Conceito de Distribuição Amostral e Variabilidade Inferencial",
+                    "tentativas": 1,
+                    "max_tentativas": 5,
+                    "reprovacoes": 0,
+                    "feedbacks": [],
+                    "erros_api": {
+                        "429": 0,
+                        "503": 0,
+                        "outros": 0
+                    },
+                    "tempo_segundos": 19.69,
+                    "aprovado": true
+                },
+                {
+                    "titulo": "Propriedades Teóricas do Estimador Média Amostral",
+                    "tentativas": 1,
+                    "max_tentativas": 5,
+                    "reprovacoes": 0,
+                    "feedbacks": [],
+                    "erros_api": {
+                        "429": 0,
+                        "503": 0,
+                        "outros": 0
+                    },
+                    "tempo_segundos": 19.15,
+                    "aprovado": true
+                },
+                {
+                    "titulo": "O Teorema Limite Central e a Convergência para a Normalidade",
+                    "tentativas": 1,
+                    "max_tentativas": 5,
+                    "reprovacoes": 0,
+                    "feedbacks": [],
+                    "erros_api": {
+                        "429": 0,
+                        "503": 0,
+                        "outros": 0
+                    },
+                    "tempo_segundos": 19.88,
+                    "aprovado": true
+                },
+                {
+                    "titulo": "Distribuição Amostral da Proporção e Modelagem Binomial",
+                    "tentativas": 1,
+                    "max_tentativas": 5,
+                    "reprovacoes": 0,
+                    "feedbacks": [],
+                    "erros_api": {
+                        "429": 0,
+                        "503": 0,
+                        "outros": 0
+                    },
+                    "tempo_segundos": 19.83,
+                    "aprovado": true
+                },
+                {
+                    "titulo": "Fatores de Correção e Aplicações em Populações Finitas",
+                    "tentativas": 1,
+                    "max_tentativas": 5,
+                    "reprovacoes": 0,
+                    "feedbacks": [],
+                    "erros_api": {
+                        "429": 0,
+                        "503": 0,
+                        "outros": 0
+                    },
+                    "tempo_segundos": 20.78,
+                    "aprovado": true
+                }
+            ]
+        },
+        "4_lapidacao_editorial": {
+            "descricao": "Agente 3.5: Editor-Chefe (Unificação e Coerência Global)",
+            "status": "sucesso",
+            "duracao_segundos": 13.85
+        },
+        "5_expansao_prosa": {
+            "descricao": "Agente 3.75: Construtor de Prosa (Expansão Exaustiva de Livro)",
+            "status": "sucesso",
+            "duracao_segundos": 31.12
+        },
+        "6_caderno_exercicios": {
+            "descricao": "Agente 3: Caderno de Exercícios (Questões Fechadas e Abertas)",
+            "status": "sucesso",
+            "duracao_segundos": 80.06
+        },
+        "7_compilacao_interface": {
+            "descricao": "Fase 6: Compilação de Interface Streamlit",
+            "status": "sucesso",
+            "duracao_segundos": 27.83
+        }
+    },
+    "timestamp_fim": "2026-08-07 13:06:20"
+}
