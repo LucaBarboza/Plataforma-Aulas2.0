@@ -1,0 +1,122 @@
+{
+    "status": "sucesso",
+    "timestamp_inicio": "2026-08-07 14:32:19",
+    "tema": "Unidade 2 - Tópico 2.6: Testes de hipóteses para a média e para a proporção usando grandes amostras",
+    "professor": "Luca",
+    "disciplina": "MATD38",
+    "tempo_total_segundos": 1458.52,
+    "etapas": {
+        "1_indexacao_rag": {
+            "descricao": "Indexação dos Materiais de Apoio (RAG Pessoal)",
+            "status": "pulado",
+            "duracao_segundos": 0.0
+        },
+        "2_roteirista": {
+            "descricao": "Agente 1: Roteirista (Alinhamento de Escopo e Trilha)",
+            "status": "sucesso",
+            "duracao_segundos": 5.84
+        },
+        "3_escrita_revisao": {
+            "descricao": "Agente 2 + 2.5: Escritor & Revisor (Loop de Revisão Ativa)",
+            "status": "sucesso",
+            "duracao_segundos": 440.43,
+            "subtopicos": [
+                {
+                    "titulo": "Fundamentos do Teste de Hipóteses: A Lógica da Inferência Estatística",
+                    "tentativas": 1,
+                    "max_tentativas": 5,
+                    "reprovacoes": 0,
+                    "feedbacks": [],
+                    "erros_api": {
+                        "429": 0,
+                        "503": 0,
+                        "outros": 0
+                    },
+                    "tempo_segundos": 18.87,
+                    "aprovado": true
+                },
+                {
+                    "titulo": "Inferência para Médias Populacionais com Grandes Amostras",
+                    "tentativas": 1,
+                    "max_tentativas": 5,
+                    "reprovacoes": 0,
+                    "feedbacks": [],
+                    "erros_api": {
+                        "429": 0,
+                        "503": 0,
+                        "outros": 0
+                    },
+                    "tempo_segundos": 17.94,
+                    "aprovado": true
+                },
+                {
+                    "titulo": "Procedimentos Inferenciais para Proporções Amostrais",
+                    "tentativas": 1,
+                    "max_tentativas": 5,
+                    "reprovacoes": 0,
+                    "feedbacks": [],
+                    "erros_api": {
+                        "429": 0,
+                        "503": 0,
+                        "outros": 0
+                    },
+                    "tempo_segundos": 20.44,
+                    "aprovado": true
+                },
+                {
+                    "titulo": "A Engenharia do P-valor e Tomada de Decisão Estatística",
+                    "tentativas": 4,
+                    "max_tentativas": 5,
+                    "reprovacoes": 3,
+                    "feedbacks": [
+                        "1. [CAMPO AFETADO]: 'conteudo_formal'. [MOTIVO DETALHADO]: O uso de texto misturado com LaTeX sem a devida formatação `\\text{}` causa erro de renderização no motor KaTeX. Além disso, a notação de 'nível descritivo' pode ser mais precisa. [INSTRUÇÃO DE CORREÇÃO]: SUBSTITUA: 'O $p\\text{-valor}$ (ou nível descritivo $\\hat{\\alpha}$) é definido como a probabilidade de observar um valor da estatística de teste $\\hat{\\theta}$ mais extremo ou igual ao valor observado $\\hat{\\theta}_{\\text{obs}}$, dado que a hipótese nula $H_0$ é verdadeira: $$p\\text{-valor} = P(\\hat{\\theta} \\text{ mais extremo que } \\hat{\\theta}_{\\text{obs}} | H_0 \\text{ verdadeira})$$' POR: 'O $p\\text{-valor}$ é definido como a probabilidade de observar um valor da estatística de teste $T$ mais extremo ou igual ao valor observado $T_{\\text{obs}}$, dado que a hipótese nula $H_0$ é verdadeira: $$p\\text{-valor} = P(T \\geq T_{\\text{obs}} | H_0) \\text{ (para testes unilaterais superiores)}$$'. 2. [CAMPO AFETADO]: 'deducao_formal_passo_a_passo'. [MOTIVO DETALHADO]: Inconsistência na notação de subscritos e símbolos. O termo 'Evidência contra' não é notação matemática padrão. [INSTRUÇÃO DE CORREÇÃO]: SUBSTITUA: '$$p\\text{-valor} = P(\\text{Evidência contra } H_0 | H_0)$$' POR: '$$p\\text{-valor} = P(T > T_{\\text{calc}} | H_0 \text{ é verdadeira})$$'. 3. [CAMPO AFETADO]: 'fontes_rag'. [MOTIVO DETALHADO]: [ERRO BIBLIOGRÁFICO] Embora as páginas tenham sido indicadas, é necessário garantir que a terminologia do professor seja mantida. Certifique-se de que o termo 'nível descritivo' é o termo oficial do docente e que o formato de citação segue rigorosamente as normas internas.",
+                        "1) [CONCEITO_FORMAL] e [PROPRIEDADES_DO_CONCEITO]: Encontrado erro grave de sintaxe LaTeX no uso de símbolos comparativos. Substitua a notação redundante e incorreta 'p\text{-valor} \times \text{\\geq} \times \text{valor}' POR 'p\text{-valor} \text{ mais extremo que } T_{\text{calc}}' e 'p\text{-valor} \text{\\leq} \text{\\alpha}' para garantir a renderização correta no KaTeX. 2) [DEDUÇÃO_FORMAL_PASSO_A_PASSO]: O uso de $$ no início e fim de cada passo é correto, porém a formatação interna deve ser limpa de caracteres especiais desnecessários (como os sinais de multiplicação soltos que não fazem parte da equação). 3) [REQUISITOS]: Reforce o uso da terminologia padrão da UFBA para 'p-valor' sempre com o hífen conforme definido, e certifique-se de que nenhum texto esteja fora dos blocos \text{} dentro do modo matemático ($...$ ou $$...$$).",
+                        "O conteúdo apresenta erros de formatação LaTeX que prejudicam a renderização e violam as diretrizes de notação. 1) [CAMPO AFETADO]: 'conceito_formal'. [MOTIVO DETALHADO]: O uso de '\\simétrica' não é um comando LaTeX válido e a presença de 'mas \\sim' no texto gera uma tilde (~) em vez da palavra 'sim'. [INSTRUÇÃO DE CORREÇÃO]: SUBSTITUA: 'assumindo uma distribuição \\simétrica para a estatística sob a nulidade.' POR: 'assumindo uma distribuição simétrica para a estatística sob a nulidade.'. 2) [CAMPO AFETADO]: 'propriedades_do_conceito'. [MOTIVO DETALHADO]: Uso indevido do comando LaTeX '\\sim' como se fosse a palavra 'sim' e '\\simétrica' como termo matemático. [INSTRUÇÃO DE CORREÇÃO]: SUBSTITUA: 'mas \\sim a probabilidade' POR: 'mas sim a probabilidade' E SUBSTITUA: 'Em distribuições \\simétricas' POR: 'Em distribuições simétricas'. 3) [CAMPO AFETADO]: 'deducao_formal_passo_a_passo'. [MOTIVO DETALHADO]: Uso incorreto do comando '\\simétrica'. [INSTRUÇÃO DE CORREÇÃO]: SUBSTITUA: '(para teste bilateral com distribuição \\simétrica)' POR: '(para teste bilateral com distribuição simétrica)'."
+                    ],
+                    "erros_api": {
+                        "429": 0,
+                        "503": 0,
+                        "outros": 1
+                    },
+                    "tempo_segundos": 359.58,
+                    "aprovado": true
+                },
+                {
+                    "titulo": "Análise da Potência do Teste e Erros Inferenciais",
+                    "tentativas": 1,
+                    "max_tentativas": 5,
+                    "reprovacoes": 0,
+                    "feedbacks": [],
+                    "erros_api": {
+                        "429": 0,
+                        "503": 0,
+                        "outros": 0
+                    },
+                    "tempo_segundos": 23.59,
+                    "aprovado": true
+                }
+            ]
+        },
+        "4_lapidacao_editorial": {
+            "descricao": "Agente 3.5: Editor-Chefe (Unificação e Coerência Global)",
+            "status": "sucesso",
+            "duracao_segundos": 18.31
+        },
+        "5_expansao_prosa": {
+            "descricao": "Agente 3.75: Construtor de Prosa (Expansão Exaustiva de Livro)",
+            "status": "sucesso",
+            "duracao_segundos": 633.23
+        },
+        "6_caderno_exercicios": {
+            "descricao": "Agente 3: Caderno de Exercícios (Questões Fechadas e Abertas)",
+            "status": "sucesso",
+            "duracao_segundos": 73.58
+        },
+        "7_compilacao_interface": {
+            "descricao": "Fase 6: Compilação de Interface Streamlit",
+            "status": "sucesso",
+            "duracao_segundos": 285.59
+        }
+    },
+    "timestamp_fim": "2026-08-07 14:56:38"
+}
