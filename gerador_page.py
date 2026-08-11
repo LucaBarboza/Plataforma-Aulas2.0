@@ -409,6 +409,13 @@ def rodar_thread_completa(status_dict):
                         resultado_exercicios = json.load(f_c)
                     set_status("Fase 5: Caderno de Exercícios", "✓ Exercícios recuperados do cache!")
                 except: pass
+        else:
+            # Limpa arquivos de cache da aula anterior para não exibir previews antigos
+            for f_c in ["payload_teoria.json", "payload_teoria_lapidada.json", "payload_teoria_gigante.json", "payload_exercicios.json"]:
+                p_c = os.path.join("cache", f_c)
+                if os.path.exists(p_c):
+                    try: os.remove(p_c)
+                    except: pass
 
         # 2. Geração de Conteúdo da Aula
         if not payload_teoria:
@@ -1027,7 +1034,10 @@ def run_page():
                 if os.path.exists(path_usar):
                     try:
                         with open(path_usar, "r", encoding="utf-8") as f_p:
-                            dados_arquivo = json.load(f_p)
+                            dados_tmp = json.load(f_p)
+                        tema_atual = status_dict.get("params", {}).get("tema_solicitado", "")
+                        if dados_tmp and dados_tmp.get("tema") == tema_atual:
+                            dados_arquivo = dados_tmp
                     except: pass
                 
                 if dados_arquivo and (dados_arquivo.get("conteudo_paginas") or dados_arquivo.get("paginas_conteudo")):
@@ -1481,6 +1491,8 @@ def run_page():
             "status_subtopicos": {},
             "tentativas_subtopicos": {},
             "max_tentativas_subtopicos": {},
+            "preview_subtopicos": {},
+            "preview_esquema": [],
             "tempo_inicio": t_inicio_geral_completo,
             "ativo": True,
             "sucesso": False,
