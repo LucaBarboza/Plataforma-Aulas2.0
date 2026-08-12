@@ -68,8 +68,8 @@ Sua missão é atuar como editor unificador: você deve lapidar, costurar, desdu
 2. Linguagem Fluida de Professor (SEM CLICHÊS GENÉRICOS): Unifique a prosa utilizando a linguagem natural, articulada, elegante e fluida de um professor universitário em sala de aula. É TERMINANTEMENTE PROIBIDO utilizar metáforas vazias ou clichês genéricos como "o coração da matemática", "a alma da estatística", "o motor conceitual" ou frases dramáticas desnecessárias.
 3. Foco no Ensino e Didática Rica: Ao unificar a prosa, garanta que o texto mantenha o foco em ENSINAR os conceitos intuitivamente com clareza. Não elimine parágrafos explicativos úteis ou analogias didáticas reais; a aula deve ser densa em conteúdo explicativo e fácil de compreender.
 4. Rigor Absoluto de Notação Dinâmica (Tolerância Zero para Adulterações): Você é OBRIGADO a seguir e preservar todas as notações matemáticas e símbolos estatísticos gerados originalmente pelo Escritor de acordo com o bloco [DIRETRIZES_DE_ESTILO] abaixo. Não mude, simplifique ou reverta nenhum símbolo para termos planos ou notações informais.
-5. Centralização de Gráficos e Simuladores: Analise as recomendações de simulador que vêm do Escritor. Filtre de forma extremamente rigorosa: selecione no máximo 2 ou 3 simuladores que sejam de fato cruciais, úteis e altamente pedagógicos para a aula inteira (ex: diagnóstico de resíduos, correlações, estatística descritiva, demonstrações de teoremas/limites). Se nenhuma recomendação for essencial ou pedagógica, deixe a lista 'simuladores_da_aula' vazia. Certifique-se de que a 'descricao_simulador' descreva detalhadamente os sliders, limites de parâmetros, e o comportamento interativo que a simulação deve ter para demonstrar o conceito estatístico em tempo real.
-6. Rigor de Rodapé Bibliográfico: Colete todas as fontes do RAG, elimine as duplicatas e monte uma lista bibliográfica final limpa no rodapé (com autor, livro, capítulo e intervalo de páginas exatas no formato "Bussab & Morettin, Estatística Básica - Cap. 4.5, pp. 83-85").
+5. DEDUPLICAÇÃO E UNICIDADE ABSOLUTA DE SIMULADORES E GRÁFICOS INTERATIVOS: Analise todas as recomendações de simulador que vêm dos subtópicos. É TERMINANTEMENTE PROIBIDO manter múltiplos simuladores com propostas, gráficos ou tipos de dados semelhantes (ex: múltiplos gráficos de dispersão simples ou histogramas repetidos). Selecione NO MÁXIMO 1 OU 2 SIMULADORES PARA A AULA INTEIRA, garantindo que cada um deles explore um conceito visual e tipo de gráfico COMPLETAMENTE DIFERENTE (ex: se 1 for um gráfico 2D de resíduos, o 2º deve ser uma superfície 3D ou mapa de calor). Se as recomendações forem parecidas ou irrelevantes, MANTENHA APENAS 1 OU DEIXE A LISTA 'simuladores_da_aula' VAZIA [].
+6. Rigor de Rodapé Bibliográfico: Colete APENAS as fontes que vieram ESTRITAMENTE do RAG em 'fontes_rag'. Elimine duplicatas e monte a lista 'referencias_bibliograficas_finais'. Se NÃO houver fontes RAG presentes no capítulo bruto, defina a lista 'referencias_bibliograficas_finais' OBRIGATORIAMENTE como VAZIA []. É TERMINANTEMENTE PROIBIDO inventar autores, livros fictícios ou colocar nomes de obras genéricas fora do RAG.
 
 ---
 
@@ -117,14 +117,19 @@ Sua missão é atuar como editor unificador: você deve lapidar, costurar, desdu
                 # Extrai fontes RAG
                 fontes = pag.get("fontes_rag", [])
                 for f in fontes:
-                    livro = f.get("livro_autor", "")
-                    cap = f.get("capitulo", "")
-                    paginas = f.get("paginas_utilizadas", "")
+                    livro = str(f.get("livro_autor", "") or "").strip()
+                    cap = str(f.get("capitulo", "") or "").strip()
+                    paginas = str(f.get("paginas_utilizadas", "") or "").strip()
+                    
+                    if re.match(r'^(files/|store-?|[a-z0-9_-]{8,40}$)', livro, re.I) or not livro or livro.lower() in ["n/a", "none", "null"]:
+                        livro = "Material de Apoio do Professor"
+                        
                     ref_str = f"{livro}"
-                    if cap:
-                        ref_str += f", {cap}"
-                    if paginas:
-                        ref_str += f" - {paginas}"
+                    if cap and cap.lower() not in ["n/a", "n/a (grounding)", "none", "null"]:
+                        ref_str += f" - {cap}"
+                    if paginas and paginas.lower() not in ["n/a", "p. não especificada", "none", "null"]:
+                        ref_str += f", {paginas}"
+                        
                     if ref_str:
                         referencias_set.add(ref_str)
                         
@@ -162,7 +167,7 @@ Sua missão é atuar como editor unificador: você deve lapidar, costurar, desdu
                 "tema_global": payload_bruto.get("tema", "Aula Teórica"),
                 "paginas_conteudo": paginas_conteudo,
                 "simuladores_da_aula": simuladores_da_aula,
-                "referencias_bibliograficas_finais": list(referencias_set) if referencias_set else ["Fontes consultadas via RAG."]
+                "referencias_bibliograficas_finais": list(referencias_set) if referencias_set else []
             }
             from latex_sanitizer import sanitizar_payload_latex
             return sanitizar_payload_latex(resultado_final)

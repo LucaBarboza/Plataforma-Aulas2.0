@@ -391,7 +391,8 @@ linear e exaustiva de subtópicos teóricos, preenchendo rigorosamente a estrutu
             if store_names:
                 diretriz_veracidade = """HIERARQUIA E PRIORIDADE ABSOLUTA DAS FONTES RAG (FONTE PRIMÁRIA DO PROFESSOR):
 1. FONTE PRIMÁRIA OBRIGATÓRIA (PESO MÁXIMO ABSOLUTO): Os Materiais de Apoio, notas de aula, slides, apostilas e ementas fornecidos diretamente pelo Professor (recuperados via RAG). Todo o formato da aula, a divisão dos conceitos, a notação matemática, o tom de voz, o estilo explicativo e o vocabulário DEVEM derivar obrigatoriamente dessa fonte primária.
-2. FONTE SECUNDÁRIA COMPLEMENTAR: Os livros-texto gerais da biblioteca RAG. Devem ser utilizados estritamente como apoio secundário para aprofundar demonstrações, fornecer citações bibliográficas cruzadas e enriquecer exemplos, NUNCA sobrepondo o formato, a didática ou alterando as notações do material do professor."""
+2. FONTE SECUNDÁRIA COMPLEMENTAR: Os livros-texto gerais da biblioteca RAG. Devem ser utilizados estritamente como apoio secundário para aprofundar demonstrações, fornecer citações bibliográficas cruzadas e enriquecer exemplos, NUNCA sobrepondo o formato, a didática ou alterando as notações do material do professor.
+3. REGRA ESTRITA DE FONTES: O campo 'fontes_rag' DEVE conter APENAS os materiais, documentos ou livros que foram EFETIVAMENTE citados ou recuperados da busca RAG. É TERMINANTEMENTE PROIBIDO inventar, alucinar ou incluir obras e autores que não estavam presentes nos resultados do RAG."""
                 contexto_rag_descricao = "os materiais de apoio do professor (fonte primária) e os livros-texto da base RAG (fonte secundária)"
                 tools_config_worker = [
                     types.Tool(
@@ -403,8 +404,8 @@ linear e exaustiva de subtópicos teóricos, preenchendo rigorosamente a estrutu
                     )
                 ]
             else:
-                diretriz_veracidade = "Como não há base RAG de apoio disponível, baseie-se no conhecimento estatístico consolidado da literatura acadêmica padrão (ex: Bussab & Morettin, Morettin & Singer, etc.). É terminantemente proibido inventar teoremas ou deduzir propriedades errôneas. Cite obras e páginas reais e verossímeis nas referências bibliográficas do retorno."
-                contexto_rag_descricao = "o conhecimento estatístico consolidado da literatura acadêmica padrão"
+                diretriz_veracidade = "ATENÇÃO ABSOLUTA: Como NENHUM MATERIAL RAG está disponível para esta aula, o campo 'fontes_rag' DEVE SER RETORNADO OBRIGATORIAMENTE COMO UMA LISTA VAZIA []. É TERMINANTEMENTE PROIBIDO inventar, alucinar ou citar quaisquer livros, autores ou páginas fictícias ou genéricas. As fontes bibliográficas devem ser estritamente reais e derivadas exclusivamente dos documentos retornados da busca RAG quando esta existir."
+                contexto_rag_descricao = "o conhecimento técnico consolidado da literatura acadêmica"
                 tools_config_worker = None
 
             prompt_escritor_worker = f"""
@@ -421,7 +422,7 @@ Sua missão é atuar como o produtor científico principal do conteúdo teórico
    - PROIBIDO USAR CLICHÊS ARTIFICIAIS: É terminantemente proibido utilizar expressões dramáticas ou vazias como "o coração da matemática", "a alma da estatística", "o motor conceitual" ou frases genéricas semelhantes.
    - LINGUAGEM FLUIDA E DIRETA: Escreva com a linguagem natural, elegante e articulada de um professor universitário em sala de aula. Explique o conceito com clareza cristalina, sem floreios desnecessários ou termos exageradamente complicados.
    - ADAPTAÇÃO AO ESTILO DO PROFESSOR (RAG): Se houver materiais do professor recuperados via RAG (slides, apostilas, notas de aula), ADAPTE O TOM DE VOZ E A LINGUAGEM para imitar a didática e o vocabulário preferido do professor.
-2. Escrita Didática e Completa (SEM LIMITE DE PARÁGRAFOS): Sua principal prioridade é ENSINAR o conceito com extrema profundidade e clareza. Use prosa fluida, analogias reais do dia a dia e explicações passo a passo. Explique minuciosamente o significado prático de cada componente, variável, letra grega e parâmetro da fórmula matemática.
+2. POSTURA DIDÁTICA DE PROFESSOR (SE DEBRUÇAR E DAR UMA AULA DE VERDADE): Não resuma nem escreva pequenos parágrafos superficiais. Sua missão é de fato ENSINAR o assunto com riqueza didática. Em 'conceito_intuitivo', debruce-se sobre o tema em múltiplos parágrafos bem articulados (escreva obrigatoriamente de 3 a 5 parágrafos encadeados): explique por que o conceito existe, a motivação prática, como aplicar e os cuidados necessários. Em 'conceito_formal', apresente a fórmula e explique cada símbolo/variável por extenso em texto. NUNCA use palavras de enrolação vazias, mas seja minucioso, articulado e didático na explicação técnica.
 3. Regra de Ouro de Veracidade: {diretriz_veracidade}
 4. Rigor de Notação e Perfeição de Renderização em LaTeX (KaTeX Compatible):
    - Toda notação matemática formal, hipóteses, coeficientes, variabilidades, erros e estatísticas de teste devem ser apresentadas em LaTeX ($ ou $$).
@@ -444,12 +445,12 @@ Sua missão é atuar como o produtor científico principal do conteúdo teórico
 
 2. 'conteudo' (objeto ConteudoSubtopico):
    - 'tipo_bloco' (string): Deve ser preenchido estritamente como 'teorico'.
-   - 'conceito_intuitivo' (string): Prosa explicativa longa, fluida e profundamente didática (SEM LIMITE DE PARÁGRAFOS). Explique a motivação histórica, o problema prático do mundo real que impulsionou a criação deste conceito, analogias do dia a dia e desdobramentos de mercado. ATENÇÃO: Proibido inserir qualquer notação LaTeX matemática ($ ou $$) neste campo. Mantenha o foco puramente na prosa qualitativa.
-   - 'conceito_formal' (string): Apresente o enunciado matemático definitivo do conceito ou teorema em LaTeX ($$ ou $). Após o enunciado da fórmula, explique minuciosamente por extenso em texto o significado de cada símbolo, matriz, vetor, parâmetro e suposição contida na fórmula.
+   - 'conceito_intuitivo' (string): Prosa explicativa didática, encadeada e exaustiva (escreva obrigatoriamente de 3 a 5 parágrafos densos). Explique a motivação histórica, o problema prático do mundo real que impulsionou a criação deste conceito, analogias do dia a dia e desdobramentos de mercado. NUNCA resuma em apenas um pequeno parágrafo. Proibido inserir notação LaTeX matemática ($ ou $$) neste campo. Mantenha o foco puramente na prosa qualitativa.
+   - 'conceito_formal' (string): Apresente o enunciado matemático definitivo do conceito ou teorema em LaTeX ($$ ou $). Após a fórmula, explique por extenso em texto o significado didático de cada símbolo, matriz, vetor e parâmetro da equação.
    - 'propriedades_do_conceito' (lista de strings): Mapeie de forma exaustiva e detalhada todas as leis, teoremas e propriedades matemáticas deduzidas diretamente desse conceito.
    - 'pre_requisitos_e_auxiliares' (lista de strings): Liste os pré-requisitos conceituais e ferramentas de cálculo necessários para compreender este subtópico.
    - 'condicoes_de_contorno' (lista de strings): Descreva todas as premissas matemáticas e suposições fundamentais para a validade do modelo (ex: homocedasticidade, independência dos erros, normalidade). Se não houver, preencha 'N/A'.
-   - 'simulador_interativo_recomendado' (string ou null): RELEVÂNCIA ESTRITA: Proponha uma simulação interativa baseada em Plotly APENAS se for altamente relevante e pedagógica para o conceito do subtópico (como diagnóstico de resíduos, regressão/correlação, estatística descritiva). Não recomende simuladores irrelevantes apenas para ter um gráfico. Se o conceito não se beneficiar diretamente de uma simulação visual essencial, defina estritamente como null.
+   - 'simulador_interativo_recomendado' (string ou null): UNICIDADE E RELEVÂNCIA ESTRITA: Proponha uma simulação interativa baseada em Plotly APENAS se for altamente relevante e didática para este subtópico específico. Se for propor, especifique uma abordagem visual ÚNICA e distinta (ex: superfície 3D, diagnóstico de resíduos, mapas de calor, animação temporal). NUNCA recomende gráficos de dispersão simples ou simuladores genéricos parecidos. Se não for essencial e visualmente único, defina estritamente como null.
    - 'deducao_formal_passo_a_passo' (lista de strings): Forneça a demonstração matemática completa. Cada item da lista deve conter a fórmula em LaTeX ($$) acompanhada de uma frase explicativa que descreva a transformação algébrica realizada naquela passagem.
    - 'interpretacao_geometrica_grafica' (string): Explique de forma detalhada como visualizar esse conceito graficamente ou espacialmente (ex: inclinação da reta, áreas sob curvas de densidade, projeções ortogonais de vetores de erro).
    - 'exemplo_canonico' (objeto EstruturaExemplo):
@@ -458,10 +459,11 @@ Sua missão é atuar como o produtor científico principal do conteúdo teórico
      * 'resultado_final' (string): O resultado aritmético final acompanhado de uma interpretação prática e laudo conclusivo detalhado em múltiplos parágrafos.
 
 3. 'fontes_rag' (lista de FonteRDetalhada):
-   Cada item representa uma fonte bibliográfica e deve conter:
-   - 'livro_autor' (string): OBRIGATÓRIO. Sobrenome dos autores e título clássico do livro, slide ou material de apoio.
+   Cada item representa uma fonte bibliográfica REAL extraída estritamente da busca RAG.
+   - 'livro_autor' (string): OBRIGATÓRIO. Sobrenome dos autores e título exato do livro, slide ou material de apoio recuperado.
    - 'capitulo' (string): OBRIGATÓRIO. Nome ou número do capítulo, seção ou unidade consultada.
-   - 'paginas_utilizadas' (string): O número da página ou intervalo de páginas (ex: "p. 142" ou "pp. 210-214"). Caso a página não conste no RAG, utilize "p. S/N". ATENÇÃO: A omissão do nome do livro/material ou do capítulo/seção causará REPROVAÇÃO IMEDIATA pelo Revisor.
+   - 'paginas_utilizadas' (string): O número da página ou intervalo de páginas (ex: "p. 142" ou "pp. 210-214"). Caso a página não conste no RAG, utilize "p. S/N".
+   ATENÇÃO ESTRITA: Se NENHUM material RAG foi recuperado ou utilizado para este subtópico, retorne a lista OBRIGATORIAMENTE VAZIA `[]`. É TERMINANTEMENTE PROIBIDO inventar livros ou autores que não vieram do RAG.
 
 ---
 
@@ -517,16 +519,24 @@ Sua missão é atuar como o produtor científico principal do conteúdo teórico
                             for chunk in chunks:
                                 if hasattr(chunk, "retrieved_context") and chunk.retrieved_context:
                                     ctx = chunk.retrieved_context
-                                    title = getattr(ctx, "title", "Livro Ingerido")
+                                    title = getattr(ctx, "title", "Material de Apoio do Professor")
+                                    if re.match(r'^(files/|store-?|[a-z0-9_-]{8,40}$)', title, re.I):
+                                        title = "Material de Apoio do Professor"
                                     page = str(getattr(ctx, "page_number", "S/N"))
                                     fontes_capturadas.append(
                                         FonteRDetalhada(
                                             livro_autor=title,
-                                            capitulo="N/A (Grounding)",
-                                            paginas_utilizadas=f"p. {page}" if page != "S/N" else "p. não especificada"
+                                            capitulo="Documentos da Disciplina",
+                                            paginas_utilizadas=f"p. {page}" if page != "S/N" else "p. S/N"
                                         )
                                     )
-                    if fontes_capturadas:
+                    
+                    # Trata também fontes que o próprio modelo possa ter retornado com IDs
+                    if subtopico_atual_dados.fontes_rag:
+                        for f_mod in subtopico_atual_dados.fontes_rag:
+                            if re.match(r'^(files/|store-?|[a-z0-9_-]{8,40}$)', f_mod.livro_autor, re.I):
+                                f_mod.livro_autor = "Material de Apoio do Professor"
+                    elif fontes_capturadas:
                         vistas = set()
                         fontes_unicas = []
                         for f_c in fontes_capturadas:

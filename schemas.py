@@ -25,7 +25,7 @@ class ExemploResolvidoRico(BaseModel):
     )
 
 class FonteRDetalhada(BaseModel):
-    livro_autor: str = Field(description="Nome do livro e sobrenome do autor (ex: Bussab & Morettin, Wooldridge).")
+    livro_autor: str = Field(description="Nome do livro, slide ou documento extraído estritamente do RAG (ex: 'Slide Cap 4 - Prof. Silva' ou 'Devore, Jay L. - Probabilidade e Estatística').")
     capitulo: str = Field(description="Capítulo específico consultado no documento RAG.")
     paginas_utilizadas: str = Field(description="Número exato da página ou intervalo de páginas de onde o conteúdo foi extraído (ex: p. 234, pp. 112-115). Obrigatório.")
 
@@ -106,7 +106,7 @@ class QuestaoFechada(BaseModel):
     )
     referencia_livro: Optional[str] = Field(
         default=None,
-        description="Se a questão for inspirada ou extraída de um livro/material do RAG, forneça a referência exata (ex: 'Bussab & Morettin, Estatística Básica, Cap 5, p. 115'). Caso contrário, deixe None."
+        description="Se a questão for inspirada ou extraída de um livro/material recuperado via RAG, forneça a referência exata extraída do RAG. Caso o conteúdo não venha do RAG ou seja uma questão autoral, defina OBRIGATORIAMENTE como None."
     )
 
 class QuestaoAberta(BaseModel):

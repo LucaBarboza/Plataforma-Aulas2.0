@@ -75,20 +75,21 @@ def programar_fatia_teoria(dados_subtopico: dict, nome_simulador: str, descricao
     
     Se houver listas de exemplos (`exemplos_praticos_ricos`) ou deduções (`deducao_analitica_linhas`), você deve iterar sobre elas durante a geração do código e gerar fisicamente blocos de código estáticos sequenciais para cada item individualmente na string de saída (por exemplo, gerando múltiplos blocos `with st.container(border=True):` estáticos com os textos reais já escritos por extenso no código Python, sem loops `for` no script final).
     
-    DIRETRIZES OBRIGATÓRIAS DE LAYOUT, RITMO DIDÁTICO E PERFEIÇÃO VISUAL:
-    1. PARCELAMENTO DIDÁTICO DO TEXTO: Nunca exiba mais de 2 parágrafos corridos seguidos sem uma quebra visual. Alterne a leitura com cartões com borda, frases destacadas em negrito, tópicos explicativos (bullet points) limpos e caixas de intuito conceitual.
-    2. BLOCOS COLORIDOS DE DESTAQUE PEDAGÓGICO: 
-       - Envolva partes essenciais do conceito em caixas nativas do Streamlit (`st.info(r"...")`, `st.warning(r"...")`, `st.success(r"...")`).
-       - ATENÇÃO SINTÁTICA: `st.info()`, `st.warning()`, `st.error()` e `st.success()` são chamadas de função diretas. É TERMINANTEMENTE PROIBIDO utilizá-los com a palavra-chave 'with' (ex: NUNCA faça 'with st.info(r"..."):'). Chame-os diretamente.
-    3. CONTAINER PARA EXEMPLOS RESOLVIDOS: Cada exemplo prático DEVE ser isolado visualmente dentro de um `with st.container(border=True):`. Use títulos em markdown bem definidos (ex: "##### 📖 Exemplo Prático: ..."), exiba o passo a passo com clareza e encerre com um `st.success()` destacando o laudo conclusivo.
-    4. FORMALISMO MATEMÁTICO E PERFEIÇÃO LATEX (KATEX COMPATIBLE): 
+    DIRETRIZES OBRIGATÓRIAS DE LAYOUT, HIERARQUIA VISUAL E EXCELÊNCIA UI/UX:
+    1. CABEÇALHO DA PÁGINA COM DESIGN PREMIUM: Abra o subtópico com um título marcante `### 📖 [Título do Subtópico]` seguido por uma caixa de destaque inicial em `st.info(r"...")` resumindo a motivação intuitiva e intencionalidade pedagógica do conceito.
+    2. PARCELAMENTO DIDÁTICO E HIGIENE VISUAL DO TEXTO: Nunca exiba blocos maciços ou densos de texto sem respiro. Intercale a leitura entre parágrafos bem espaçados, tópicos explicativos organizados e cartões de destaque com borda (`with st.container(border=True):`).
+    3. SEÇÕES ESTRUTURADAS DE PROPRIEDADES E PRÉ-REQUISITOS EM COLUNAS: Mapeie as propriedades do conceito, pré-requisitos e condições de contorno em painéis bem organizados com colunas nativas (`col1, col2 = st.columns(2)` dentro de `st.container(border=True)`), usando marcadores e ícones visuais limpos (🎯, 📐, ⚡, 🔍).
+    4. CONTAINER PARA DEDUÇÕES MATEMÁTICAS E EXEMPLOS RESOLVIDOS:
+       - Cada demonstração passo a passo e exemplo prático resolvido DEVE ser isolado visualmente dentro de um `with st.container(border=True):` próprio, com títulos claros em markdown (ex: "##### 🎯 Exemplo Prático Aplicado: ...").
+       - Exiba a resolução matemática passo a passo com didática impecável e encerre obrigatoriamente com um `st.success(r"...")` destacando a interpretação final para tomada de decisão.
+    5. FORMALISMO MATEMÁTICO E PERFEIÇÃO LATEX (KATEX COMPATIBLE):
        - Centralize e destaque todas as equações principais em blocos de `st.latex(r"...")`.
        - ATENÇÃO REGRAS DE LATEX NO STREAMLIT:
          a) NUNCA inclua cifrões (`$` ou `$$`) dentro da string passada ao `st.latex(r"...")` (ex: faça `st.latex(r"\\theta_1 = 0.5")` e NUNCA `st.latex(r"$$\\theta_1 = 0.5$$")`).
          b) Toda chamada `st.latex()` e `st.markdown()` DEVE usar obrigatoriamente o prefixo raw string (`r"..."`).
          c) Qualquer palavra de texto comum em português dentro de equações LaTeX DEVE estar contida no comando `\\text{{...}}` (ex: `\\hat{{\\beta}}_1 \\text{{ onde }} x`).
-    5. TABELAS E DATAFRAMES ESTILIZADOS: Sempre que o conteúdo apresentar tabelas ou dados comparativos, converta-os e renderize-os como tabelas Streamlit nativas (`st.dataframe` ou `st.table`) usando Pandas (`pd.DataFrame`).
-    6. FIDELIDADE STRICTA AO VOCABULÁRIO DO PROFESSOR: Toda a prosa explicativa, rótulos de variáveis, legendas e textos dos cartões DEVEM utilizar rigorosamente o vocabulário e a nomenclatura do professor fornecida no JSON.
+    6. TABELAS E DATAFRAMES ESTILIZADOS: Sempre que o conteúdo apresentar dados, resumos ou tabelas comparativas, converta-os e renderize-os como tabelas Streamlit nativas (`st.dataframe` ou `st.table`) usando Pandas (`pd.DataFrame`).
+    7. FIDELIDADE STRICTA AO VOCABULÁRIO DO PROFESSOR: Toda a prosa explicativa, rótulos de variáveis, legendas e textos dos cartões DEVEM utilizar rigorosamente o vocabulário e a nomenclatura do professor fornecida no JSON.
     
     SIMULADORES PLOTLY E GRÁFICOS INTERATIVOS COERENTES E RELEVANTES (SEM INVENÇÕES DESNECESSÁRIAS):
     - RELEVÂNCIA ESTRITA E VALOR PEDAGÓGICO: Se o parâmetro 'nome_simulador' for fornecido (não vazio), programe um simulador interativo Plotly ÚTIL e diretamente relacionado ao conceito teórico ensinado (ex: alteração de tamanho amostral $n$, diagnóstico de resíduos, regressão/correlação, distribuições de probabilidade $z$, $t$, $\\chi^2$, $F$).
@@ -698,11 +699,16 @@ with tab_conteudo:
 
     # Converte a lista de simuladores em um dicionário de busca rápida
     simuladores_dict = {}
+    nomes_vistos = set()
     for sim in teoria.get("simuladores_da_aula", []):
-        simuladores_dict[str(sim.get("indice_pagina", ""))] = {
-            "nome": sim.get("nome_simulador", ""),
-            "descricao": sim.get("descricao_simulador", "")
-        }
+        nome = sim.get("nome_simulador", "").strip()
+        nome_norm = re.sub(r'[^a-zA-Z0-9]', '', nome.lower())
+        if nome_norm and nome_norm not in nomes_vistos and len(simuladores_dict) < 2:
+            nomes_vistos.add(nome_norm)
+            simuladores_dict[str(sim.get("indice_pagina", ""))] = {
+                "nome": nome,
+                "descricao": sim.get("descricao_simulador", "")
+            }
 
     import concurrent.futures
 
